@@ -1,0 +1,11 @@
+pandas
+numpy
+scipy
+matplotlib
+seaborn
+plotly
+yfinance
+transformers
+torch
+notebook
+ipykernel
