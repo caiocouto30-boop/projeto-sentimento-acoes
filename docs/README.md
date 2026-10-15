@@ -19,3 +19,14 @@ O grupo utiliza três documentos acadêmicos que **não estão incluídos como P
 Os arquivos `resumo_limpeza_noticias.csv`, `cobertura_noticias_anual.csv`, `cobertura_precos.csv`, `dicionario_dados.csv`, `manifesto_limpeza.json` e `registro_limpeza.md` são **gerados ao executar o notebook**, e não estão disponíveis para download neste GitHub. A pasta `data/processed/` também não é versionada.
 
 A documentação do notebook e do README descreve quais verificações foram realizadas e como reproduzi-las.
+
+
+
+## FinBERT e revisão inicial — 15/10/2026
+
+- [Guia e relatório da revisão](finbert.md): método, resultados, limitações e próximos passos.
+- [Notebook 02](../notebooks/02_sentimento_finbert.ipynb): classificação e agregado empresa/data.
+- [Amostra revisada](revisao_manual/amostra_50_cf0a9799_e1f584a3.csv): 50 rótulos, observações e revisor, preservados como fornecidos pelo grupo.
+- [Registro da execução](execucoes/finbert_2026-10-15.json): revisão do modelo, hashes, contagens e estado da revisão.
+
+Os CSVs completos `noticias_com_sentimento.csv` e `sentimento_diario_noticias.csv` são gerados localmente em `data/processed/`. O cache permanece em `data/cache/`. O manifesto corrente, o dicionário e o resumo por empresa também são gerados localmente e ignorados pelo Git. O registro datado acima é uma cópia da execução validada, com a revisão preenchida. A amostra humana versionada não é sobrescrita ao executar novamente o notebook.

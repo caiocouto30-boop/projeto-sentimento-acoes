@@ -240,3 +240,9 @@ docs/cobertura_precos.csv
 docs/dicionario_dados.csv
 docs/manifesto_limpeza.json
 docs/registro_limpeza.md
+
+# Cache e relatórios automáticos da etapa FinBERT
+data/cache/
+docs/manifesto_finbert.json
+docs/dicionario_sentimento.csv
+docs/resumo_sentimento_por_empresa.csv

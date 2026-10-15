@@ -6,6 +6,8 @@ seaborn
 plotly
 yfinance
 transformers
-torch
+torch>=2.6
 notebook
 ipykernel
+tokenizers
+huggingface-hub

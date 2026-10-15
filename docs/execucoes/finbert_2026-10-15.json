@@ -1,0 +1,92 @@
+{
+  "etapa": "02_sentimento_finbert",
+  "inicio_utc": "2026-10-15T21:51:29.304466+00:00",
+  "conclusao_utc": "2026-10-15T21:51:32.289437+00:00",
+  "modelo": "ProsusAI/finbert",
+  "revisao": "4556d13015211d73dccd3fdd39d39232506f3e43",
+  "configuracao_cache": {
+    "modelo": "ProsusAI/finbert",
+    "revisao_modelo": "4556d13015211d73dccd3fdd39d39232506f3e43",
+    "revisao_tokenizador": "4556d13015211d73dccd3fdd39d39232506f3e43",
+    "max_tokens": 512,
+    "truncation": true,
+    "dtype": "float32",
+    "transformers": "5.19.0",
+    "torch": "2.14.1+cpu",
+    "tokenizers": "0.23.3"
+  },
+  "chave_cache": "e1f584a3b71b9c1b74fe14ddc5ddfe7cb2cf0681a5cf25ceba5c549cbf737f6c",
+  "python": "3.11.16",
+  "versoes": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.19.0",
+    "tokenizers": "0.23.3",
+    "huggingface-hub": "2.2.0"
+  },
+  "dispositivo": "cpu",
+  "entrada": {
+    "arquivo": "data\\processed\\noticias_limpas.csv",
+    "sha256": "cf0a97996c7f0823ceb84e57b6b3985c22ba0d421913ed2ae599a87ec2e3ae6c"
+  },
+  "contagens": {
+    "associacoes": 6552,
+    "textos_unicos": 6019,
+    "textos_inferidos_nesta_execucao": 0,
+    "textos_reutilizados_do_cache": 6019,
+    "pares_empresa_data": 2569,
+    "textos_truncados": 0,
+    "empates_manchetes": 0,
+    "empates_diarios": 0,
+    "itens_revisao": 50,
+    "rotulos_humanos_preenchidos": 50,
+    "revisao_comparaveis": 50,
+    "revisao_concordancias": 39,
+    "revisao_divergencias": 11,
+    "revisao_ambiguos": 0
+  },
+  "unidade_diaria": "stock + news_date; data civil da notícia, sem alinhamento a pregões",
+  "regra_classe_diaria": "argmax das médias das três probabilidades; empate explícito",
+  "tolerancia_empate": 1e-08,
+  "tamanho_lote": 16,
+  "semente_revisao": 20261015,
+  "revisao_qualitativa": {
+    "metodo": "amostra dirigida por empresa/classe, baixa margem, compartilhamento e complemento aleatorio",
+    "revisores": [
+      "caio"
+    ],
+    "observacoes_preenchidas": 50,
+    "matriz_humano_modelo": {
+      "positivo": {
+        "positivo": 11,
+        "neutro": 3,
+        "negativo": 0
+      },
+      "neutro": {
+        "positivo": 2,
+        "neutro": 20,
+        "negativo": 6
+      },
+      "negativo": {
+        "positivo": 0,
+        "neutro": 0,
+        "negativo": 8
+      }
+    },
+    "limite": "concordancia descritiva de amostra dirigida; nao estima acuracia geral",
+    "previsoes_automaticas": "preservadas"
+  },
+  "estado": {
+    "inferencia": "concluida",
+    "revisao_humana": "preenchida",
+    "integracao_retornos": "pendente"
+  },
+  "arquivos": {
+    "data\\processed\\noticias_com_sentimento.csv": "985b594935b2a07631b37e50acc53b7e9ee54ab9aef353c7e66015f662f79e71",
+    "data\\processed\\sentimento_diario_noticias.csv": "9f3c05bd3aa54e303619052a212a549721b5f476a47af244422c83a9a2902dfe",
+    "docs\\resumo_sentimento_por_empresa.csv": "a7c92e6c01a7cb784ef5b8ac35985d94cae23756c790f98edff56d91b26f6d87",
+    "docs\\revisao_manual\\amostra_50_cf0a9799_e1f584a3.csv": "ed35f7d9e91c38f40b4ec861e194914fe94ab38c84dcd9d50b3f603a1d7f8a4b",
+    "data\\cache\\e1f584a3b71b9c1b\\probabilidades.csv": "18cc8c3a2981a9d20526c35e1a0ad955a13798995f71507c7d6f60b77d1feca0"
+  }
+}

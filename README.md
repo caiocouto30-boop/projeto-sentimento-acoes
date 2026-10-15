@@ -6,74 +6,59 @@ Projeto de **Análise Exploratória de Dados e Visualização — FGV EMAp, 2026
 
 ## Objetivo
 
-Investigar **associações descritivas**, sem atribuição de causalidade, entre o tom de manchetes financeiras e os retornos/magnitude das oscilações diárias de NVIDIA (NVDA), Netflix (NFLX), Bank of America (BAC), Johnson & Johnson (JNJ) e Coca-Cola (KO), no período **2017–2019**.
+Investigar associações descritivas entre o tom de manchetes financeiras e os retornos e oscilações de NVIDIA (NVDA), Netflix (NFLX), Bank of America (BAC), Johnson & Johnson (JNJ) e Coca-Cola (KO), em **2017–2019**, sem atribuir causalidade. A contribuição central é a visualização e a interpretação dos dados.
 
 ## Estado do projeto — 15/10/2026
 
-A preparação e a auditoria das **notícias e cotações** foram concluídas na execução registrada do notebook. Os números abaixo vêm das saídas salvas e **ainda não foram reproduzidos independentemente por outro integrante**.
+| Etapa | Resultado registrado |
+| --- | --- |
+| Limpeza das notícias | 6.556 associações no recorte, quatro duplicatas removidas e **6.552 mantidas** |
+| Cotações | **754 pregões por empresa** no recorte, com margem antes/depois e sem lacunas entre as cinco séries na coleta registrada |
+| Classificação FinBERT | **6.019 textos distintos**, recompostos nas 6.552 associações originais |
+| Sentimento diário | **2.569 pares empresa/data da notícia**, com probabilidades médias, escore, classe e contagem |
+| Revisão qualitativa inicial | **50/50 casos preenchidos** por caio, com observações e identificação do revisor; **39 concordâncias e 11 divergências** |
+| Integração com pregões e retornos | Pendente |
+| Visualizações e narrativa analítica | Cobertura inicial disponível; gráficos de sentimento, retornos e robustez pendentes |
 
-| Verificação | Resultado registrado |
-| --- | ---: |
-| Notícias no recorte antes da limpeza | 6.556 |
-| Duplicatas excedentes removidas | 4 |
-| Associações manchete–empresa após limpeza | **6.552** |
-| Pregões em 2017–2019, por empresa | **754** |
-| Lacunas de preços entre as cinco séries na coleta registrada | 0 |
+A classificação, a agregação por data civil e a revisão qualitativa inicial estão registradas. As 39 concordâncias em 50 casos descrevem uma **amostra dirigida**, incluindo casos difíceis; não estimam a acurácia geral do modelo. Os rótulos humanos permanecem separados das previsões automáticas. Consulte [o relatório da revisão](docs/finbert.md).
 
-A distribuição das notícias após limpeza foi: **NFLX 2.344**, **NVDA 1.647**, **JNJ 1.046**, **BAC 871** e **KO 644**.
+As células de preparação e sentimento foram verificadas por execução sequencial em cópia local. A reprodução por outro integrante, a validação externa do calendário de pregões e a escolha de um único snapshot de preços continuam como verificações da integração. A existência de saídas salvas não substitui a execução em ordem.
 
-![Mapa de calor da cobertura mensal de notícias após limpeza](figures/cobertura_noticias_mensal.png)
-
-**Pendente:** FinBERT, agregação diária de sentimento, integração ao primeiro pregão estritamente posterior, cálculo dos retornos, análise das perguntas 2 a 7 e revisão cruzada da execução. A presença de resultados salvos não substitui a execução do notebook do início ao fim.
-
-## Organização do repositório
-
-- `notebooks/01_preparacao_inicial.ipynb` — versão **explicada e atual**, com limpeza, verificações, gráfico e resultados registrados.
-- `figures/cobertura_noticias_mensal.png` — figura produzida pelo notebook.
-- `data/raw/` — CSV original e snapshots de cotações, **não versionados**.
-- `data/processed/` — dados tratados e arquivos de auditoria, **não versionados**.
-- `docs/README.md` — referências e localização dos documentos acadêmicos. O notebook também gera relatórios locais em `docs/`, ignorados pelo Git.
-- `requirements.txt` — dependências do projeto (versões não integralmente fixadas).
-
-## Fontes dos dados
-
-1. [Daily Financial News for 6000+ Stocks — Kaggle](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests): baixar `raw_analyst_ratings.csv` e colocar em `data/raw/raw_analyst_ratings.csv`. A versão usada na execução registrada tem SHA-256 `609289a49dc8af2bd28a8466dffd9663521237026f1040c0f238010b29135fb6`.
-2. [Yahoo Finance via yfinance](https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html): coleta diária de 15/12/2016 até 11/01/2020 (**fim exclusivo**), com `Adj Close` e `Volume`. O notebook usa snapshot local validado por hash, ou coleta os dados se não houver snapshot. A versão da fonte pode mudar; registre divergências em vez de impor contagens artificiais.
-3. [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert): modelo pronto previsto para a próxima etapa, **ainda não aplicado**.
-
-**Não adicione ao GitHub o CSV original, snapshots grandes, tokens, credenciais ou arquivos `.env`.**
+![Cobertura mensal das notícias](figures/cobertura_noticias_mensal.png)
 
 ## Como executar
 
-1. Clone o repositório e entre na pasta do projeto.
-2. Use **Python 3.11**. Crie e ative um ambiente virtual (ou um ambiente Conda equivalente) e instale as dependências:
-   ```bash
-   python -m venv .venv
-   # Ative o ambiente: Windows PowerShell: .venv\Scripts\Activate.ps1
-   # Linux/macOS: source .venv/bin/activate
+1. Clone o repositório e entre na pasta do projeto. Use **Python 3.11** com as dependências de `requirements.txt`.
+2. Se utilizar o ambiente local já configurado, ative `aed-sentimento`. No Jupyter, selecione o kernel **Python (AED Sentimento)**. Em outro computador, crie um ambiente e instale as dependências:
+   ```text
    python -m pip install -r requirements.txt
    python -m ipykernel install --user --name aed-sentimento --display-name "Python (AED Sentimento)"
    ```
-3. Baixe o CSV original para `data/raw/`, conforme acima.
-4. Inicie `jupyter notebook` e abra `notebooks/01_preparacao_inicial.ipynb`. Execute as células **em ordem**, a partir do começo.
-5. Na ausência de `data/raw/cotacoes_yahoo_margem.csv` e do JSON de metadados correspondente, a célula de coleta tentará acessar o Yahoo Finance. Para reprodução exata, o grupo deve disponibilizar o snapshot original fora do Git e verificar o SHA-256. **Não substitua silenciosamente um snapshot por outro.**
-6. Confira as asserções, os arquivos em `data/processed/`, os relatórios em `docs/` e a figura em `figures/`. Registre diferenças de versões e de dados.
+3. Baixe `raw_analyst_ratings.csv` do [dataset do Kaggle](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests) e coloque em `data/raw/`.
+4. Execute **`notebooks/01_preparacao_inicial.ipynb`** em ordem. Ele gera `data/processed/noticias_limpas.csv` e as cotações tratadas. Sem snapshot de cotações, a coleta usa internet; para reprodução exata, obtenha o snapshot do grupo e confira os hashes.
+5. Execute **`notebooks/02_sentimento_finbert.ipynb`** em ordem. O primeiro carregamento permite baixar a revisão fixada do modelo; depois os pesos ficam no cache do Hugging Face. O cache de probabilidades é local e permite retomar a classificação.
+6. Confira os CSVs em `data/processed/`, o manifesto local em `docs/manifesto_finbert.json` e o estado da revisão. A [amostra humana já preenchida](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada pelo notebook. O leitor aceita vírgula ou ponto e vírgula.
 
-**Versões observadas na execução salva:** Python 3.11.16, pandas 3.0.6, numpy 2.4.6, matplotlib 3.11.2, seaborn 0.13.2, yfinance 1.7.0, ipykernel 7.4.0. Não constituem um arquivo de dependências completamente travado.
+Os resultados completos, o CSV original, os snapshots e os pesos não estão versionados. A amostra humana e o [registro datado da execução](docs/execucoes/finbert_2026-10-15.json) estão versionados. As versões observadas estão nesse registro; `requirements.txt` não é um lock completo do ambiente.
 
-## Método e cautelas
+## Fontes e método
 
-As notícias foram filtradas por empresa e data; manchetes vazias e duplicatas por `stock + news_date + headline` foram auditadas, preservando identificadores e rastreabilidade. Registros relacionados a mais de uma empresa foram mantidos e sinalizados.
+- **Notícias:** [Daily Financial News for 6000+ Stocks](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests). SHA-256 do original utilizado: `609289a49dc8af2bd28a8466dffd9663521237026f1040c0f238010b29135fb6`.
+- **Preços:** [Yahoo Finance via yfinance](https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html), fechamento ajustado e volume, de 15/12/2016 até 11/01/2020 (fim exclusivo). Há coletas locais com pequenas diferenças de ajuste; documente o snapshot adotado e não substitua uma coleta silenciosamente.
+- **Sentimento:** [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert), revisão `4556d13015211d73dccd3fdd39d39232506f3e43`, sem treinamento. Escore `P(positivo) − P(negativo)`. A classe diária é a maior probabilidade média, com empates explícitos. A probabilidade softmax não é uma probabilidade calibrada de acerto.
 
-A análise de retornos deverá associar cada notícia ao **primeiro pregão estritamente posterior**, pois os horários não são confiáveis. Vários dias de notícia podem corresponder ao mesmo pregão; a unidade de análise dos retornos será **empresa × pregão**, sem duplicação artificial de observações. Dias sem notícias não equivalem a sentimento neutro.
+As manchetes compartilhadas entre empresas foram mantidas e sinalizadas. O modelo classifica o tom do texto inteiro, que pode não representar igualmente cada empresa citada. Dias sem notícias não são neutros. A revisão inicial registra divergências e subjetividade, sem sobrescrever automaticamente os rótulos do modelo.
 
-O retorno absoluto mede a magnitude percentual da mudança diária; **não é uma estimativa de volatilidade estatística**. Notícias podem descrever movimentos já ocorridos, de modo que associações futuras não serão interpretadas como causalidade.
+O agregado atual usa a **data civil da notícia**. A integração deverá mapear cada notícia ao **primeiro pregão estritamente posterior** e reagrupar por **empresa/pregão**, pois datas diferentes podem apontar para o mesmo retorno. O retorno absoluto mede magnitude da mudança diária, sem ser uma estimativa formal de volatilidade. Manchetes podem relatar movimentos já ocorridos; os resultados serão interpretados como associações.
 
-## Perguntas e entregas
+## Próximos passos e entregas
 
-As sete perguntas de domínio estão no notebook, começando pela cobertura de notícias e avançando para composição e evolução do sentimento, retornos, diferenças entre empresas/anos e robustez. A pergunta 1 já possui resposta parcial; as demais seguem pendentes.
+1. Fixar o snapshot de preços, conferir o calendário, associar notícias ao pregão posterior e calcular retornos.
+2. Desenvolver os gráficos de composição e evolução do sentimento, associações com retornos e diferenças entre empresas e anos.
+3. Definir e aplicar os filtros de robustez, documentar amostras restantes e escrever as interpretações.
+4. Consolidar o notebook em formato de artigo e preparar a apresentação intermediária.
 
-- **29/10/2026:** entrega intermediária, notebook em formato de artigo e apresentação de cinco minutos.
-- **Semana A2:** entrega final, notebook, repositório documentado, apresentação de dez minutos e declaração de contribuições. A janela 23–30/11 foi informada pelo grupo; a data exata deve ser confirmada. Meta interna: 22/11.
+- **29/10/2026:** notebook-artigo intermediário e apresentação de cinco minutos.
+- **Semana A2:** notebook final, repositório, apresentação de dez minutos e declaração de contribuições. A janela 23–30/11 foi informada pelo grupo; confirmar o dia exato. Meta interna: 22/11.
 
-Consulte [a relação dos documentos de referência](docs/README.md). Registrem as contribuições e revisões de cada integrante.
+Consulte [os documentos e registros](docs/README.md). Registrem contribuições, revisões e retorno do professor durante o trabalho.
