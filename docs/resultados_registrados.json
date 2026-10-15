@@ -1,0 +1,100 @@
+{
+  "descricao": "Transcrição das tabelas já salvas nos notebooks; nenhuma nova inferência ou análise foi executada.",
+  "commit_origem": "0323f644e2523b2246d3deb4f59a49deb428040c",
+  "recorte": {
+    "inicio": "2017-01-01",
+    "fim": "2019-12-31"
+  },
+  "fontes": [
+    {
+      "notebook": "notebooks/01_preparacao_inicial.ipynb",
+      "celula_id": "fc7ba6da-4a74-4528-83ed-c6dd66e9da28",
+      "indice_celula_origem_base_zero": 18,
+      "sha256_saidas": "22b3b51bb53ec3138301d8cb57d8716806928525cc4a7798976bbf776652f24b"
+    },
+    {
+      "notebook": "notebooks/02_sentimento_finbert.ipynb",
+      "celula_id": "dcb38ee7",
+      "indice_celula_origem_base_zero": 20,
+      "sha256_saidas": "3b22dde17624f02da05d7c23bd07e51def292b8d99f8bd311cfb15a932d78c15"
+    }
+  ],
+  "cobertura_anual": [
+    {
+      "empresa": "NVDA",
+      "2017": 614,
+      "2018": 526,
+      "2019": 507
+    },
+    {
+      "empresa": "NFLX",
+      "2017": 759,
+      "2018": 784,
+      "2019": 801
+    },
+    {
+      "empresa": "BAC",
+      "2017": 348,
+      "2018": 220,
+      "2019": 303
+    },
+    {
+      "empresa": "JNJ",
+      "2017": 300,
+      "2018": 314,
+      "2019": 432
+    },
+    {
+      "empresa": "KO",
+      "2017": 238,
+      "2018": 195,
+      "2019": 211
+    }
+  ],
+  "contagens_sentimento": [
+    {
+      "empresa": "BAC",
+      "positivo": 162,
+      "neutro": 524,
+      "negativo": 185,
+      "empate": 0,
+      "total": 871
+    },
+    {
+      "empresa": "JNJ",
+      "positivo": 306,
+      "neutro": 516,
+      "negativo": 224,
+      "empate": 0,
+      "total": 1046
+    },
+    {
+      "empresa": "KO",
+      "positivo": 138,
+      "neutro": 398,
+      "negativo": 108,
+      "empate": 0,
+      "total": 644
+    },
+    {
+      "empresa": "NFLX",
+      "positivo": 556,
+      "neutro": 1359,
+      "negativo": 429,
+      "empate": 0,
+      "total": 2344
+    },
+    {
+      "empresa": "NVDA",
+      "positivo": 451,
+      "neutro": 801,
+      "negativo": 395,
+      "empate": 0,
+      "total": 1647
+    }
+  ],
+  "figura": {
+    "arquivo": "figures/cobertura_noticias_mensal.png",
+    "sha256": "1313618291d5fdd8cd0e557bc15b121d95f613ad86dec54564a3fd246454bbca"
+  }
+}

@@ -1,5 +1,7 @@
 # FinBERT: classificação e revisão inicial
 
+Relatório de apoio à seção 3.2 do [artigo principal](../notebooks/00_artigo.ipynb). A narrativa acadêmica e o estado das sete perguntas estão centralizados no artigo.
+
 A etapa computacional está concluída: foram classificadas **6.552 associações entre manchetes e empresas**, correspondentes a **6.019 textos distintos**, e gerado o sentimento de **2.569 pares empresa/data da notícia**. A revisão inicial de 50 manchetes também está preenchida e registrada. Esta etapa usa o modelo pronto `ProsusAI/finbert`, sem treinamento adicional.
 
 ## Reproduzir em um clone novo

@@ -1,4 +1,6 @@
-# Integração com pregões e retornos — etapa 17–19/10
+# Integração com pregões e retornos
+
+Relatório de apoio à seção 3.3 do [artigo principal](../notebooks/00_artigo.ipynb). A integração já foi executada; as análises das associações permanecem explicitamente pendentes no artigo.
 
 Etapa iniciada e executada em **15/10/2026**. O [notebook 03](../notebooks/03_integracao_retornos.ipynb) associa as manchetes ao primeiro pregão estritamente posterior, calcula retornos ajustados e exporta uma base com uma linha por empresa/pregão. A classificação FinBERT e a revisão humana existentes foram preservadas.
 
