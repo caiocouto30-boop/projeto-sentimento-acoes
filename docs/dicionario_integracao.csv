@@ -1,0 +1,30 @@
+campo,unidade,definicao
+stock,identificador,Ticker da empresa; parte da chave empresa/pregão.
+source_id,identificador,Identificador preservado da associação original notícia/empresa.
+news_date,data,"Data civil da notícia, preservada sem inferir horário."
+trade_date,data,Primeiro pregão estritamente posterior na tabela por notícia; pregão da observação nos painéis.
+trade_date_anterior,data,Pregão imediatamente anterior da mesma empresa.
+adj_close,preço ajustado,"Fechamento ajustado do snapshot Yahoo adotado, no pregão alvo."
+adj_close_anterior,preço ajustado,Fechamento ajustado no pregão imediatamente anterior.
+retorno_pct,porcentagem,100*(adj_close/adj_close_anterior-1); ausente só na primeira cotação do snapshot.
+retorno_absoluto_pct,porcentagem,Módulo de retorno_pct; medida de oscilação diária.
+retorno_no_recorte,booleano,Pregão de resposta entre 2017-01-01 e 2019-12-31.
+retorno_fora_recorte,booleano,"Na tabela por notícia, resposta em pregão fora de 2017–2019."
+dias_ate_pregao,dias civis,"trade_date-news_date, sempre estritamente positivo."
+n_noticias,contagem,Associações notícia/empresa mapeadas ao pregão; zero sem notícias no painel.
+n_datas_noticias,contagem,Datas civis distintas mapeadas ao mesmo pregão/empresa.
+primeira_news_date,data,Menor data civil das notícias mapeadas; ausente sem notícias.
+ultima_news_date,data,Maior data civil das notícias mapeadas; ausente sem notícias.
+p_positivo_medio,probabilidade,Média por manchete das probabilidades positivas; ausente sem notícias.
+p_negativo_medio,probabilidade,Média por manchete das probabilidades negativas; ausente sem notícias.
+p_neutro_medio,probabilidade,Média por manchete das probabilidades neutras; ausente sem notícias.
+escore_sentimento,"[-1,1]",p_positivo-p_negativo por manchete ou diferença das médias por pregão; ausente sem notícias.
+intensidade_sentimento,"[0,1]",Módulo do escore agregado por empresa/pregão; ausente sem notícias.
+classe_sentimento,categoria,"Maior probabilidade média: positivo, negativo, neutro ou empate; ausente sem notícias."
+empate_probabilidades,booleano,"Duas ou mais médias máximas dentro da tolerância 1e-8; False sem notícias, que não implica classe."
+n_compartilhadas,contagem,Manchetes marcadas como compartilhadas entre empresas na etapa de limpeza.
+ao_menos_3_noticias,booleano,n_noticias >= 3 por empresa/pregão; filtro de robustez por volume.
+tem_noticias,booleano,"Pelo menos uma associação de notícia no corpus e recorte, mapeada ao pregão."
+situacao_noticias,categoria,com_noticias ou sem_noticias_no_recorte; ausência no corpus não é neutro.
+janela_noticias_completa,booleano,"Intervalo [pregão anterior,pregão alvo) integralmente contido no recorte de datas de notícias."
+elegivel_analise_principal,booleano,retorno_no_recorte e janela_noticias_completa; para sentimento × retorno exigir também tem_noticias.

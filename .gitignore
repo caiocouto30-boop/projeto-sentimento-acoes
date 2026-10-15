@@ -246,3 +246,12 @@ data/cache/
 docs/manifesto_finbert.json
 docs/dicionario_sentimento.csv
 docs/resumo_sentimento_por_empresa.csv
+
+# Relatórios correntes de integração (registro datado é versionado)
+docs/manifesto_integracao.json
+docs/auditoria_calendario.csv
+docs/casos_calendario.csv
+docs/mapa_datas_pregoes.csv
+docs/resumo_integracao_por_empresa.csv
+docs/noticias_retorno_fora_recorte.csv
+docs/grupos_varias_datas.csv

@@ -1,0 +1,56 @@
+{
+  "etapa": "03_integracao_retornos",
+  "inicio_noticias": "2017-01-01",
+  "fim_noticias": "2019-12-31",
+  "tickers": [
+    "BAC",
+    "JNJ",
+    "KO",
+    "NFLX",
+    "NVDA"
+  ],
+  "calendario": "XNYS",
+  "exchange_calendars": "4.13.2",
+  "tolerancia_empate": 1e-08,
+  "hashes_referencia": {
+    "data/processed/noticias_com_sentimento.csv": "985b594935b2a07631b37e50acc53b7e9ee54ab9aef353c7e66015f662f79e71",
+    "data/processed/cotacoes_limpas_com_margem.csv": "86bf50f857b80899c760a46fb919dd1d72b8e6fe1c80374a4d82f066bbde0d1d"
+  },
+  "snapshot_precos": {
+    "fonte": "Yahoo Finance via yfinance",
+    "tickers": [
+      "NVDA",
+      "NFLX",
+      "BAC",
+      "JNJ",
+      "KO"
+    ],
+    "parametros": {
+      "start": "2016-12-15",
+      "end": "2020-01-11",
+      "interval": "1d",
+      "auto_adjust": false,
+      "back_adjust": false,
+      "repair": false,
+      "keepna": true,
+      "actions": true,
+      "ignore_tz": true,
+      "threads": false,
+      "progress": false,
+      "multi_level_index": false,
+      "timeout": 30
+    },
+    "yfinance": "1.7.0",
+    "coletado_em_utc": "2026-10-09T21:42:24.945771+00:00",
+    "sha256": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3"
+  },
+  "regra_alinhamento": "primeiro pregão estritamente posterior à data civil da notícia",
+  "unidade_analitica": "empresa + pregão de resposta",
+  "retorno": "100 * (adj_close / adj_close do pregão anterior - 1)",
+  "fontes_calendario": [
+    "https://github.com/gerrymanoim/exchange_calendars",
+    "https://ir.theice.com/press/news-details/2016/NYSE-Group-announces-2018-and-2019-holiday-and-early-closings-calendar/default.aspx",
+    "https://ir.theice.com/press/news-details/2017/NYSE-Group-Announces-2018-2019-and-2020-Holiday-and-Early-Closings-Calendar/default.aspx",
+    "https://ir.theice.com/press/news-details/2018/New-York-Stock-Exchange-to-Honor-President-George-H-W-Bush/default.aspx"
+  ]
+}

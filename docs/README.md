@@ -30,3 +30,14 @@ A documentação do notebook e do README descreve quais verificações foram rea
 - [Registro da execução](execucoes/finbert_2026-10-15.json): revisão do modelo, hashes, contagens e estado da revisão.
 
 Os CSVs completos `noticias_com_sentimento.csv` e `sentimento_diario_noticias.csv` são gerados localmente em `data/processed/`. O cache permanece em `data/cache/`. O manifesto corrente, o dicionário e o resumo por empresa também são gerados localmente e ignorados pelo Git. O registro datado acima é uma cópia da execução validada, com a revisão preenchida. A amostra humana versionada não é sobrescrita ao executar novamente o notebook.
+
+
+## Integração e retornos — 15/10/2026
+
+- [Guia da etapa 17–19/10](integracao.md): unidade de análise, snapshot, calendário, bordas e resultados.
+- [Notebook 03](../notebooks/03_integracao_retornos.ipynb): oito células executadas sem erros.
+- [Configuração](config_integracao.json): regras e hashes das entradas fixadas.
+- [Dicionário dos novos campos](dicionario_integracao.csv).
+- [Registro datado](execucoes/integracao_2026-10-15.json): versões, hashes, contagens e auditorias.
+
+O painel completo contém 3.770 pares empresa/pregão de 2017–2019. As seis notícias com retorno em janeiro de 2020 são preservadas como margem; as janelas incompletas são sinalizadas. As bases e os relatórios correntes são gerados localmente conforme o guia.

@@ -43,4 +43,4 @@ O CSV humano é versionado em `docs/revisao_manual/`. O leitor do notebook aceit
 
 ## Próximos passos
 
-Integrar as manchetes ao calendário e aos preços, associando cada data ao primeiro pregão estritamente posterior e reagrupando por empresa/pregão. Em seguida, calcular os retornos e desenvolver os gráficos e a interpretação descritiva das perguntas do trabalho. Os resultados permitirão examinar associações entre sentimento e retornos; esta etapa não estabelece causalidade.
+A [integração com pregões e retornos](integracao.md) foi concluída pelo notebook 03, preservando as previsões e a revisão desta etapa. O próximo passo é desenvolver os gráficos e a interpretação descritiva das perguntas do trabalho. Os resultados permitirão examinar associações entre sentimento e retornos; esta etapa não estabelece causalidade.
