@@ -231,3 +231,12 @@ data/processed/*
 
 # Arquivos sensíveis
 .env
+
+# Arquivos locais gerados pela execução do notebook
+tmp/
+docs/resumo_limpeza_noticias.csv
+docs/cobertura_noticias_anual.csv
+docs/cobertura_precos.csv
+docs/dicionario_dados.csv
+docs/manifesto_limpeza.json
+docs/registro_limpeza.md
