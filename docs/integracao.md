@@ -1,6 +1,6 @@
 # Integração com pregões e retornos
 
-Relatório de apoio à seção 3.3 do [artigo principal](../notebooks/00_artigo.ipynb). A integração já foi executada; as análises das associações permanecem explicitamente pendentes no artigo.
+Relatório de apoio à seção 3.3 do [artigo principal](../notebooks/00_artigo.ipynb). O artigo apresenta as análises das associações e delimita a resposta parcial à pergunta 7.
 
 Etapa iniciada e executada em **15/10/2026**. O [notebook 03](../notebooks/03_integracao_retornos.ipynb) associa as manchetes ao primeiro pregão estritamente posterior, calcula retornos ajustados e exporta uma base com uma linha por empresa/pregão. A classificação FinBERT e a revisão humana existentes foram preservadas.
 
@@ -73,6 +73,6 @@ Instale as dependências de `requirements.txt`, abra o Jupyter na pasta do proje
 
 O [dicionário de integração](dicionario_integracao.csv) explica os novos campos. No GitHub ficam o notebook, a configuração, o dicionário, este guia e o registro datado. Bases completas e relatórios correntes são gerados localmente e não são versionados.
 
-## Continuação — 20–23/10
+## Continuidade
 
-A etapa visual foi executada antecipadamente em 16/10/2026. Consulte o [notebook 04](../notebooks/04_analise_visual.ipynb) e o [relatório](analise_visual.md): primeiras respostas às perguntas 1–6 e comparação inicial da 7 com mínimo de três notícias. A integração e suas entradas foram preservadas; exclusão de retrospectivas e filtros combinados permanecem pendentes.
+Execute o [artigo](../notebooks/00_artigo.ipynb) para as visualizações e tabelas. A [documentação visual](analise_visual.md) descreve as amostras e a parte ainda pendente da pergunta 7.

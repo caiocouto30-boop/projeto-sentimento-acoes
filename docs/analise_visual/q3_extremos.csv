@@ -1,11 +1,11 @@
-stock,news_date,escore,n_noticias,extremo
-BAC,2019-08-09,-0.9636816038,1,mínimo
-BAC,2019-01-30,0.9346058164,1,máximo
-JNJ,2018-02-05,-0.9610988544,1,mínimo
-JNJ,2018-10-24,0.9389817081,1,máximo
-KO,2019-10-02,-0.9662568513,1,mínimo
-KO,2019-04-03,0.9408168979,1,máximo
-NFLX,2018-05-10,-0.9624879146,1,mínimo
-NFLX,2019-06-17,0.9321939554,1,máximo
-NVDA,2019-03-06,-0.9659719187,1,mínimo
-NVDA,2019-09-25,0.9336110316,1,máximo
+stock,news_date,escore,n_noticias,manchete_exemplo,extremo
+KO,2019-10-02,-0.9662568513,1,Coca-Cola Co shares are trading lower in sympathy with the overall market amid global recession concerns.,mínimo
+NVDA,2019-03-06,-0.9659719187,1,Semiconductor Industry Association Reports 7.2% Decline in Global Chip Sales in January,mínimo
+BAC,2019-08-09,-0.9636816038,1,Shares of several blue-chip stocks are trading lower in sympathy with the overall market.,mínimo
+NFLX,2018-05-10,-0.9624879146,1,"Netflix Shares Down ~0.7% Over Last Few Mins., Now Rebounding From $328 Level; Stock Down 0.5% For Session; Not Seeing News To Justify Move Lower",mínimo
+JNJ,2018-02-05,-0.9610988544,1,"J&J Shares Fall 3.5%, Quickly Rebound From Lows But Still Down ~2.5% For Session; Traders Circulate Mesothelioma.net Article 'Johnson & Johnson Mesothelioma Trial Likely to Expose Company Documents'",mínimo
+KO,2019-04-03,0.9408168979,1,Guggenheim Referencing Nielsen Data Notes Coca-Cola 'Total sales increased +2.5% in the 12-wks with CSD sales increasing +5.1% as the company continues to benefit from its market leadership with price / mix up +6.4%'; Maintains Buy,máximo
+JNJ,2018-10-24,0.9389817081,1,Janssen's Stelara Demonstrated Sustained Efficiency In Improving Clinical Remission Rates In Chron's Patients Throughout Three Years; Safety Events Were Not Higher Amongst All Ustekinumab-Treated Patients Entering Long-Term Extension Study vs Placebo,máximo
+BAC,2019-01-30,0.9346058164,1,PACCAR's Forecast Sees A Slightly Growth In Class 8 Truck Market After A Strong Year,máximo
+NVDA,2019-09-25,0.9336110316,1,NVIDIA shares are trading higher despite no company-specific news. The stock has rallied roughly 14% in the past 3 months.,máximo
+NFLX,2019-06-17,0.9321939554,1,Netflix shares are trading higher on reports of positive subscriber trends.,máximo

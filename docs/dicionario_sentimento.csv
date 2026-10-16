@@ -1,0 +1,18 @@
+campo,definicao
+headline_hash,SHA-256 UTF-8 da manchete limpa enviada ao modelo.
+p_positivo,Probabilidade softmax da classe positive; não calibrada como probabilidade de acerto.
+p_negativo,Probabilidade softmax da classe negative.
+p_neutro,Probabilidade softmax da classe neutral.
+classe_finbert,Maior probabilidade por manchete; empate quando máximos diferem no máximo 1e-8.
+classe_diaria,Maior média de probabilidade por empresa/news_date; empate explícito.
+escore_sentimento,"p_positivo menos p_negativo, entre -1 e 1."
+probabilidade_maxima,Maior probabilidade softmax; não é confiança calibrada.
+margem_top2,Diferença entre a maior e a segunda maior probabilidade.
+empate_probabilidades,Mais de uma probabilidade atinge o máximo na tolerância definida.
+n_tokens,"Comprimento original tokenizado, incluindo tokens especiais, antes do corte."
+foi_truncada,Texto excedeu 512 tokens e foi cortado para inferência.
+n_noticias,Número de associações de notícias no grupo empresa/news_date.
+n_compartilhadas,Notícias do grupo com sinalizador de compartilhamento entre empresas.
+n_truncadas,Notícias do grupo cujo texto excedeu o limite de tokens.
+modelo_finbert,Identificador público do modelo empregado.
+revisao_finbert,Revisão imutável dos pesos e tokenizador empregados.

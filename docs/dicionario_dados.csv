@@ -1,0 +1,30 @@
+tabela,coluna,tipo_no_notebook,descricao
+noticias_limpas,source_id,int64,Identificador inteiro preservado do índice exportado no CSV original.
+noticias_limpas,headline,string,Manchete para FinBERT; somente espaços normalizados.
+noticias_limpas,url,string,URL original; ausência isolada não exclui a manchete.
+noticias_limpas,publisher,string,Autor ou identificação da fonte conforme o dataset; significado pode variar.
+noticias_limpas,stock,string,Ticker normalizado da empresa associada no dataset.
+noticias_limpas,source_row,int64,"Número da linha lógica no CSV original, começando em 1 após o cabeçalho."
+noticias_limpas,stock_original,string,Ticker exatamente como lido no original.
+noticias_limpas,date_original,string,Data/hora original em texto; não se presume horário confiável.
+noticias_limpas,news_date,datetime64[us],"Dia registrado na notícia, sem deslocamento por conversão de fuso."
+noticias_limpas,headline_original,string,Texto original preservado.
+noticias_limpas,url_ausente,boolean,Sinalizador de URL vazia ou composta por espaços.
+noticias_limpas,publisher_ausente,boolean,Sinalizador de publisher vazio ou composto por espaços.
+noticias_limpas,n_empresas_manchete,int64,Quantidade de tickers distintos para a mesma data/manchete na base limpa.
+noticias_limpas,compartilhada_entre_empresas,bool,Verdadeiro se a mesma data/manchete estiver associada a várias empresas.
+cotacoes_limpas_com_margem,trade_date,datetime64[us],Data do pregão observada na coleta diária.
+cotacoes_limpas_com_margem,adj_close,float64,"Fechamento ajustado da fonte, em dólares; preservado sem ajustes próprios."
+cotacoes_limpas_com_margem,Close,float64,"Fechamento não ajustado retornado pelo Yahoo, em dólares."
+cotacoes_limpas_com_margem,Dividends,float64,Dividendo por ação informado na data do evento.
+cotacoes_limpas_com_margem,High,float64,"Máxima não ajustada retornada pelo Yahoo, em dólares."
+cotacoes_limpas_com_margem,Low,float64,"Mínima não ajustada retornada pelo Yahoo, em dólares."
+cotacoes_limpas_com_margem,Open,float64,"Abertura não ajustada retornada pelo Yahoo, em dólares."
+cotacoes_limpas_com_margem,Stock Splits,float64,Fator de desdobramento informado na data do evento.
+cotacoes_limpas_com_margem,volume,int64,Volume diário informado na coleta; não é preenchido.
+cotacoes_limpas_com_margem,stock,string,Ticker normalizado da empresa associada no dataset.
+cotacoes_limpas_com_margem,price_source_row,int64,Linha lógica do snapshot de cotações.
+cotacoes_limpas_com_margem,trade_date_original,string,Data do snapshot preservada em texto.
+cotacoes_limpas_com_margem,volume_invalido,bool,"Sinalizador de volume ausente, não finito, negativo ou não inteiro."
+cotacoes_limpas_com_margem,volume_zero,bool,Sinalizador de volume zero preservado para revisão.
+cotacoes_limpas_com_margem,no_recorte,bool,Verdadeiro entre 2017-01-01 e 2019-12-31; margens ficam na tabela.

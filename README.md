@@ -1,89 +1,47 @@
-# Sentimento das notícias e comportamento de ações dos EUA
+# Sentimento de notícias e retornos de ações dos EUA
 
-Projeto de **Análise Exploratória de Dados e Visualização — FGV EMAp, 2026.2**, professor João Rulff.
-
+Projeto de **Análise Exploratória de Dados e Visualização — FGV EMAp, 2026.2**, professor João Rulff.  
 **Integrantes:** Caio Ladislau do Couto, Alice Barros Lourencini Palaoro e Mateus Henrique da Costa Resende.
 
-## Leia o artigo
+Investigamos associações entre o tom de manchetes e os retornos de **NVDA, NFLX, BAC, JNJ e KO em 2017–2019**, com medidas descritivas e gráficos interativos. O FinBERT é utilizado pronto, sem treinamento adicional.
 
-O [**notebook principal — artigo em desenvolvimento**](notebooks/00_artigo.ipynb) reúne introdução, dados, método, sete perguntas de domínio, resultados disponíveis, conclusões provisórias, limitações e referências. Esse é o ponto de entrada para a leitura acadêmica do projeto.
+## Leitura
 
-Investigamos associações descritivas entre o tom de manchetes financeiras e os retornos e oscilações de NVIDIA (NVDA), Netflix (NFLX), Bank of America (BAC), Johnson & Johnson (JNJ) e Coca-Cola (KO), em **2017–2019**, sem atribuir causalidade. A contribuição central é a visualização e a interpretação dos dados.
+O [**notebook-artigo**](notebooks/00_artigo.ipynb) reúne dados, método, sete perguntas, transformações, gráficos e conclusões. Para explorar os controles sem Python, baixe o [**artigo HTML**](artigo_interativo.html) e abra no navegador; ele funciona offline. O GitHub exibe as imagens salvas do notebook.
 
-A etapa planejada para **20–23/10 foi executada antecipadamente em 16/10/2026**: gráficos e primeiras respostas às perguntas 1–6, além da sensibilidade inicial da pergunta 7. O artigo continua em desenvolvimento, com a exclusão de manchetes retrospectivas e os filtros combinados ainda pendentes.
+A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. O filtro de três notícias altera a composição e alguns sinais. As conclusões são exploratórias, sem interpretação causal.
 
-## Estado registrado em 16/10/2026
+## Organização
 
-| Componente | Resultado disponível |
+| Notebook | Função |
 | --- | --- |
-| Limpeza | 6.556 associações no recorte; quatro duplicatas removidas; **6.552 mantidas** |
-| Cotações | **754 pregões por empresa** em 2017–2019; 772 com margem |
-| FinBERT | **6.019 textos distintos**, recompostos nas 6.552 associações |
-| Agregado por data civil | **2.569 pares empresa/data da notícia** |
-| Revisão qualitativa | 50 casos preenchidos por `caio`; **39 concordâncias e 11 divergências**, em amostra dirigida |
-| Integração | **3.770 pares empresa/pregão**; 2.390 com notícias; **2.387 com notícias e janela completa** |
-| Pergunta 1 | Mapa de cobertura, tabela anual e resposta descritiva disponíveis |
-| Perguntas 2–3 | Proporções, séries diárias e leitura dos dez extremos disponíveis |
-| Perguntas 4–6 | Boxplots, dispersões e correlações por empresa/ano com primeiras interpretações |
-| Pergunta 7 | Comparação principal × mínimo de três: 2.387 → 783 pares; retrospectivas e combinação de filtros pendentes |
+| [00_artigo](notebooks/00_artigo.ipynb) | Análise, gráficos e exportação das tabelas |
+| [01_preparacao_inicial](notebooks/01_preparacao_inicial.ipynb) | Limpeza de notícias e validação das cotações |
+| [02_sentimento_finbert](notebooks/02_sentimento_finbert.ipynb) | Classificação, cache e revisão qualitativa |
+| [03_integracao_retornos](notebooks/03_integracao_retornos.ipynb) | Calendário, alinhamento temporal e retornos |
 
-As 39 concordâncias em 50 casos não estimam a acurácia geral do modelo. Os rótulos humanos permanecem separados das previsões automáticas. Os registros datados preservam o estado ao término de cada etapa; a integração foi executada depois da etapa FinBERT.
+[Documentação](docs/README.md): fontes, decisões, registros e [revisão conforme o enunciado](docs/revisao_aed2026.md).
 
-## Organização e ordem de leitura
+## Reprodução
 
-| Arquivo | Papel |
-| --- | --- |
-| [00_artigo.ipynb](notebooks/00_artigo.ipynb) | Texto principal, transformações finais, sete gráficos Altair e delimitação do que ainda falta |
-| [01_preparacao_inicial.ipynb](notebooks/01_preparacao_inicial.ipynb) | Apoio: limpeza, auditoria e cobertura, com explicações junto ao código |
-| [02_sentimento_finbert.ipynb](notebooks/02_sentimento_finbert.ipynb) | Apoio: classificação, agregado por data civil e revisão humana |
-| [03_integracao_retornos.ipynb](notebooks/03_integracao_retornos.ipynb) | Apoio: calendário, alinhamento, retornos e painel |
-| [04_analise_visual.ipynb](notebooks/04_analise_visual.ipynb) | Apoio: nove gráficos, onze tabelas e sensibilidade inicial, com 12 células explicadas |
-| [docs/README.md](docs/README.md) | Índice documental, relatórios e registros de execução |
-| [resultados_registrados.json](docs/resultados_registrados.json) | Tabelas já calculadas, transcritas das saídas salvas, com origem verificável |
+Use **Python 3.11**. Na pasta do projeto:
 
-Os notebooks de preparação preservam suas células de código e saídas existentes. O artigo centraliza a narrativa e recalcula as transformações finais e os gráficos; a preparação continua nos notebooks 01–03. As tabelas transcritas são um registro fixo da versão de referência, não uma base completa nem um relatório atualizado automaticamente.
+```text
+python -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
+python -m ipykernel install --user --name aed-sentimento --display-name "Python (AED Sentimento)"
+python -m notebook
+```
 
-## Como ler e executar o artigo
+Selecione o kernel **Python (AED Sentimento)** e execute **01 → 02 → 03 → 00**, reiniciando o kernel entre notebooks. Para refazer o HTML e as imagens, salve o artigo executado e rode `python tools/exportar_artigo.py`.
 
-O `notebooks/00_artigo.ipynb` agora contém pandas e Altair junto a cada uma das sete perguntas: transformação, gráfico e interpretação. Execute as células em ordem no Jupyter. O artigo usa as três bases preparadas em `data/processed/`, fornecidas no pacote local do grupo; não executa coleta nem FinBERT.
+- **Notícias:** baixe `raw_analyst_ratings.csv` do [Kaggle](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests) e coloque em `data/raw/`.
+- **Preços:** o notebook 01 reutiliza `cotacoes_yahoo_margem.csv` com seus metadados em `data/raw/`; sem snapshot, coleta via [yfinance](https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html). Para repetir os valores desta versão, use o snapshot do pacote local e os hashes da [configuração](docs/config_integracao.json). Outra coleta pode alterar ajustes históricos e deve ser documentada.
+- **Modelo:** o notebook 02 baixa a revisão fixada de [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert) no primeiro uso e reaproveita probabilidades compatíveis. A [revisão humana](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada.
 
-Para explorar sem instalar Python, baixe o [**artigo interativo HTML**](artigo_interativo.html) e abra-o no navegador, ou abra esse arquivo após clonar o projeto. Os gráficos funcionam sem internet. As interações incluem seleção de empresa, intervalo de datas, destaque de pregões e seleção de empresa/ano. O GitHub mostra o código do HTML; para usar os controles é necessário baixar e abrir o arquivo. No notebook do GitHub, consulte as saídas estáticas salvas.
+O pacote local inclui as bases preparadas para iniciar diretamente pelo artigo. CSVs completos, snapshots e pesos ficam fora do GitHub. As versões registradas são as do ambiente utilizado; `requirements.txt` não é um lock multiplataforma. Mudanças nas entradas exigem conferir os resultados e atualizar a narrativa.
 
-As verificações essenciais de chaves, ausências e amostra permanecem no artigo. Hashes e manifestos continuam nos registros e notebooks de preparação, sem bloquear sua leitura. O notebook 04 conserva a análise estática anterior como apoio. Veja [o que mudou e como reproduzir](docs/revisao_simplicidade.md).
+## Situação acadêmica
 
-## Como reproduzir o processamento integral
+O artigo atende à estrutura solicitada para a intermediária de **29/10**: dados definidos, hipóteses, uma seção por pergunta e conclusões provisórias. As perguntas 1–6 têm respostas iniciais; a **7 é parcial**, faltando excluir retrospectivas e combinar os filtros. Falta preparar a apresentação de cinco minutos.
 
-1. Clone o repositório e entre na pasta do projeto. Utilize **Python 3.11** com as dependências de `requirements.txt`.
-2. Se já tiver o ambiente Conda `aed-sentimento`, ative-o. Em outro computador, crie um ambiente Python e instale as dependências. Registre o kernel e abra o Jupyter a partir da pasta do projeto:
-
-   ```text
-   python -m pip install -r requirements.txt
-   python -m ipykernel install --user --name aed-sentimento --display-name "Python (AED Sentimento)"
-   python -m notebook
-   ```
-
-   O ambiente contém Python e bibliotecas; a pasta contém os arquivos; o kernel **Python (AED Sentimento)** deve apontar para o ambiente escolhido. `requirements.txt` registra a versão CPU do PyTorch; sua obtenção pode exigir o índice oficial de pacotes CPU, conforme a plataforma.
-
-3. Baixe `raw_analyst_ratings.csv` do [dataset do Kaggle](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests) e coloque-o em `data/raw/`.
-4. Execute **01_preparacao_inicial.ipynb** em ordem. Sem snapshot, a coleta de cotações exige internet. Para reproduzir exatamente a execução datada, obtenha o snapshot do grupo e confira os hashes.
-5. Execute **02_sentimento_finbert.ipynb** em ordem. O primeiro carregamento permite baixar a revisão fixada do modelo; o cache local permite reutilizar probabilidades compatíveis. A [amostra humana preenchida](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada; o leitor aceita vírgula ou ponto e vírgula.
-6. Execute **03_integracao_retornos.ipynb** em ordem. Ele verifica as entradas fixadas e o calendário XNYS, e gera `base_integrada_pregoes.csv`. Outra coleta deve ser assumida explicitamente conforme as instruções do notebook; não desative uma conferência para contornar uma diferença não investigada.
-7. Execute **04_analise_visual.ipynb** em ordem. Ele confere os hashes em `docs/config_analise_visual.json` e gera os resumos e imagens sem rede, coleta ou inferência. As entradas exatas estão no pacote local do grupo.
-8. Execute `00_artigo.ipynb` para recalcular as agregações finais e explorar os gráficos Altair. Confira os CSVs e manifestos locais. O artigo e `docs/resultados_registrados.json` descrevem a execução de referência: se as entradas ou resultados mudarem, reconcilie as contagens e atualize a narrativa e sua origem antes de publicar outra versão.
-
-Os dados completos, o CSV original, os snapshots e os pesos **não estão versionados**. Os notebooks e registros existentes documentam execuções anteriores; a revisão editorial anterior executou as células de leitura do artigo. A etapa visual original de 16/10 executou as 12 células do notebook 04; a revisão posterior executou também todas as células do artigo; as etapas 01–03 não foram recalculadas. A reprodução integral por outro integrante continua pendente. `requirements.txt` reúne dependências diretas com versões observadas; não é um lock completo ou multiplataforma.
-
-## Fontes e decisões metodológicas
-
-- **Notícias:** [Daily Financial News for 6000+ Stocks](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests). SHA-256 do original utilizado: `609289a49dc8af2bd28a8466dffd9663521237026f1040c0f238010b29135fb6`.
-- **Preços:** [Yahoo Finance via yfinance](https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html), fechamento ajustado e volume, de 15/12/2016 a 10/01/2020. O snapshot é fixado por hash; outra coleta pode apresentar ajustes diferentes.
-- **Sentimento:** [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert), revisão `4556d13015211d73dccd3fdd39d39232506f3e43`, sem treinamento adicional. Escore `P(positivo) − P(negativo)`; classe agregada pela maior probabilidade média, com empates explícitos.
-
-Manchetes compartilhadas são preservadas. Dias sem notícias não são neutros. O notebook 02 agrega por data civil; o 03 mapeia ao primeiro pregão estritamente posterior e agrega por empresa/pregão, com peso igual por manchete. Para comparar sentimento e retorno, utilize `tem_noticias & elegivel_analise_principal`. Seis notícias com retorno em janeiro de 2020 são preservadas como margem. Retorno absoluto mede magnitude diária, não uma estimativa formal de volatilidade. Veja os relatórios de [sentimento](docs/finbert.md) e [integração](docs/integracao.md).
-
-## Entregas acadêmicas
-
-- **29/10/2026:** notebook em forma de artigo, ainda que incompleto, e apresentação de cinco minutos.
-- **Semana A2:** notebook final, repositório, apresentação de dez minutos e declaração de contribuições. A janela 23–30/11 foi informada pelo grupo; o dia exato precisa ser confirmado. A meta de 22/11 é interna.
-
-A estrutura do artigo já está organizada. Permanecem as melhorias listadas no [relatório visual](docs/analise_visual.md), a apresentação, o retorno do professor e a documentação das contribuições. A existência dos arquivos não demonstra envio ou aprovação de uma entrega.
+Para a final na **Semana A2**, ainda são necessários o aprofundamento da análise, a incorporação do retorno do professor, a apresentação de dez minutos e a declaração factual de contribuições do trio. A revisão não comprova entrega formal ou aprovação pelo professor.

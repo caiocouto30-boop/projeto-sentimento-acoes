@@ -45,4 +45,4 @@ O CSV humano é versionado em `docs/revisao_manual/`. O leitor do notebook aceit
 
 ## Próximos passos
 
-A [integração com pregões e retornos](integracao.md) foi concluída pelo notebook 03, preservando as previsões e a revisão desta etapa. O próximo passo é desenvolver os gráficos e a interpretação descritiva das perguntas do trabalho. Os resultados permitirão examinar associações entre sentimento e retornos; esta etapa não estabelece causalidade.
+A [integração com pregões e retornos](integracao.md) foi concluída pelo notebook 03, preservando as previsões e a revisão desta etapa. As visualizações e interpretações estão no [artigo](../notebooks/00_artigo.ipynb). A exclusão de retrospectivas e os filtros combinados da pergunta 7 continuam pendentes.
