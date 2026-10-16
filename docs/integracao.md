@@ -1,6 +1,6 @@
 # Integração com pregões e retornos
 
-Relatório de apoio à seção 3.3 do [artigo principal](../notebooks/00_artigo.ipynb). O artigo apresenta as análises das associações e delimita a resposta parcial à pergunta 7.
+Relatório de apoio à seção 3.3 do [artigo principal](../notebooks/00_artigo.ipynb). O artigo apresenta as análises das associações e apresenta os cenários da pergunta 7.
 
 Etapa iniciada e executada em **15/10/2026**. O [notebook 03](../notebooks/03_integracao_retornos.ipynb) associa as manchetes ao primeiro pregão estritamente posterior, calcula retornos ajustados e exporta uma base com uma linha por empresa/pregão. A classificação FinBERT e a revisão humana existentes foram preservadas.
 
@@ -75,4 +75,4 @@ O [dicionário de integração](dicionario_integracao.csv) explica os novos camp
 
 ## Continuidade
 
-Execute o [artigo](../notebooks/00_artigo.ipynb) para as visualizações e tabelas. A [documentação visual](analise_visual.md) descreve as amostras e a parte ainda pendente da pergunta 7.
+Execute o [artigo](../notebooks/00_artigo.ipynb) para as visualizações e tabelas. A [documentação visual](analise_visual.md) descreve as amostras e os filtros e as limitações da pergunta 7.

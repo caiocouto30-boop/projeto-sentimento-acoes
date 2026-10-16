@@ -4,7 +4,9 @@ O [artigo](../notebooks/00_artigo.ipynb) apresenta a análise; o [README](../REA
 
 | Documento | Conteúdo |
 | --- | --- |
-| [Revisão AED2026](revisao_aed2026.md) | Correspondência com o enunciado, alterações e pendências |
+| [Adequação AED2026](revisao_aed2026.md) | Requisitos da intermediária e limites para a etapa final |
+| [Retrospectivas](retrospectivas/README.md) | Regra, marcação, exemplos e alcance da pergunta 7 |
+| [Verificação da intermediária](verificacao_intermediaria.json) | Execução, preservação e conferências independentes |
 | [FinBERT](finbert.md) | Modelo, revisão humana e limitações |
 | [Integração](integracao.md) | Calendário, retornos, margens e reprodução |
 | [Análise visual](analise_visual.md) | Unidades, filtros, tabelas e exportação |

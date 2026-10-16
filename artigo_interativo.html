@@ -7803,9 +7803,9 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Sentimento-de-not%C3%ADcias-e-retornos-de-cinco-a%C3%A7%C3%B5es-dos-EUA-(2017%E2%80%932019)">Sentimento de notícias e retornos de cinco ações dos EUA (2017–2019)<a class="anchor-link" href="#Sentimento-de-not%C3%ADcias-e-retornos-de-cinco-a%C3%A7%C3%B5es-dos-EUA-(2017%E2%80%932019)">¶</a></h1><p><strong>Caio Ladislau do Couto · Alice Barros Lourencini Palaoro · Mateus Henrique da Costa Resende</strong><br/>
 FGV EMAp · Análise Exploratória de Dados e Visualização · 2026.2 · Professor João Rulff</p>
-<p><strong>Versão intermediária · 16/10/2026</strong><br/>
+<p><strong>Entrega intermediária de 29/10/2026 · versão preparada em 16/10/2026</strong><br/>
 <strong>Repositório:</strong> <a href="https://github.com/caiocouto30-boop/projeto-sentimento-acoes">caiocouto30-boop/projeto-sentimento-acoes</a></p>
-<h2 id="Resumo">Resumo<a class="anchor-link" href="#Resumo">¶</a></h2><p>Investigamos associações entre o tom de manchetes e os retornos de NVDA, NFLX, BAC, JNJ e KO. Combinamos notícias do Kaggle, cotações do Yahoo Finance e o modelo pronto FinBERT. A limpeza manteve 6.552 associações manchete–empresa; 2.387 pares empresa/pregão têm notícias e janela completa para comparar sentimento e retorno. A cobertura é desigual e neutro é a classe mais frequente nas cinco empresas. Não há ordenação uniforme dos retornos por classe, e as correlações entre intensidade do sentimento e retorno absoluto são próximas de zero. Exigir três notícias reduz a amostra a 783 pares e altera alguns sinais. A exclusão de manchetes retrospectivas permanece pendente. Os resultados são descritivos e não estabelecem causalidade.</p>
+<h2 id="Resumo">Resumo<a class="anchor-link" href="#Resumo">¶</a></h2><p>Investigamos associações entre o tom de manchetes e os retornos de NVDA, NFLX, BAC, JNJ e KO em 2017–2019. Combinamos notícias do Kaggle, cotações do Yahoo Finance e o modelo pronto FinBERT. A limpeza manteve 6.552 associações manchete–empresa; 2.387 pares empresa/pregão têm notícias e janela completa para as comparações. A cobertura é desigual, as distribuições de retorno por classe se sobrepõem e as correlações são pequenas. Uma regra textual conservadora identifica 621 associações com relatos explícitos de preço já observado. Após sua exclusão e a reagregação, restam 2.271 pares; ao exigir também três notícias, 697. As correlações variam entre empresas e filtros, sem relação uniforme ou robustez geral. Os sete conjuntos de resultados são descritivos; a marcação automática de retrospectivas e os vínculos de ticker são limitações, sem identificação causal.</p>
 <p><strong>Palavras-chave:</strong> análise exploratória; visualização; notícias financeiras; sentimento; retornos.</p>
 </div>
 </div>
@@ -8383,6 +8383,14 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <span class="n">display</span><span class="p">(</span><span class="n">q3</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">extremos</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'extremo'</span><span class="p">])[</span>
     <span class="p">[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'extremo'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">,</span> <span class="s1">'escore_sentimento'</span><span class="p">,</span> <span class="s1">'n_noticias'</span><span class="p">,</span> <span class="s1">'manchete_exemplo'</span><span class="p">]])</span>
+
+<span class="c1"># Extremos com maior suporte de manchetes, sem alterar a seleção principal.</span>
+<span class="n">diario_apoiado</span> <span class="o">=</span> <span class="n">diario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">diario</span><span class="p">[</span><span class="s1">'n_noticias'</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">extremos_suporte</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">diario_apoiado</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'escore_sentimento'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">extremo</span><span class="o">=</span><span class="s1">'mínimo'</span><span class="p">),</span>
+    <span class="n">diario_apoiado</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'escore_sentimento'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">extremo</span><span class="o">=</span><span class="s1">'máximo'</span><span class="p">)])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">extremos_suporte</span><span class="p">[[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'extremo'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">,</span> <span class="s1">'escore_sentimento'</span><span class="p">,</span> <span class="s1">'n_noticias'</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8558,6 +8566,126 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 </div>
 </div>
 </div>
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>stock</th>
+<th>extremo</th>
+<th>news_date</th>
+<th>escore_sentimento</th>
+<th>n_noticias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>285</th>
+<td>BAC</td>
+<td>mínimo</td>
+<td>2018-12-04</td>
+<td>-0.950</td>
+<td>3</td>
+</tr>
+<tr>
+<th>2243</th>
+<td>NVDA</td>
+<td>mínimo</td>
+<td>2018-04-02</td>
+<td>-0.928</td>
+<td>3</td>
+</tr>
+<tr>
+<th>557</th>
+<td>JNJ</td>
+<td>mínimo</td>
+<td>2017-09-20</td>
+<td>-0.815</td>
+<td>3</td>
+</tr>
+<tr>
+<th>1478</th>
+<td>NFLX</td>
+<td>mínimo</td>
+<td>2017-10-18</td>
+<td>-0.675</td>
+<td>3</td>
+</tr>
+<tr>
+<th>1191</th>
+<td>KO</td>
+<td>mínimo</td>
+<td>2019-03-12</td>
+<td>-0.554</td>
+<td>5</td>
+</tr>
+<tr>
+<th>1254</th>
+<td>KO</td>
+<td>máximo</td>
+<td>2019-10-23</td>
+<td>0.881</td>
+<td>3</td>
+</tr>
+<tr>
+<th>2460</th>
+<td>NVDA</td>
+<td>máximo</td>
+<td>2019-06-11</td>
+<td>0.877</td>
+<td>3</td>
+</tr>
+<tr>
+<th>833</th>
+<td>JNJ</td>
+<td>máximo</td>
+<td>2019-07-10</td>
+<td>0.818</td>
+<td>3</td>
+</tr>
+<tr>
+<th>334</th>
+<td>BAC</td>
+<td>máximo</td>
+<td>2019-04-12</td>
+<td>0.797</td>
+<td>3</td>
+</tr>
+<tr>
+<th>1764</th>
+<td>NFLX</td>
+<td>máximo</td>
+<td>2019-01-10</td>
+<td>0.640</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>&lt;ipython-input-4-8b6ced35fec1&gt;:43: UserWarning: obj.round has no effect with datetime, timedelta, or period dtypes. Use obj.dt.round(...) instead.
+  display(extremos_suporte[['stock', 'extremo', 'news_date', 'escore_sentimento', 'n_noticias']].round(3))
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -8566,8 +8694,8 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Resultado.</strong> Os dez extremos selecionados têm uma manchete cada, sem evidenciar períodos de tom persistente. Em BAC, o máximo menciona PACCAR, indicando um vínculo indireto de ticker. Em NFLX e NVDA, alguns extremos descrevem altas ou quedas já ocorridas. A tabela acima permite consultar os textos; a listagem completa é exportada com seus IDs.</p>
-<p><strong>Limitação.</strong> Extremos apoiados em uma manchete são sensíveis ao texto e à classificação. Esses exemplos motivam a revisão de retrospectivas e vínculos de ticker; nenhum foi excluído para favorecer resultados.</p>
+<p><strong>Resultado.</strong> Os dez extremos sem restrição têm uma manchete cada. Em BAC, o máximo menciona PACCAR, mostrando um vínculo indireto de ticker. Para verificar o suporte, repetimos a seleção apenas em datas com três ou mais notícias. Os extremos ficam menos próximos de ±1: em NFLX, vão de −0,675 a +0,640; em KO, de −0,554 a +0,881. O mínimo de BAC em 04/12/2018 (−0,950; três manchetes) reúne textos sobre queda do setor bancário. O máximo de JNJ em 10/07/2019 (+0,818; três) reúne decisões sobre o litígio do talco.</p>
+<p><strong>Limitação.</strong> Mais manchetes não garantem relevância para o ticker ou fontes independentes. O máximo apoiado de NFLX inclui um título sobre o setor de cannabis; o mínimo de KO inclui uma manchete sobre Monster. Conservamos os registros e exportamos todos os textos dos extremos para permitir a inspeção. O sentimento do texto inteiro pode refletir outras empresas e notícias retrospectivas.</p>
 </div>
 </div>
 </div>
@@ -9373,8 +9501,10 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="10.-Pergunta-7-%E2%80%94-Os-padr%C3%B5es-permanecem-ao-excluir-retrospectivas-e-exigir-pelo-menos-tr%C3%AAs-not%C3%ADcias?">10. Pergunta 7 — Os padrões permanecem ao excluir retrospectivas e exigir pelo menos três notícias?<a class="anchor-link" href="#10.-Pergunta-7-%E2%80%94-Os-padr%C3%B5es-permanecem-ao-excluir-retrospectivas-e-exigir-pelo-menos-tr%C3%AAs-not%C3%ADcias?">¶</a></h2><p><strong>Comparação inicial executada.</strong> Aplicamos somente <strong>n_noticias ≥ 3 por empresa/pregão</strong> à amostra principal. Repetimos os três coeficientes de Spearman por empresa e mostramos a retenção calculada. Não removemos manchetes dos pregões retidos e, portanto, seus escores não mudam. As duas amostras são sobrepostas.</p>
-<p><strong>Interação:</strong> o cursor consulta cenário, coeficiente e número de pregões. A comparação usa a mesma escala de −1 a 1 nas três métricas. Fonte: painel integrado; 2.387 pares na principal e 783 no subconjunto.</p>
+<h2 id="10.-Pergunta-7-%E2%80%94-Os-padr%C3%B5es-permanecem-ao-excluir-retrospectivas-e-exigir-pelo-menos-tr%C3%AAs-not%C3%ADcias?">10. Pergunta 7 — Os padrões permanecem ao excluir retrospectivas e exigir pelo menos três notícias?<a class="anchor-link" href="#10.-Pergunta-7-%E2%80%94-Os-padr%C3%B5es-permanecem-ao-excluir-retrospectivas-e-exigir-pelo-menos-tr%C3%AAs-not%C3%ADcias?">¶</a></h2><p><strong>Transformação.</strong> Comparamos quatro cenários: principal; mínimo de três; sem retrospectivas explícitas; e os dois filtros combinados. A regra textual foi fixada antes dos novos coeficientes, usando somente manchetes. Consideramos explícitos relatos de negociação, variação de cotação, máximas/mínimas já observadas e resumos intradiários. Previsões, agendas de resultados e mudanças operacionais não são suficientes. A implementação e os exemplos estão no <a href="docs/retrospectivas/README.md">protocolo</a>.</p>
+<p>São 586 textos distintos marcados como retrospectivos, presentes em <strong>621 associações</strong>. Há ainda 297 textos com sinais não conclusivos (317 associações), mantidos nos quatro cenários principais. Dois cenários adicionais, exportados nas tabelas, retiram também esses sinais. A marcação é automática com revisão assistida; não constitui anotação humana validada.</p>
+<p>Após excluir manchetes, recalculamos médias das probabilidades, classe, escore, intensidade e contagem por empresa/pregão. <strong>O mínimo de três é aplicado à nova contagem.</strong> Grupos que perdem todas as notícias deixam a comparação; não recebem sentimento neutro. As amostras são sobrepostas, e todos os retornos são preservados.</p>
+<p><strong>Leitura:</strong> cores e formas distinguem os cenários; o cursor mostra coeficiente e n. Usamos a mesma escala de −1 a 1 nas três métricas. A retenção por empresa/ano está nas tabelas exportadas.</p>
 </div>
 </div>
 </div>
@@ -9385,35 +9515,47 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">restrita</span> <span class="o">=</span> <span class="n">principal</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">principal</span><span class="p">[</span><span class="s1">'n_noticias'</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">RAIZ</span> <span class="o">/</span> <span class="s1">'tools'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">robustez</span><span class="w"> </span><span class="kn">import</span> <span class="n">CENARIOS</span><span class="p">,</span> <span class="n">marcar_textos</span><span class="p">,</span> <span class="n">construir_cenarios</span><span class="p">,</span> <span class="n">resumir_retencao</span>
+
+<span class="n">marcacao</span> <span class="o">=</span> <span class="n">marcar_textos</span><span class="p">(</span><span class="n">noticias</span><span class="p">)</span>
+<span class="n">cenarios</span><span class="p">,</span> <span class="n">noticias_elegiveis</span> <span class="o">=</span> <span class="n">construir_cenarios</span><span class="p">(</span><span class="n">mapeadas</span><span class="p">,</span> <span class="n">principal</span><span class="p">,</span> <span class="n">marcacao</span><span class="p">)</span>
+<span class="n">restrita</span> <span class="o">=</span> <span class="n">cenarios</span><span class="p">[</span><span class="s1">'Mínimo 3'</span><span class="p">]</span>
 <span class="n">retencao</span> <span class="o">=</span> <span class="n">principal</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">'principal'</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">retencao</span><span class="p">[</span><span class="s1">'minimo_3'</span><span class="p">]</span> <span class="o">=</span> <span class="n">restrita</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">retencao</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">retencao</span><span class="p">[</span><span class="s1">'retencao_pct'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">retencao</span><span class="p">[</span><span class="s1">'minimo_3'</span><span class="p">]</span> <span class="o">/</span> <span class="n">retencao</span><span class="p">[</span><span class="s1">'principal'</span><span class="p">]</span>
-<span class="n">display</span><span class="p">(</span><span class="n">retencao</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">resumo_cenarios</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">'cenario'</span><span class="p">:</span> <span class="n">nome</span><span class="p">,</span> <span class="s1">'pregoes'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="s1">'noticias'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'n_noticias'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+     <span class="s1">'retencao_pct'</span><span class="p">:</span> <span class="mi">100</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">principal</span><span class="p">)}</span> <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">cenarios</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resumo_cenarios</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resumo_cenarios</span><span class="p">[</span><span class="s1">'cenario'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">CENARIOS</span><span class="p">)]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">retencao_cenarios</span> <span class="o">=</span> <span class="n">resumir_retencao</span><span class="p">(</span><span class="n">cenarios</span><span class="p">)</span>
 <span class="n">metricas</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'escore_sentimento'</span><span class="p">,</span> <span class="s1">'retorno_pct'</span><span class="p">,</span> <span class="s1">'Escore × retorno'</span><span class="p">),</span>
             <span class="p">(</span><span class="s1">'intensidade_sentimento'</span><span class="p">,</span> <span class="s1">'retorno_absoluto_pct'</span><span class="p">,</span> <span class="s1">'Intensidade × |retorno|'</span><span class="p">),</span>
             <span class="p">(</span><span class="s1">'n_noticias'</span><span class="p">,</span> <span class="s1">'retorno_absoluto_pct'</span><span class="p">,</span> <span class="s1">'Quantidade × |retorno|'</span><span class="p">)]</span>
-<span class="n">sensibilidade</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span><span class="s1">'cenario'</span><span class="p">:</span> <span class="n">cenario</span><span class="p">,</span> <span class="s1">'stock'</span><span class="p">:</span> <span class="n">empresa</span><span class="p">,</span> <span class="s1">'metrica'</span><span class="p">:</span> <span class="n">metrica</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="s1">'rho'</span><span class="p">:</span> <span class="n">spearman</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)}</span>
-    <span class="k">for</span> <span class="n">cenario</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">'Principal'</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="p">(</span><span class="s1">'Mínimo 3'</span><span class="p">,</span> <span class="n">restrita</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">empresa</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">metrica</span> <span class="ow">in</span> <span class="n">metricas</span><span class="p">])</span>
-<span class="n">base_sens</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">sensibilidade</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+<span class="n">sensibilidade_completa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">'cenario'</span><span class="p">:</span> <span class="n">nome</span><span class="p">,</span> <span class="s1">'stock'</span><span class="p">:</span> <span class="n">empresa</span><span class="p">,</span> <span class="s1">'metrica'</span><span class="p">:</span> <span class="n">metrica</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="s1">'rho'</span><span class="p">:</span> <span class="n">spearman</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">cenarios</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">empresa</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'stock'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">metrica</span> <span class="ow">in</span> <span class="n">metricas</span><span class="p">])</span>
+<span class="n">sensibilidade</span> <span class="o">=</span> <span class="n">sensibilidade_completa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sensibilidade_completa</span><span class="p">[</span><span class="s1">'cenario'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">CENARIOS</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">q7</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">sensibilidade</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">'rho:Q'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Spearman (ρ)'</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">'stock:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Empresa'</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">EMPRESAS</span><span class="p">))</span>
-<span class="n">ligacoes</span> <span class="o">=</span> <span class="n">base_sens</span><span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'#A6B0B8'</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="s1">'stock:N'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">'cenario:N'</span><span class="p">)</span>
-<span class="n">marcadores</span> <span class="o">=</span> <span class="n">base_sens</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">'cenario:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Amostra'</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
-        <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s1">'Principal'</span><span class="p">,</span> <span class="s1">'Mínimo 3'</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">'#32648D'</span><span class="p">,</span> <span class="s1">'#BD5B3A'</span><span class="p">])),</span>
-    <span class="n">shape</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s1">'cenario:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Amostra'</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
-        <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s1">'Principal'</span><span class="p">,</span> <span class="s1">'Mínimo 3'</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">'circle'</span><span class="p">,</span> <span class="s1">'diamond'</span><span class="p">])),</span>
-    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'stock:N'</span><span class="p">,</span> <span class="s1">'cenario:N'</span><span class="p">,</span> <span class="s1">'n:Q'</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s1">'rho:Q'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'.4f'</span><span class="p">)])</span>
-<span class="n">q7</span> <span class="o">=</span> <span class="p">(</span><span class="n">ligacoes</span> <span class="o">+</span> <span class="n">marcadores</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">235</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">230</span><span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">'stock:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Empresa'</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">EMPRESAS</span><span class="p">),</span>
+    <span class="n">yOffset</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">YOffset</span><span class="p">(</span><span class="s1">'cenario:N'</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">CENARIOS</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">'cenario:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Cenário'</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">CENARIOS</span><span class="p">,</span>
+        <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">'#32648D'</span><span class="p">,</span> <span class="s1">'#BD5B3A'</span><span class="p">,</span> <span class="s1">'#16877B'</span><span class="p">,</span> <span class="s1">'#8664A5'</span><span class="p">]),</span>
+        <span class="n">legend</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Legend</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelLimit</span><span class="o">=</span><span class="mi">300</span><span class="p">)),</span>
+    <span class="n">shape</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Shape</span><span class="p">(</span><span class="s1">'cenario:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Cenário'</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">CENARIOS</span><span class="p">,</span>
+        <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">'circle'</span><span class="p">,</span> <span class="s1">'square'</span><span class="p">,</span> <span class="s1">'triangle-up'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">]),</span>
+        <span class="n">legend</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Legend</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">labelLimit</span><span class="o">=</span><span class="mi">300</span><span class="p">)),</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">'stock:N'</span><span class="p">,</span> <span class="s1">'cenario:N'</span><span class="p">,</span> <span class="s1">'n:Q'</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s1">'rho:Q'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'.4f'</span><span class="p">)]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">235</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>
     <span class="n">column</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">'metrica:N'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">metricas</span><span class="p">])</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'7 · Exigir três notícias muda amostra e associações'</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'7 · Os filtros mudam a amostra e algumas associações'</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">q7</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sensibilidade</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sensibilidade</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'cenario'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'metrica'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'rho'</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">classes_sensibilidade</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resumir_classes</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">cenario</span><span class="o">=</span><span class="n">nome</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">'Principal'</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="p">(</span><span class="s1">'Mínimo 3'</span><span class="p">,</span> <span class="n">restrita</span><span class="p">)]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">cenarios</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9443,47 +9585,40 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>principal</th>
-<th>minimo_3</th>
+<th>cenario</th>
+<th>pregoes</th>
+<th>noticias</th>
 <th>retencao_pct</th>
-</tr>
-<tr>
-<th>stock</th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>BAC</th>
-<td>438</td>
-<td>88</td>
-<td>20.1</td>
+<th>0</th>
+<td>Principal</td>
+<td>2387</td>
+<td>6542</td>
+<td>100.0</td>
 </tr>
 <tr>
-<th>JNJ</th>
-<td>446</td>
-<td>123</td>
-<td>27.6</td>
+<th>1</th>
+<td>Mínimo 3</td>
+<td>783</td>
+<td>4384</td>
+<td>32.8</td>
 </tr>
 <tr>
-<th>KO</th>
-<td>334</td>
-<td>58</td>
-<td>17.4</td>
+<th>2</th>
+<td>Sem retrospectivas</td>
+<td>2271</td>
+<td>5921</td>
+<td>95.1</td>
 </tr>
 <tr>
-<th>NFLX</th>
-<td>627</td>
-<td>307</td>
-<td>49.0</td>
-</tr>
-<tr>
-<th>NVDA</th>
-<td>542</td>
-<td>207</td>
-<td>38.2</td>
+<th>3</th>
+<td>Sem retrospectivas + mínimo 3</td>
+<td>697</td>
+<td>3807</td>
+<td>29.2</td>
 </tr>
 </tbody>
 </table>
@@ -9521,7 +9656,7 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
     &lt;script type=&quot;text/javascript&quot;&gt;
 
 {
-    const spec = {&quot;$schema&quot;:&quot;https://vega.github.io/schema/vega-lite/v6.4.1.json&quot;,&quot;config&quot;:{&quot;view&quot;:{&quot;continuousHeight&quot;:300,&quot;continuousWidth&quot;:300}},&quot;data&quot;:{&quot;name&quot;:&quot;data-661af0846b1a001129137bf35acea56b&quot;},&quot;datasets&quot;:{&quot;data-661af0846b1a001129137bf35acea56b&quot;:[{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.01504875743869378,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.01116300046455932,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.0326508515270616,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:446,&quot;rho&quot;:0.03068277900994819,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:446,&quot;rho&quot;:-0.00973994749362472,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:446,&quot;rho&quot;:0.029730458018717758,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.0023343395502676573,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.05479369332179387,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.1607731391157201,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.057520936969869645,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.030073797019396095,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.05703604409699478,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:542,&quot;rho&quot;:-0.0406401485405567,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:542,&quot;rho&quot;:0.015987019583638303,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:542,&quot;rho&quot;:0.1252336563424116,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:88,&quot;rho&quot;:0.09302243668768272,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:88,&quot;rho&quot;:0.14295023070691418,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:88,&quot;rho&quot;:-0.1586297601071997,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:123,&quot;rho&quot;:-0.09535540622460693,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:123,&quot;rho&quot;:-0.0012962556912718786,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:123,&quot;rho&quot;:0.010674195882196955,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:58,&quot;rho&quot;:-0.1956688916915316,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:58,&quot;rho&quot;:0.1311944384631948,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:58,&quot;rho&quot;:0.2869296361992662,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:307,&quot;rho&quot;:0.051147613324275525,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:307,&quot;rho&quot;:-0.08803622129929853,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:307,&quot;rho&quot;:0.10307728356831995,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:207,&quot;rho&quot;:-0.012142687058263251,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:207,&quot;rho&quot;:-0.12239828554729358,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:207,&quot;rho&quot;:0.12313601948895021,&quot;stock&quot;:&quot;NVDA&quot;}]},&quot;facet&quot;:{&quot;column&quot;:{&quot;field&quot;:&quot;metrica&quot;,&quot;sort&quot;:[&quot;Escore × retorno&quot;,&quot;Intensidade × |retorno|&quot;,&quot;Quantidade × |retorno|&quot;],&quot;title&quot;:null,&quot;type&quot;:&quot;nominal&quot;}},&quot;spec&quot;:{&quot;height&quot;:230,&quot;layer&quot;:[{&quot;encoding&quot;:{&quot;detail&quot;:{&quot;field&quot;:&quot;stock&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;order&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;x&quot;:{&quot;field&quot;:&quot;rho&quot;,&quot;scale&quot;:{&quot;domain&quot;:[-1,1]},&quot;title&quot;:&quot;Spearman (ρ)&quot;,&quot;type&quot;:&quot;quantitative&quot;},&quot;y&quot;:{&quot;field&quot;:&quot;stock&quot;,&quot;sort&quot;:[&quot;BAC&quot;,&quot;JNJ&quot;,&quot;KO&quot;,&quot;NFLX&quot;,&quot;NVDA&quot;],&quot;title&quot;:&quot;Empresa&quot;,&quot;type&quot;:&quot;nominal&quot;}},&quot;mark&quot;:{&quot;color&quot;:&quot;#A6B0B8&quot;,&quot;type&quot;:&quot;line&quot;}},{&quot;encoding&quot;:{&quot;color&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;scale&quot;:{&quot;domain&quot;:[&quot;Principal&quot;,&quot;Mínimo 3&quot;],&quot;range&quot;:[&quot;#32648D&quot;,&quot;#BD5B3A&quot;]},&quot;title&quot;:&quot;Amostra&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;shape&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;scale&quot;:{&quot;domain&quot;:[&quot;Principal&quot;,&quot;Mínimo 3&quot;],&quot;range&quot;:[&quot;circle&quot;,&quot;diamond&quot;]},&quot;title&quot;:&quot;Amostra&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;tooltip&quot;:[{&quot;field&quot;:&quot;stock&quot;,&quot;type&quot;:&quot;nominal&quot;},{&quot;field&quot;:&quot;cenario&quot;,&quot;type&quot;:&quot;nominal&quot;},{&quot;field&quot;:&quot;n&quot;,&quot;type&quot;:&quot;quantitative&quot;},{&quot;field&quot;:&quot;rho&quot;,&quot;format&quot;:&quot;.4f&quot;,&quot;type&quot;:&quot;quantitative&quot;}],&quot;x&quot;:{&quot;field&quot;:&quot;rho&quot;,&quot;scale&quot;:{&quot;domain&quot;:[-1,1]},&quot;title&quot;:&quot;Spearman (ρ)&quot;,&quot;type&quot;:&quot;quantitative&quot;},&quot;y&quot;:{&quot;field&quot;:&quot;stock&quot;,&quot;sort&quot;:[&quot;BAC&quot;,&quot;JNJ&quot;,&quot;KO&quot;,&quot;NFLX&quot;,&quot;NVDA&quot;],&quot;title&quot;:&quot;Empresa&quot;,&quot;type&quot;:&quot;nominal&quot;}},&quot;mark&quot;:{&quot;filled&quot;:true,&quot;size&quot;:85,&quot;type&quot;:&quot;point&quot;}}],&quot;width&quot;:235},&quot;title&quot;:&quot;7 · Exigir três notícias muda amostra e associações&quot;};
+    const spec = {&quot;$schema&quot;:&quot;https://vega.github.io/schema/vega-lite/v6.4.1.json&quot;,&quot;config&quot;:{&quot;view&quot;:{&quot;continuousHeight&quot;:300,&quot;continuousWidth&quot;:300}},&quot;data&quot;:{&quot;name&quot;:&quot;data-d428e50bda37d263e4b03686bd1c7843&quot;},&quot;datasets&quot;:{&quot;data-d428e50bda37d263e4b03686bd1c7843&quot;:[{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.01504875743869378,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.01116300046455932,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.0326508515270616,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:446,&quot;rho&quot;:0.03068277900994819,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:446,&quot;rho&quot;:-0.00973994749362472,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:446,&quot;rho&quot;:0.029730458018717758,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.0023343395502676573,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.05479369332179387,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:334,&quot;rho&quot;:0.1607731391157201,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.057520936969869645,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.030073797019396095,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:627,&quot;rho&quot;:0.05703604409699478,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:542,&quot;rho&quot;:-0.0406401485405567,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:542,&quot;rho&quot;:0.015987019583638303,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Principal&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:542,&quot;rho&quot;:0.1252336563424116,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:88,&quot;rho&quot;:0.09302243668768272,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:88,&quot;rho&quot;:0.14295023070691418,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:88,&quot;rho&quot;:-0.1586297601071997,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:123,&quot;rho&quot;:-0.09535540622460693,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:123,&quot;rho&quot;:-0.0012962556912718786,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:123,&quot;rho&quot;:0.010674195882196955,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:58,&quot;rho&quot;:-0.1956688916915316,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:58,&quot;rho&quot;:0.1311944384631948,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:58,&quot;rho&quot;:0.2869296361992662,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:307,&quot;rho&quot;:0.051147613324275525,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:307,&quot;rho&quot;:-0.08803622129929853,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:307,&quot;rho&quot;:0.10307728356831995,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:207,&quot;rho&quot;:-0.012142687058263251,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:207,&quot;rho&quot;:-0.12239828554729358,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:207,&quot;rho&quot;:0.12313601948895021,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:409,&quot;rho&quot;:0.003534458581445262,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:409,&quot;rho&quot;:0.042760871422399455,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:409,&quot;rho&quot;:-0.009816188443902054,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.055009669008717024,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:-0.024789893104649362,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:438,&quot;rho&quot;:0.03657737442957057,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:327,&quot;rho&quot;:0.007647607079068687,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:327,&quot;rho&quot;:0.041750817600015394,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:327,&quot;rho&quot;:0.15148156101286933,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:607,&quot;rho&quot;:0.04226311360543627,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:607,&quot;rho&quot;:0.029755499685302254,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:607,&quot;rho&quot;:0.0569691943647057,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:490,&quot;rho&quot;:-0.00889250531094699,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:490,&quot;rho&quot;:0.03516401525187187,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:490,&quot;rho&quot;:0.14627597287186422,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:74,&quot;rho&quot;:-0.05821547574972231,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:74,&quot;rho&quot;:0.18498333950388743,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:74,&quot;rho&quot;:-0.09412559933829566,&quot;stock&quot;:&quot;BAC&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:116,&quot;rho&quot;:-0.1100372890477838,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:116,&quot;rho&quot;:-0.0537269826625149,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:116,&quot;rho&quot;:0.07756160711916647,&quot;stock&quot;:&quot;JNJ&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:55,&quot;rho&quot;:-0.23470418470418478,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:55,&quot;rho&quot;:0.15187590187590191,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:55,&quot;rho&quot;:0.35534966691876574,&quot;stock&quot;:&quot;KO&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:286,&quot;rho&quot;:0.03485423434075551,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:286,&quot;rho&quot;:-0.09346673865287472,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:286,&quot;rho&quot;:0.13585966844639896,&quot;stock&quot;:&quot;NFLX&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Escore × retorno&quot;,&quot;n&quot;:166,&quot;rho&quot;:0.01234988948718117,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Intensidade × |retorno|&quot;,&quot;n&quot;:166,&quot;rho&quot;:-0.08829088810331147,&quot;stock&quot;:&quot;NVDA&quot;},{&quot;cenario&quot;:&quot;Sem retrospectivas + mínimo 3&quot;,&quot;metrica&quot;:&quot;Quantidade × |retorno|&quot;,&quot;n&quot;:166,&quot;rho&quot;:0.1305842574765963,&quot;stock&quot;:&quot;NVDA&quot;}]},&quot;facet&quot;:{&quot;column&quot;:{&quot;field&quot;:&quot;metrica&quot;,&quot;sort&quot;:[&quot;Escore × retorno&quot;,&quot;Intensidade × |retorno|&quot;,&quot;Quantidade × |retorno|&quot;],&quot;title&quot;:null,&quot;type&quot;:&quot;nominal&quot;}},&quot;spec&quot;:{&quot;encoding&quot;:{&quot;color&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;legend&quot;:{&quot;columns&quot;:2,&quot;labelLimit&quot;:300,&quot;orient&quot;:&quot;bottom&quot;},&quot;scale&quot;:{&quot;domain&quot;:[&quot;Principal&quot;,&quot;Mínimo 3&quot;,&quot;Sem retrospectivas&quot;,&quot;Sem retrospectivas + mínimo 3&quot;],&quot;range&quot;:[&quot;#32648D&quot;,&quot;#BD5B3A&quot;,&quot;#16877B&quot;,&quot;#8664A5&quot;]},&quot;title&quot;:&quot;Cenário&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;shape&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;legend&quot;:{&quot;columns&quot;:2,&quot;labelLimit&quot;:300,&quot;orient&quot;:&quot;bottom&quot;},&quot;scale&quot;:{&quot;domain&quot;:[&quot;Principal&quot;,&quot;Mínimo 3&quot;,&quot;Sem retrospectivas&quot;,&quot;Sem retrospectivas + mínimo 3&quot;],&quot;range&quot;:[&quot;circle&quot;,&quot;square&quot;,&quot;triangle-up&quot;,&quot;cross&quot;]},&quot;title&quot;:&quot;Cenário&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;tooltip&quot;:[{&quot;field&quot;:&quot;stock&quot;,&quot;type&quot;:&quot;nominal&quot;},{&quot;field&quot;:&quot;cenario&quot;,&quot;type&quot;:&quot;nominal&quot;},{&quot;field&quot;:&quot;n&quot;,&quot;type&quot;:&quot;quantitative&quot;},{&quot;field&quot;:&quot;rho&quot;,&quot;format&quot;:&quot;.4f&quot;,&quot;type&quot;:&quot;quantitative&quot;}],&quot;x&quot;:{&quot;field&quot;:&quot;rho&quot;,&quot;scale&quot;:{&quot;domain&quot;:[-1,1]},&quot;title&quot;:&quot;Spearman (ρ)&quot;,&quot;type&quot;:&quot;quantitative&quot;},&quot;y&quot;:{&quot;field&quot;:&quot;stock&quot;,&quot;sort&quot;:[&quot;BAC&quot;,&quot;JNJ&quot;,&quot;KO&quot;,&quot;NFLX&quot;,&quot;NVDA&quot;],&quot;title&quot;:&quot;Empresa&quot;,&quot;type&quot;:&quot;nominal&quot;},&quot;yOffset&quot;:{&quot;field&quot;:&quot;cenario&quot;,&quot;sort&quot;:[&quot;Principal&quot;,&quot;Mínimo 3&quot;,&quot;Sem retrospectivas&quot;,&quot;Sem retrospectivas + mínimo 3&quot;],&quot;type&quot;:&quot;nominal&quot;}},&quot;height&quot;:300,&quot;mark&quot;:{&quot;filled&quot;:true,&quot;size&quot;:65,&quot;type&quot;:&quot;point&quot;},&quot;width&quot;:235},&quot;title&quot;:&quot;7 · Os filtros mudam a amostra e algumas associações&quot;};
     const opts = {&quot;renderer&quot;:&quot;svg&quot;}
     vegaEmbed('#vega-chart', spec, opts).catch(console.error);
 }
@@ -9529,7 +9664,7 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
     &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-        " style="border:0;width:100%;height:410px" title="Gráfico interativo Q7"></iframe>
+        " style="border:0;width:100%;height:600px" title="Gráfico interativo Q7"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9552,253 +9687,144 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>cenario</th>
-<th>stock</th>
 <th>metrica</th>
-<th>n</th>
-<th>rho</th>
+<th>Escore × retorno</th>
+<th>Intensidade × |retorno|</th>
+<th>Quantidade × |retorno|</th>
+</tr>
+<tr>
+<th>stock</th>
+<th>cenario</th>
+<th></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>Principal</td>
-<td>BAC</td>
-<td>Escore × retorno</td>
-<td>438</td>
-<td>0.0150</td>
+<th rowspan="4" valign="top">BAC</th>
+<th>Mínimo 3</th>
+<td>0.093</td>
+<td>0.143</td>
+<td>-0.159</td>
 </tr>
 <tr>
-<th>1</th>
-<td>Principal</td>
-<td>BAC</td>
-<td>Intensidade × |retorno|</td>
-<td>438</td>
-<td>0.0112</td>
+<th>Principal</th>
+<td>0.015</td>
+<td>0.011</td>
+<td>0.033</td>
 </tr>
 <tr>
-<th>2</th>
-<td>Principal</td>
-<td>BAC</td>
-<td>Quantidade × |retorno|</td>
-<td>438</td>
-<td>0.0327</td>
+<th>Sem retrospectivas</th>
+<td>0.004</td>
+<td>0.043</td>
+<td>-0.010</td>
 </tr>
 <tr>
-<th>3</th>
-<td>Principal</td>
-<td>JNJ</td>
-<td>Escore × retorno</td>
-<td>446</td>
-<td>0.0307</td>
+<th>Sem retrospectivas + mínimo 3</th>
+<td>-0.058</td>
+<td>0.185</td>
+<td>-0.094</td>
 </tr>
 <tr>
-<th>4</th>
-<td>Principal</td>
-<td>JNJ</td>
-<td>Intensidade × |retorno|</td>
-<td>446</td>
-<td>-0.0097</td>
+<th rowspan="4" valign="top">JNJ</th>
+<th>Mínimo 3</th>
+<td>-0.095</td>
+<td>-0.001</td>
+<td>0.011</td>
 </tr>
 <tr>
-<th>5</th>
-<td>Principal</td>
-<td>JNJ</td>
-<td>Quantidade × |retorno|</td>
-<td>446</td>
-<td>0.0297</td>
+<th>Principal</th>
+<td>0.031</td>
+<td>-0.010</td>
+<td>0.030</td>
 </tr>
 <tr>
-<th>6</th>
-<td>Principal</td>
-<td>KO</td>
-<td>Escore × retorno</td>
-<td>334</td>
-<td>0.0023</td>
+<th>Sem retrospectivas</th>
+<td>0.055</td>
+<td>-0.025</td>
+<td>0.037</td>
 </tr>
 <tr>
-<th>7</th>
-<td>Principal</td>
-<td>KO</td>
-<td>Intensidade × |retorno|</td>
-<td>334</td>
-<td>0.0548</td>
+<th>Sem retrospectivas + mínimo 3</th>
+<td>-0.110</td>
+<td>-0.054</td>
+<td>0.078</td>
 </tr>
 <tr>
-<th>8</th>
-<td>Principal</td>
-<td>KO</td>
-<td>Quantidade × |retorno|</td>
-<td>334</td>
-<td>0.1608</td>
+<th rowspan="4" valign="top">KO</th>
+<th>Mínimo 3</th>
+<td>-0.196</td>
+<td>0.131</td>
+<td>0.287</td>
 </tr>
 <tr>
-<th>9</th>
-<td>Principal</td>
-<td>NFLX</td>
-<td>Escore × retorno</td>
-<td>627</td>
-<td>0.0575</td>
+<th>Principal</th>
+<td>0.002</td>
+<td>0.055</td>
+<td>0.161</td>
 </tr>
 <tr>
-<th>10</th>
-<td>Principal</td>
-<td>NFLX</td>
-<td>Intensidade × |retorno|</td>
-<td>627</td>
-<td>0.0301</td>
+<th>Sem retrospectivas</th>
+<td>0.008</td>
+<td>0.042</td>
+<td>0.151</td>
 </tr>
 <tr>
-<th>11</th>
-<td>Principal</td>
-<td>NFLX</td>
-<td>Quantidade × |retorno|</td>
-<td>627</td>
-<td>0.0570</td>
+<th>Sem retrospectivas + mínimo 3</th>
+<td>-0.235</td>
+<td>0.152</td>
+<td>0.355</td>
 </tr>
 <tr>
-<th>12</th>
-<td>Principal</td>
-<td>NVDA</td>
-<td>Escore × retorno</td>
-<td>542</td>
-<td>-0.0406</td>
+<th rowspan="4" valign="top">NFLX</th>
+<th>Mínimo 3</th>
+<td>0.051</td>
+<td>-0.088</td>
+<td>0.103</td>
 </tr>
 <tr>
-<th>13</th>
-<td>Principal</td>
-<td>NVDA</td>
-<td>Intensidade × |retorno|</td>
-<td>542</td>
-<td>0.0160</td>
+<th>Principal</th>
+<td>0.058</td>
+<td>0.030</td>
+<td>0.057</td>
 </tr>
 <tr>
-<th>14</th>
-<td>Principal</td>
-<td>NVDA</td>
-<td>Quantidade × |retorno|</td>
-<td>542</td>
-<td>0.1252</td>
+<th>Sem retrospectivas</th>
+<td>0.042</td>
+<td>0.030</td>
+<td>0.057</td>
 </tr>
 <tr>
-<th>15</th>
-<td>Mínimo 3</td>
-<td>BAC</td>
-<td>Escore × retorno</td>
-<td>88</td>
-<td>0.0930</td>
+<th>Sem retrospectivas + mínimo 3</th>
+<td>0.035</td>
+<td>-0.093</td>
+<td>0.136</td>
 </tr>
 <tr>
-<th>16</th>
-<td>Mínimo 3</td>
-<td>BAC</td>
-<td>Intensidade × |retorno|</td>
-<td>88</td>
-<td>0.1430</td>
+<th rowspan="4" valign="top">NVDA</th>
+<th>Mínimo 3</th>
+<td>-0.012</td>
+<td>-0.122</td>
+<td>0.123</td>
 </tr>
 <tr>
-<th>17</th>
-<td>Mínimo 3</td>
-<td>BAC</td>
-<td>Quantidade × |retorno|</td>
-<td>88</td>
-<td>-0.1586</td>
+<th>Principal</th>
+<td>-0.041</td>
+<td>0.016</td>
+<td>0.125</td>
 </tr>
 <tr>
-<th>18</th>
-<td>Mínimo 3</td>
-<td>JNJ</td>
-<td>Escore × retorno</td>
-<td>123</td>
-<td>-0.0954</td>
+<th>Sem retrospectivas</th>
+<td>-0.009</td>
+<td>0.035</td>
+<td>0.146</td>
 </tr>
 <tr>
-<th>19</th>
-<td>Mínimo 3</td>
-<td>JNJ</td>
-<td>Intensidade × |retorno|</td>
-<td>123</td>
-<td>-0.0013</td>
-</tr>
-<tr>
-<th>20</th>
-<td>Mínimo 3</td>
-<td>JNJ</td>
-<td>Quantidade × |retorno|</td>
-<td>123</td>
-<td>0.0107</td>
-</tr>
-<tr>
-<th>21</th>
-<td>Mínimo 3</td>
-<td>KO</td>
-<td>Escore × retorno</td>
-<td>58</td>
-<td>-0.1957</td>
-</tr>
-<tr>
-<th>22</th>
-<td>Mínimo 3</td>
-<td>KO</td>
-<td>Intensidade × |retorno|</td>
-<td>58</td>
-<td>0.1312</td>
-</tr>
-<tr>
-<th>23</th>
-<td>Mínimo 3</td>
-<td>KO</td>
-<td>Quantidade × |retorno|</td>
-<td>58</td>
-<td>0.2869</td>
-</tr>
-<tr>
-<th>24</th>
-<td>Mínimo 3</td>
-<td>NFLX</td>
-<td>Escore × retorno</td>
-<td>307</td>
-<td>0.0511</td>
-</tr>
-<tr>
-<th>25</th>
-<td>Mínimo 3</td>
-<td>NFLX</td>
-<td>Intensidade × |retorno|</td>
-<td>307</td>
-<td>-0.0880</td>
-</tr>
-<tr>
-<th>26</th>
-<td>Mínimo 3</td>
-<td>NFLX</td>
-<td>Quantidade × |retorno|</td>
-<td>307</td>
-<td>0.1031</td>
-</tr>
-<tr>
-<th>27</th>
-<td>Mínimo 3</td>
-<td>NVDA</td>
-<td>Escore × retorno</td>
-<td>207</td>
-<td>-0.0121</td>
-</tr>
-<tr>
-<th>28</th>
-<td>Mínimo 3</td>
-<td>NVDA</td>
-<td>Intensidade × |retorno|</td>
-<td>207</td>
-<td>-0.1224</td>
-</tr>
-<tr>
-<th>29</th>
-<td>Mínimo 3</td>
-<td>NVDA</td>
-<td>Quantidade × |retorno|</td>
-<td>207</td>
-<td>0.1231</td>
+<th>Sem retrospectivas + mínimo 3</th>
+<td>0.012</td>
+<td>-0.088</td>
+<td>0.131</td>
 </tr>
 </tbody>
 </table>
@@ -9813,8 +9839,10 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Resultado.</strong> Restam 783 pares (32,8%): a retenção vai de 17,4% em KO a 49,0% em NFLX. Em KO, escore × retorno muda de +0,002 para −0,196 (334 → 58 pares); em NFLX, permanece próximo (+0,058 → +0,051). A restrição altera a composição e alguns sinais, sem indicar estabilidade entre empresas.</p>
-<p><strong>Resposta parcial.</strong> Ainda falta excluir retrospectivas e combinar os filtros. O critério será manchete que relata movimento de preço já ocorrido, com revisão de ambiguidades sem consultar o impacto nos retornos. Após a exclusão, será necessário reagrupar e reaplicar o mínimo de três à contagem restante. Amostra menor e retenção desigual também podem explicar mudanças.</p>
+<p><strong>Resultado.</strong> A exclusão de retrospectivas retira 621 das 6.542 associações presentes nas janelas principais. Restam 2.271 pares (95,1%), e o filtro combinado mantém 697 (29,2%). Exigir três notícias sozinho mantém 783. Entre os pares que sobrevivem à exclusão, 359 escores e 113 classes mudam após a reagregação; portanto, somente retirar pregões inteiros não reproduziria esse cenário.</p>
+<p>Em KO, escore × retorno passa de +0,002 na principal para +0,008 sem retrospectivas e −0,235 no combinado (55 pares). Em BAC, vai de +0,015 para +0,004 e −0,058; em NFLX, de +0,058 para +0,042 e +0,035. As intensidades também não seguem uma direção comum. Assim, a exclusão isolada mantém a leitura de associações pequenas, enquanto a restrição de quantidade e sua combinação alteram a composição e alguns sinais.</p>
+<p><strong>Sensibilidade da marcação.</strong> Retirar também os sinais não conclusivos deixa 2.243 pares, ou 670 com mínimo de três. Esse filtro ampliado pode remover previsões ou notícias operacionais; serve para explorar a incerteza da regra, não para identificar todas as retrospectivas. As tabelas registram os seis cenários e a retenção por empresa/ano.</p>
+<p><strong>Resposta.</strong> Não encontramos um padrão uniforme que permaneça entre empresas e filtros. A estabilidade de uma conclusão ampla de associação fraca não equivale à estabilidade de cada coeficiente. Seleção da amostra, grupos pequenos e erros da marcação limitam a robustez; os resultados não demonstram causalidade ou capacidade preditiva.</p>
 </div>
 </div>
 </div>
@@ -9824,9 +9852,10 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="11.-Conclus%C3%B5es-provis%C3%B3rias">11. Conclusões provisórias<a class="anchor-link" href="#11.-Conclus%C3%B5es-provis%C3%B3rias">¶</a></h2><p>A cobertura varia entre empresas e períodos (H1). Neutro é a classe mais frequente, mas extremos diários com uma única manchete mostram a necessidade de contexto. Os retornos por classe se sobrepõem; a intensidade líquida não acompanha claramente maiores oscilações (H2). As correlações mudam de sinal entre empresas e anos (H3), com magnitudes pequenas. Exigir três notícias altera a amostra e alguns resultados.</p>
-<p>As conclusões se limitam a cinco empresas, três anos e uma fonte de notícias, com horários pouco informativos, vínculos indiretos de ticker, classificação imperfeita e dependência entre observações. A análise não controla fatores de mercado nem estima efeitos causais ou desempenho preditivo.</p>
-<p>Recomendamos concluir a revisão de retrospectivas, reagrupar após exclusões, comparar os filtros separados e combinados e conferir os resultados com outro integrante. A pergunta 7 permanece parcial; não há evidência de robustez completa.</p>
+<h2 id="11.-Conclus%C3%B5es-provis%C3%B3rias">11. Conclusões provisórias<a class="anchor-link" href="#11.-Conclus%C3%B5es-provis%C3%B3rias">¶</a></h2><p>A cobertura é desigual (H1), neutro é a classe mais frequente e as distribuições de retorno por classe se sobrepõem. A intensidade líquida não acompanha claramente maiores oscilações na amostra principal (H2). Há mudanças de sinal entre empresas e anos (H3), com correlações pequenas. Os quatro cenários de robustez mantêm a ausência de um padrão uniforme; exigir três notícias, isoladamente ou após excluir retrospectivas, altera a composição e alguns sinais.</p>
+<p>A inspeção dos extremos mostra que uma manchete isolada pode produzir escore muito alto ou baixo. Exigir três reduz alguns extremos, mas conserva textos sobre outras empresas e o mercado. Quantidade de registros não garante relevância, diversidade de fontes ou precisão do sentimento para cada ticker.</p>
+<p>As conclusões se limitam a cinco empresas, três anos e uma fonte, com horários pouco informativos, classificação do texto inteiro, vínculos indiretos de ticker e dependência entre observações. A regra de retrospectivas é conservadora, automática e não foi validada por anotação humana independente. O estudo não controla fatores de mercado nem estima efeitos causais ou desempenho preditivo.</p>
+<p>Para a etapa final, recomendamos validar a marcação com o grupo, aprofundar vínculos de ticker e diferenças temporais e incorporar os comentários do professor quando recebidos. Essas limitações delimitam as respostas apresentadas nesta entrega intermediária.</p>
 </div>
 </div>
 </div>
@@ -9836,8 +9865,8 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="12.-Reprodutibilidade">12. Reprodutibilidade<a class="anchor-link" href="#12.-Reprodutibilidade">¶</a></h2><p>O artigo usa <code>noticias_com_sentimento.csv</code>, <code>base_integrada_pregoes.csv</code> e <code>noticias_pregao_retornos.csv</code>, fornecidos no pacote local. O processamento completo segue <strong>01 → 02 → 03 → 00</strong>, a partir do CSV original e do snapshot documentado. As instruções estão no <a href="README.md">README</a>.</p>
-<p>A célula abaixo exporta as tabelas usadas na análise e todos os textos dos extremos. Depois de executar e salvar o notebook, <code>python tools/exportar_artigo.py</code> gera o HTML offline e imagens dos sete gráficos. Se os dados mudarem, confira e atualize a narrativa, cujos números descrevem esta versão.</p>
+<h2 id="12.-Reprodutibilidade">12. Reprodutibilidade<a class="anchor-link" href="#12.-Reprodutibilidade">¶</a></h2><p>O artigo usa <code>noticias_com_sentimento.csv</code>, <code>base_integrada_pregoes.csv</code> e <code>noticias_pregao_retornos.csv</code>, fornecidos no pacote local. O processamento completo segue <strong>01 → 02 → 03 → 00</strong>, com CSV original, snapshot documentado e os auxiliares em <code>tools/</code>. As instruções estão no <a href="README.md">README</a>.</p>
+<p>A célula abaixo exporta as tabelas, a marcação textual, os cenários e as manchetes dos extremos. Depois de executar e salvar, <code>python tools/exportar_artigo.py</code> gera o HTML offline e as sete figuras. Os arquivos da preparação e a revisão humana de sentimento são preservados. A narrativa descreve esta versão e deve ser conferida se as entradas mudarem.</p>
 </div>
 </div>
 </div>
@@ -9861,13 +9890,22 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
     <span class="s1">'q3_extremos'</span><span class="p">:</span> <span class="n">extremos</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'escore_sentimento'</span><span class="p">:</span> <span class="s1">'escore'</span><span class="p">}),</span>
     <span class="s1">'q4_retornos_classes'</span><span class="p">:</span> <span class="n">retornos_classes</span><span class="p">,</span> <span class="s1">'q5_associacoes'</span><span class="p">:</span> <span class="n">associacoes_q5</span><span class="p">,</span>
     <span class="s1">'q6_correlacoes'</span><span class="p">:</span> <span class="n">correlacoes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">'rotulo'</span><span class="p">),</span> <span class="s1">'q7_sensibilidade'</span><span class="p">:</span> <span class="n">sensibilidade</span><span class="p">,</span>
-    <span class="s1">'q7_retornos_classes'</span><span class="p">:</span> <span class="n">classes_sensibilidade</span><span class="p">}</span>
+    <span class="s1">'q7_retornos_classes'</span><span class="p">:</span> <span class="n">classes_sensibilidade</span><span class="p">,</span>
+    <span class="s1">'q7_resumo_cenarios'</span><span class="p">:</span> <span class="n">resumo_cenarios</span><span class="p">,</span> <span class="s1">'q7_retencao_empresa_ano'</span><span class="p">:</span> <span class="n">retencao_cenarios</span><span class="p">,</span>
+    <span class="s1">'q7_sensibilidade_completa'</span><span class="p">:</span> <span class="n">sensibilidade_completa</span><span class="p">,</span>
+    <span class="s1">'q3_extremos_com_suporte'</span><span class="p">:</span> <span class="n">extremos_suporte</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'escore_sentimento'</span><span class="p">:</span> <span class="s1">'escore'</span><span class="p">})}</span>
 <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">tabela</span> <span class="ow">in</span> <span class="n">tabelas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">tabela</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">TAB</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s1">.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="s1">'</span><span class="si">%.10g</span><span class="s1">'</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">textos_extremos</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">extremos</span><span class="p">[[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">,</span> <span class="s1">'extremo'</span><span class="p">]],</span>
     <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="s1">'many_to_one'</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">,</span> <span class="s1">'source_row'</span><span class="p">])</span>
 <span class="n">textos_extremos</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'manchetes_extremos_analise.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tabelas</span><span class="p">)</span><span class="si">}</span><span class="s1"> tabelas exportadas; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">textos_extremos</span><span class="p">)</span><span class="si">}</span><span class="s1"> manchetes nos extremos.'</span><span class="p">)</span>
+<span class="n">textos_suporte</span> <span class="o">=</span> <span class="n">noticias</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">extremos_suporte</span><span class="p">[[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">,</span> <span class="s1">'extremo'</span><span class="p">]],</span>
+    <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'stock'</span><span class="p">,</span> <span class="s1">'news_date'</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="s1">'many_to_one'</span><span class="p">)</span>
+<span class="n">textos_suporte</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">TAB</span> <span class="o">/</span> <span class="s1">'q3_manchetes_extremos_com_suporte.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">marcacao</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">RAIZ</span> <span class="o">/</span> <span class="s1">'docs/retrospectivas/marcacao_textos.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">cenario</span><span class="o">=</span><span class="n">nome</span><span class="p">)</span> <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">cenarios</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="n">DATA</span> <span class="o">/</span> <span class="s1">'base_robustez_cenarios.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="s1">'</span><span class="si">%.12g</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9879,7 +9917,7 @@ ${l}`);}return c;}(t1,&quot;&quot;,0);}function n1(n,t,e){return n.fields=t||[],
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>11 tabelas exportadas; 10 manchetes nos extremos.
+<pre>15 tabelas exportadas; 10 manchetes nos extremos.
 </pre>
 </div>
 </div>

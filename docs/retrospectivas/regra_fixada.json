@@ -1,0 +1,14 @@
+{
+  "versao": "1.0",
+  "fixada_em_utc": "2026-10-16T21:14:39.896322+00:00",
+  "sha256_codigo": "7d03b4ce782afcc929d1727022491b0f2e0ce6f312ea167ca0655ecac2378361",
+  "insumos_definicao": "Somente manchetes; sem probabilidades e sem retornos na definição ou revisão das regras.",
+  "exclusao_principal": "retrospectiva_explicita",
+  "ambiguas": "mantidas; cenários adicionais retiram também sinais não conclusivos para avaliar a sensibilidade da marcação",
+  "nao_e": "anotação humana validada ou classificador exaustivo",
+  "contagens_textos": {
+    "sem_indicio_explicito": 5136,
+    "retrospectiva_explicita": 586,
+    "ambigua": 297
+  }
+}

@@ -29,3 +29,33 @@ Mínimo 3,NFLX,Quantidade × |retorno|,307,0.1030772836
 Mínimo 3,NVDA,Escore × retorno,207,-0.01214268706
 Mínimo 3,NVDA,Intensidade × |retorno|,207,-0.1223982855
 Mínimo 3,NVDA,Quantidade × |retorno|,207,0.1231360195
+Sem retrospectivas,BAC,Escore × retorno,409,0.003534458581
+Sem retrospectivas,BAC,Intensidade × |retorno|,409,0.04276087142
+Sem retrospectivas,BAC,Quantidade × |retorno|,409,-0.009816188444
+Sem retrospectivas,JNJ,Escore × retorno,438,0.05500966901
+Sem retrospectivas,JNJ,Intensidade × |retorno|,438,-0.0247898931
+Sem retrospectivas,JNJ,Quantidade × |retorno|,438,0.03657737443
+Sem retrospectivas,KO,Escore × retorno,327,0.007647607079
+Sem retrospectivas,KO,Intensidade × |retorno|,327,0.0417508176
+Sem retrospectivas,KO,Quantidade × |retorno|,327,0.151481561
+Sem retrospectivas,NFLX,Escore × retorno,607,0.04226311361
+Sem retrospectivas,NFLX,Intensidade × |retorno|,607,0.02975549969
+Sem retrospectivas,NFLX,Quantidade × |retorno|,607,0.05696919436
+Sem retrospectivas,NVDA,Escore × retorno,490,-0.008892505311
+Sem retrospectivas,NVDA,Intensidade × |retorno|,490,0.03516401525
+Sem retrospectivas,NVDA,Quantidade × |retorno|,490,0.1462759729
+Sem retrospectivas + mínimo 3,BAC,Escore × retorno,74,-0.05821547575
+Sem retrospectivas + mínimo 3,BAC,Intensidade × |retorno|,74,0.1849833395
+Sem retrospectivas + mínimo 3,BAC,Quantidade × |retorno|,74,-0.09412559934
+Sem retrospectivas + mínimo 3,JNJ,Escore × retorno,116,-0.110037289
+Sem retrospectivas + mínimo 3,JNJ,Intensidade × |retorno|,116,-0.05372698266
+Sem retrospectivas + mínimo 3,JNJ,Quantidade × |retorno|,116,0.07756160712
+Sem retrospectivas + mínimo 3,KO,Escore × retorno,55,-0.2347041847
+Sem retrospectivas + mínimo 3,KO,Intensidade × |retorno|,55,0.1518759019
+Sem retrospectivas + mínimo 3,KO,Quantidade × |retorno|,55,0.3553496669
+Sem retrospectivas + mínimo 3,NFLX,Escore × retorno,286,0.03485423434
+Sem retrospectivas + mínimo 3,NFLX,Intensidade × |retorno|,286,-0.09346673865
+Sem retrospectivas + mínimo 3,NFLX,Quantidade × |retorno|,286,0.1358596684
+Sem retrospectivas + mínimo 3,NVDA,Escore × retorno,166,0.01234988949
+Sem retrospectivas + mínimo 3,NVDA,Intensidade × |retorno|,166,-0.0882908881
+Sem retrospectivas + mínimo 3,NVDA,Quantidade × |retorno|,166,0.1305842575

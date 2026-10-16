@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 RAIZ = Path(__file__).resolve().parents[1]
 DESTINO = RAIZ / 'artigo_interativo.html'
 notebook = nbformat.read(RAIZ / 'notebooks/00_artigo.ipynb', as_version=4)
-alturas = [415, 350, 615, 675, 500, 690, 410]
+alturas = [415, 350, 615, 675, 500, 690, 600]
 figuras = RAIZ / 'figures/analise_visual'
 figuras.mkdir(parents=True, exist_ok=True)
 n = 0

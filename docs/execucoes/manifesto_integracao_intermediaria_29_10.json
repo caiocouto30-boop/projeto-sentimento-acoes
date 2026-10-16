@@ -1,0 +1,97 @@
+{
+  "etapa": "03_integracao_retornos",
+  "gerado_em_utc": "2026-10-16T23:25:55.408787+00:00",
+  "inicio_noticias": "2017-01-01",
+  "fim_noticias": "2019-12-31",
+  "unidade_analitica": "empresa + pregão de resposta",
+  "regra_alinhamento": "primeiro pregão estritamente posterior à data civil da notícia",
+  "retorno": "100 * (adj_close / adj_close do pregão anterior - 1)",
+  "calendario": "XNYS",
+  "config_sha256": "f81776de0718e915ee60060be020a8f434d64a9544cf1934934e60672eb7924d",
+  "versoes": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "exchange-calendars": "4.13.2",
+    "pyluach": "2.3.0",
+    "toolz": "1.2.0"
+  },
+  "python": "3.11.16",
+  "hashes_entrada": {
+    "data/processed/noticias_com_sentimento.csv": "985b594935b2a07631b37e50acc53b7e9ee54ab9aef353c7e66015f662f79e71",
+    "data/processed/cotacoes_limpas_com_margem.csv": "86bf50f857b80899c760a46fb919dd1d72b8e6fe1c80374a4d82f066bbde0d1d"
+  },
+  "entradas_iguais_referencia": true,
+  "snapshot_precos": {
+    "fonte": "Yahoo Finance via yfinance",
+    "tickers": [
+      "NVDA",
+      "NFLX",
+      "BAC",
+      "JNJ",
+      "KO"
+    ],
+    "parametros": {
+      "start": "2016-12-15",
+      "end": "2020-01-11",
+      "interval": "1d",
+      "auto_adjust": false,
+      "back_adjust": false,
+      "repair": false,
+      "keepna": true,
+      "actions": true,
+      "ignore_tz": true,
+      "threads": false,
+      "progress": false,
+      "multi_level_index": false,
+      "timeout": 30
+    },
+    "yfinance": "1.7.0",
+    "coletado_em_utc": "2026-10-09T21:42:24.945771+00:00",
+    "sha256": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3"
+  },
+  "contagens": {
+    "noticias": 6552,
+    "pares_empresa_data_civil": 2569,
+    "pares_empresa_pregao_com_noticias": 2392,
+    "grupos_com_varias_datas": 152,
+    "painel_2017_2019": 3770,
+    "pregoes_com_noticias_2017_2019": 2390,
+    "pregoes_sem_noticias_no_recorte": 1380,
+    "janelas_incompletas_painel": 5,
+    "com_noticias_e_elegiveis_analise_principal": 2387,
+    "noticias_retorno_fora_recorte": 6,
+    "grupos_retorno_fora_recorte": 2,
+    "noticias_sem_pregao_ou_retorno": 0,
+    "diferencas_calendario": 0,
+    "casos_sinteticos_conferidos": 9,
+    "empates_sentimento_pregao": 0
+  },
+  "fontes_calendario": [
+    "https://github.com/gerrymanoim/exchange_calendars",
+    "https://ir.theice.com/press/news-details/2016/NYSE-Group-announces-2018-and-2019-holiday-and-early-closings-calendar/default.aspx",
+    "https://ir.theice.com/press/news-details/2017/NYSE-Group-Announces-2018-2019-and-2020-Holiday-and-Early-Closings-Calendar/default.aspx",
+    "https://ir.theice.com/press/news-details/2018/New-York-Stock-Exchange-to-Honor-President-George-H-W-Bush/default.aspx"
+  ],
+  "hashes_saida": {
+    "data/processed/noticias_pregao_retornos.csv": "712142e8ed202c41ce0ec6beca7fcff8b99b3392a970551be47569f68cbc331f",
+    "data/processed/sentimento_por_pregao.csv": "6106b825a125ac7ca3b6e1482800231178fcfc1a39e3ac9efbcac84374918036",
+    "data/processed/base_integrada_pregoes.csv": "ba16c1c435b1e3fd8dc2d270c030ab05af2f5bb548dfeaba2cefc7f6efe261e5",
+    "data/processed/retornos_cotacoes.csv": "b67ccdb5f17eb9afa83bae8fb61ff39caeb5b98f9b7e328a5fd33cde052b3867",
+    "docs/mapa_datas_pregoes.csv": "71a858738427f930308247d1784aa312eda0dd9e9fd40d4513d0d33db22c0c67",
+    "docs/resumo_integracao_por_empresa.csv": "7334d51c8d630f0ad3a7839952f1d39e36cee83a2668e342bf49970b3cd36e89",
+    "docs/noticias_retorno_fora_recorte.csv": "391f4e9d34a41ffb8fbab9efbf25a6da2b5f9886bfe4797fa1f2d633664758a5",
+    "docs/grupos_varias_datas.csv": "3eecd1f3aa6d0bbe054901c4f2adfe7a9e6fb1c06d0c95bfe6a022e55a1127ea"
+  },
+  "preservacao_entradas_e_revisao_humana": true,
+  "estado": {
+    "integracao": "concluida",
+    "continuidade": "00_artigo.ipynb"
+  },
+  "limitacoes": [
+    "Alinhamento por data civil, sem horário, não estabelece causalidade.",
+    "Ausência no corpus não representa ausência de notícias no mundo.",
+    "Primeiro pregão de 2017 e extensão em janeiro de 2020 têm janela de notícias incompleta.",
+    "Manchetes compartilhadas e retornos seriados implicam dependência entre unidades.",
+    "Revisão humana dirigida do FinBERT não estima acurácia geral."
+  ]
+}

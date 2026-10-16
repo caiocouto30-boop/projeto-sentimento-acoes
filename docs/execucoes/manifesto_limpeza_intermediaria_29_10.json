@@ -1,0 +1,71 @@
+{
+  "etapa": "limpeza de notícias e conferência de cotações",
+  "gerado_em_utc": "2026-10-16T23:25:28.818422+00:00",
+  "tickers": [
+    "NVDA",
+    "NFLX",
+    "BAC",
+    "JNJ",
+    "KO"
+  ],
+  "inicio": "2017-01-01",
+  "fim": "2019-12-31",
+  "versoes": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "yfinance": "1.7.0",
+    "ipykernel": "7.4.0"
+  },
+  "ambiente_execucao": {
+    "MKL_THREADING_LAYER": "SEQUENTIAL"
+  },
+  "noticias_fonte": "https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests",
+  "noticias_sha256_original": "609289a49dc8af2bd28a8466dffd9663521237026f1040c0f238010b29135fb6",
+  "coleta_precos": {
+    "fonte": "Yahoo Finance via yfinance",
+    "tickers": [
+      "NVDA",
+      "NFLX",
+      "BAC",
+      "JNJ",
+      "KO"
+    ],
+    "parametros": {
+      "start": "2016-12-15",
+      "end": "2020-01-11",
+      "interval": "1d",
+      "auto_adjust": false,
+      "back_adjust": false,
+      "repair": false,
+      "keepna": true,
+      "actions": true,
+      "ignore_tz": true,
+      "threads": false,
+      "progress": false,
+      "multi_level_index": false,
+      "timeout": 30
+    },
+    "yfinance": "1.7.0",
+    "coletado_em_utc": "2026-10-09T21:42:24.945771+00:00",
+    "sha256": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3"
+  },
+  "original_noticias": 1407328,
+  "recorte_antes_limpeza": 6556,
+  "noticias_limpas": 6552,
+  "exclusoes_nas_cinco_empresas": {
+    "data_invalida": 0,
+    "fora_do_periodo": 7149,
+    "manchete_vazia": 0,
+    "duplicata_empresa_data_manchete": 4
+  },
+  "hashes_resultados": {
+    "noticias_limpas.csv": "cf0a97996c7f0823ceb84e57b6b3985c22ba0d421913ed2ae599a87ec2e3ae6c",
+    "cotacoes_limpas_com_margem.csv": "86bf50f857b80899c760a46fb919dd1d72b8e6fe1c80374a4d82f066bbde0d1d"
+  },
+  "unidade_noticias": "empresa, dia registrado, manchete normalizada",
+  "unidade_precos": "empresa, pregão observado",
+  "continuidade": [
+    "02_sentimento_finbert.ipynb",
+    "03_integracao_retornos.ipynb"
+  ]
+}

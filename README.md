@@ -9,7 +9,7 @@ Investigamos associações entre o tom de manchetes e os retornos de **NVDA, NFL
 
 O [**notebook-artigo**](notebooks/00_artigo.ipynb) reúne dados, método, sete perguntas, transformações, gráficos e conclusões. Para explorar os controles sem Python, baixe o [**artigo HTML**](artigo_interativo.html) e abra no navegador; ele funciona offline. O GitHub exibe as imagens salvas do notebook.
 
-A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. O filtro de três notícias altera a composição e alguns sinais. As conclusões são exploratórias, sem interpretação causal.
+A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. Os filtros de retrospectivas e quantidade alteram a composição e alguns sinais, sem um padrão uniforme entre empresas. As conclusões são exploratórias, sem interpretação causal.
 
 ## Organização
 
@@ -42,6 +42,6 @@ O pacote local inclui as bases preparadas para iniciar diretamente pelo artigo. 
 
 ## Situação acadêmica
 
-O artigo atende à estrutura solicitada para a intermediária de **29/10**: dados definidos, hipóteses, uma seção por pergunta e conclusões provisórias. As perguntas 1–6 têm respostas iniciais; a **7 é parcial**, faltando excluir retrospectivas e combinar os filtros. Falta preparar a apresentação de cinco minutos.
+O artigo atende à estrutura solicitada para a intermediária de **29/10**: dados definidos, hipóteses, uma seção por pergunta e conclusões provisórias. As sete perguntas têm respostas exploratórias. A pergunta 7 compara a principal (2.387 pares), mínimo de três (783), exclusão de retrospectivas explícitas (2.271) e filtro combinado (697), com reagregação. A [regra textual](docs/retrospectivas/README.md) é automática e conservadora, sem validação humana independente. O [guia de entrega](ENTREGA_29_10.md) reúne os arquivos e delimita o escopo; slides e ensaio ficaram fora desta tarefa.
 
-Para a final na **Semana A2**, ainda são necessários o aprofundamento da análise, a incorporação do retorno do professor, a apresentação de dez minutos e a declaração factual de contribuições do trio. A revisão não comprova entrega formal ou aprovação pelo professor.
+Para a final na **Semana A2**, ainda são necessários a validação humana da marcação, o aprofundamento da análise e a incorporação do retorno do professor quando recebido, a apresentação de dez minutos e a declaração factual de contribuições do trio. A revisão não comprova entrega formal ou aprovação pelo professor.

@@ -1,0 +1,11 @@
+stock,news_date,escore,n_noticias,manchete_exemplo,extremo
+BAC,2018-12-04,-0.9504771121,3,"Banking sector shares are trading down as U.S. Treasury yields sink. SPDR S&P Regional Banking ETF down 5.8%, Bank of America shares down 5.3%, Citigroup shares down 4.7%, JPMorgan Chase shares down 3.7%, Financial Select Sector shares down 3.8%.",mínimo
+NVDA,2018-04-02,-0.9281103145,3,"AMD, Nvidia Cut GPU Prices As Crypto Slump Saps Demand",mínimo
+JNJ,2017-09-20,-0.8150564001,3,Johnson & Johnson Shares Down 1.64% Premarket,mínimo
+NFLX,2017-10-18,-0.6749106636,3,"The Market In 5 Minutes: Housing Starts A Bit Lower Than Expected, Chipotle Gets A Downgrade",mínimo
+KO,2019-03-12,-0.5539995033,5,BMO Downgrades Monster Beverages After Hitting 'Peak Valuation',mínimo
+KO,2019-10-23,0.8809735921,3,"UPDATE:UBS On Coca-Cola Notes Co's 'navigating aggressive US price increases, digesting a transformational deal (Costa), completing a global refranchising','demonstrating strong innovation capabilities while reinvigorating growth in high-margin sparkling'",máximo
+NVDA,2019-06-11,0.8765652564,3,Analyst: AMD's New Graphics Cards Make 'Meaningful Improvement' But Cost More Than Expected,máximo
+JNJ,2019-07-10,0.8181939486,3,"J&J Says ""Pleased With The California Appellate Court's Review"" Of The Talc Case; Says Pleased That Court Agreed With Judge Nelson's Finding That Punitive Damages Should Not Have Been Awarded",máximo
+BAC,2019-04-12,0.7973460176,3,Shares of several US banking companies are trading higher after better-than-expected Q1 earnings from JP Morgan; PNC reported earnings inline.,máximo
+NFLX,2019-01-10,0.6395867405,3,"Despite Some Risks, Analysts Still Expecting Double Digit Growth From Communications Services In Q4",máximo

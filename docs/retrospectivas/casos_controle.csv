@@ -1,0 +1,18 @@
+manchete_exemplificativa,exclusao_esperada,marcacao_obtida,regra
+NVIDIA shares are trading lower after weak earnings.,True,retrospectiva_explicita,negociacao_observada
+NVIDIA shares will be trading higher if demand improves.,False,ambigua,negociacao_em_contexto_prospectivo
+Nvidia shares up 2% after results.,True,retrospectiva_explicita,cotacao_observada
+Nvidia could rise 20% next year.,False,ambigua,contexto_de_preco_sem_relato_inequivoco
+Nvidia Reports Q2 Earnings On Thursday After Market Close,False,sem_indicio_explicito,nenhuma_regra_explicita
+Bank of America to Report Earnings Before Market Open,False,sem_indicio_explicito,nenhuma_regra_explicita
+Bank of America acquires 700 million shares of Example Inc.,False,sem_indicio_explicito,nenhuma_regra_explicita
+"Nvidia Reports GPU Sales Up 40%, Down 4% Sequentially",False,ambigua,contexto_de_preco_sem_relato_inequivoco
+Nvidia's market share declined in the quarter,False,ambigua,contexto_de_preco_sem_relato_inequivoco
+Stocks That Hit 52-Week Highs On Friday,True,retrospectiva_explicita,maxima_minima_listada
+Stocks That Could Hit Record Highs Next Year,False,ambigua,contexto_de_preco_sem_relato_inequivoco
+Financial Stocks Have Been Rallying Ahead Of Earnings,True,retrospectiva_explicita,movimento_de_acao
+"Is Nvidia A Buy? Only If Shares Fall Further, Says Analyst",False,ambigua,previsao_ou_pergunta
+NVIDIA Declines To Comment On Product Rumors,False,ambigua,contexto_de_preco_sem_relato_inequivoco
+Mid-Day Market Update: Markets Open Higher; Company Beats Estimates,True,retrospectiva_explicita,resumo_intradiario
+Tech Sector Set To Lead Stocks Lower Again,False,ambigua,previsao_ou_pergunta
+NVIDIA Announces New AI Platform,False,sem_indicio_explicito,nenhuma_regra_explicita
