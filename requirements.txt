@@ -10,3 +10,6 @@ exchange-calendars==4.13.2
 yfinance==1.7.0
 matplotlib==3.11.2
 seaborn==0.13.2
+altair==6.3.0
+vl-convert-python==1.9.0.post1
+nbconvert==7.17.1

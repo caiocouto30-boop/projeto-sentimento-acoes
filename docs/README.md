@@ -4,7 +4,7 @@
 
 - [Notebook-artigo](../notebooks/00_artigo.ipynb): narrativa principal, com dados, método, uma seção por pergunta, resultados disponíveis e conclusões provisórias.
 - [Adequação ao enunciado](adequacao_artigo.md): exigências do professor, localização no artigo e pendências reais.
-- [Resultados registrados](resultados_registrados.json): transcrição de duas tabelas já calculadas, com commit, células e hashes de origem. O artigo lê esse registro fixo; uma nova execução dos notebooks de apoio não o atualiza automaticamente.
+- [Resultados registrados](resultados_registrados.json): transcrição de duas tabelas já calculadas, com commit, células e hashes de origem. Esse registro é histórico; o artigo atual recalcula as tabelas diretamente das bases preparadas. Uma nova execução dos notebooks de apoio não atualiza o registro automaticamente.
 
 Os notebooks 01–04 são material de apoio à reprodução do processamento. A revisão editorial de 15/10/2026 preservou as células computacionais e os resultados dos notebooks 01–03, centralizando a narrativa no artigo. Ela não avançou as análises de sentimento, retornos ou robustez.
 
@@ -58,3 +58,8 @@ Os registros de execução são históricos: `integracao_retornos: pendente` no 
 - [Configuração](config_analise_visual.json) e [manifesto](analise_visual/manifesto.json).
 
 As perguntas 1–6 têm primeiras respostas. A pergunta 7 tem comparação inicial com mínimo de três notícias; exclusão de retrospectivas e combinação de filtros continuam pendentes. A revisão de 15/10 acima é histórica; o notebook 04 registra os novos cálculos de 16/10.
+
+
+## Revisão pontual de simplicidade e interatividade
+
+Veja [revisao_simplicidade.md](revisao_simplicidade.md). O artigo agora recalcula suas transformações e gráficos Altair; os registros datados anteriores continuam históricos.

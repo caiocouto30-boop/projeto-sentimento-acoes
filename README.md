@@ -33,7 +33,7 @@ As 39 concordâncias em 50 casos não estimam a acurácia geral do modelo. Os r�
 
 | Arquivo | Papel |
 | --- | --- |
-| [00_artigo.ipynb](notebooks/00_artigo.ipynb) | Texto principal, resultados salvos e delimitação do que ainda falta |
+| [00_artigo.ipynb](notebooks/00_artigo.ipynb) | Texto principal, transformações finais, sete gráficos Altair e delimitação do que ainda falta |
 | [01_preparacao_inicial.ipynb](notebooks/01_preparacao_inicial.ipynb) | Apoio: limpeza, auditoria e cobertura, com explicações junto ao código |
 | [02_sentimento_finbert.ipynb](notebooks/02_sentimento_finbert.ipynb) | Apoio: classificação, agregado por data civil e revisão humana |
 | [03_integracao_retornos.ipynb](notebooks/03_integracao_retornos.ipynb) | Apoio: calendário, alinhamento, retornos e painel |
@@ -41,13 +41,15 @@ As 39 concordâncias em 50 casos não estimam a acurácia geral do modelo. Os r�
 | [docs/README.md](docs/README.md) | Índice documental, relatórios e registros de execução |
 | [resultados_registrados.json](docs/resultados_registrados.json) | Tabelas já calculadas, transcritas das saídas salvas, com origem verificável |
 
-Os notebooks de apoio preservam todas as células de código e saídas existentes. O artigo centraliza a narrativa; não duplica nem substitui o processamento. As tabelas transcritas são um registro fixo da versão de referência, não uma base completa nem um relatório atualizado automaticamente.
+Os notebooks de preparação preservam suas células de código e saídas existentes. O artigo centraliza a narrativa e recalcula as transformações finais e os gráficos; a preparação continua nos notebooks 01–03. As tabelas transcritas são um registro fixo da versão de referência, não uma base completa nem um relatório atualizado automaticamente.
 
 ## Como ler e executar o artigo
 
-Abra `notebooks/00_artigo.ipynb` no GitHub ou no Jupyter. As saídas já estão salvas. Para reconstruir sua apresentação, execute as quatro células em ordem, a partir da raiz do projeto ou de `notebooks/`. Elas requerem Python, pandas e IPython, e leem somente arquivos versionados. Não precisam do CSV bruto, de internet ou do FinBERT.
+O `notebooks/00_artigo.ipynb` agora contém pandas e Altair junto a cada uma das sete perguntas: transformação, gráfico e interpretação. Execute as células em ordem no Jupyter. O artigo usa as três bases preparadas em `data/processed/`, fornecidas no pacote local do grupo; não executa coleta nem FinBERT.
 
-Isso verifica a leitura dos resultados registrados; **não equivale a reproduzir o processamento integral**.
+Para explorar sem instalar Python, baixe o [**artigo interativo HTML**](artigo_interativo.html) e abra-o no navegador, ou abra esse arquivo após clonar o projeto. Os gráficos funcionam sem internet. As interações incluem seleção de empresa, intervalo de datas, destaque de pregões e seleção de empresa/ano. O GitHub mostra o código do HTML; para usar os controles é necessário baixar e abrir o arquivo. No notebook do GitHub, consulte as saídas estáticas salvas.
+
+As verificações essenciais de chaves, ausências e amostra permanecem no artigo. Hashes e manifestos continuam nos registros e notebooks de preparação, sem bloquear sua leitura. O notebook 04 conserva a análise estática anterior como apoio. Veja [o que mudou e como reproduzir](docs/revisao_simplicidade.md).
 
 ## Como reproduzir o processamento integral
 
@@ -67,9 +69,9 @@ Isso verifica a leitura dos resultados registrados; **não equivale a reproduzir
 5. Execute **02_sentimento_finbert.ipynb** em ordem. O primeiro carregamento permite baixar a revisão fixada do modelo; o cache local permite reutilizar probabilidades compatíveis. A [amostra humana preenchida](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada; o leitor aceita vírgula ou ponto e vírgula.
 6. Execute **03_integracao_retornos.ipynb** em ordem. Ele verifica as entradas fixadas e o calendário XNYS, e gera `base_integrada_pregoes.csv`. Outra coleta deve ser assumida explicitamente conforme as instruções do notebook; não desative uma conferência para contornar uma diferença não investigada.
 7. Execute **04_analise_visual.ipynb** em ordem. Ele confere os hashes em `docs/config_analise_visual.json` e gera os resumos e imagens sem rede, coleta ou inferência. As entradas exatas estão no pacote local do grupo.
-8. Confira os CSVs e manifestos locais. O artigo e `docs/resultados_registrados.json` descrevem a execução de referência: se as entradas ou resultados mudarem, reconcilie as contagens e atualize a narrativa e sua origem antes de publicar outra versão.
+8. Execute `00_artigo.ipynb` para recalcular as agregações finais e explorar os gráficos Altair. Confira os CSVs e manifestos locais. O artigo e `docs/resultados_registrados.json` descrevem a execução de referência: se as entradas ou resultados mudarem, reconcilie as contagens e atualize a narrativa e sua origem antes de publicar outra versão.
 
-Os dados completos, o CSV original, os snapshots e os pesos **não estão versionados**. Os notebooks e registros existentes documentam execuções anteriores; a revisão editorial anterior executou as células de leitura do artigo. A etapa visual de 16/10 executou as 12 células do notebook 04; as etapas 01–03 não foram recalculadas. A reprodução integral por outro integrante continua pendente. `requirements.txt` reúne dependências diretas com versões observadas; não é um lock completo ou multiplataforma.
+Os dados completos, o CSV original, os snapshots e os pesos **não estão versionados**. Os notebooks e registros existentes documentam execuções anteriores; a revisão editorial anterior executou as células de leitura do artigo. A etapa visual original de 16/10 executou as 12 células do notebook 04; a revisão posterior executou também todas as células do artigo; as etapas 01–03 não foram recalculadas. A reprodução integral por outro integrante continua pendente. `requirements.txt` reúne dependências diretas com versões observadas; não é um lock completo ou multiplataforma.
 
 ## Fontes e decisões metodológicas
 
