@@ -8,7 +8,7 @@ O Marco 2 pede um **notebook Jupyter em forma de artigo, ainda que incompleto**,
 
 O enunciado não exige PDF nem um estilo específico como ABNT ou template de periódico. O artefato principal desta revisão é o [notebook-artigo](../notebooks/00_artigo.ipynb). A separação entre artigo e notebooks de apoio é uma decisão de organização: mantém a narrativa legível e o código detalhado acessível.
 
-## Correspondência com o material atual
+## Correspondência na revisão editorial de 15/10/2026
 
 | Exigência | Local | Situação |
 | --- | --- | --- |
@@ -42,3 +42,10 @@ O cronograma interno sugere primeiras respostas às perguntas 1–6 e uma compar
 O artigo foi validado como notebook e suas quatro células de leitura foram executadas em ordem, sem erros, usando somente arquivos versionados. Foram conferidos os totais, a correspondência dos resumos com as saídas de origem, os links locais e a preservação das células computacionais dos três notebooks de apoio. A leitura renderizada foi revisada para conferir tabelas, fórmulas, títulos e figura.
 
 As etapas de limpeza, inferência e integração não foram executadas novamente nesta revisão. A validação editorial não substitui a reprodução integral por outro integrante a partir dos dados e snapshots necessários.
+
+
+## Atualização de 16/10/2026 — etapa visual de 20–23/10
+
+As seções 4–9 do artigo agora apresentam primeiras respostas às perguntas 1–6, com gráficos, transformações e limitações. A seção 10 apresenta a comparação inicial da pergunta 7; retrospectivas e filtros combinados seguem pendentes. Resumo, introdução, conclusões e instruções de reprodução foram atualizados. O notebook 04 contém o processamento em 12 células executadas, com resultados e explicações das transformações.
+
+Esta atualização não cria a apresentação nem declara concluída a entrega acadêmica. A tabela anterior documenta o estado da revisão de 15/10, não o estado atual das análises.

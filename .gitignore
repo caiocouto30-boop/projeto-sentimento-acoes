@@ -255,3 +255,6 @@ docs/mapa_datas_pregoes.csv
 docs/resumo_integracao_por_empresa.csv
 docs/noticias_retorno_fora_recorte.csv
 docs/grupos_varias_datas.csv
+
+# Material pessoal de estudo (fora da entrega acadêmica)
+guia_estudo_codigo_pandas*

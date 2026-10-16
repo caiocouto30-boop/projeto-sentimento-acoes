@@ -1,0 +1,31 @@
+cenario,stock,metrica,n,rho
+Principal,BAC,Escore × retorno,438,0.01504875744
+Principal,BAC,Intensidade × |retorno|,438,0.01116300046
+Principal,BAC,Quantidade × |retorno|,438,0.03265085153
+Principal,JNJ,Escore × retorno,446,0.03068277901
+Principal,JNJ,Intensidade × |retorno|,446,-0.009739947494
+Principal,JNJ,Quantidade × |retorno|,446,0.02973045802
+Principal,KO,Escore × retorno,334,0.00233433955
+Principal,KO,Intensidade × |retorno|,334,0.05479369332
+Principal,KO,Quantidade × |retorno|,334,0.1607731391
+Principal,NFLX,Escore × retorno,627,0.05752093697
+Principal,NFLX,Intensidade × |retorno|,627,0.03007379702
+Principal,NFLX,Quantidade × |retorno|,627,0.0570360441
+Principal,NVDA,Escore × retorno,542,-0.04064014854
+Principal,NVDA,Intensidade × |retorno|,542,0.01598701958
+Principal,NVDA,Quantidade × |retorno|,542,0.1252336563
+Mínimo 3,BAC,Escore × retorno,88,0.09302243669
+Mínimo 3,BAC,Intensidade × |retorno|,88,0.1429502307
+Mínimo 3,BAC,Quantidade × |retorno|,88,-0.1586297601
+Mínimo 3,JNJ,Escore × retorno,123,-0.09535540622
+Mínimo 3,JNJ,Intensidade × |retorno|,123,-0.001296255691
+Mínimo 3,JNJ,Quantidade × |retorno|,123,0.01067419588
+Mínimo 3,KO,Escore × retorno,58,-0.1956688917
+Mínimo 3,KO,Intensidade × |retorno|,58,0.1311944385
+Mínimo 3,KO,Quantidade × |retorno|,58,0.2869296362
+Mínimo 3,NFLX,Escore × retorno,307,0.05114761332
+Mínimo 3,NFLX,Intensidade × |retorno|,307,-0.0880362213
+Mínimo 3,NFLX,Quantidade × |retorno|,307,0.1030772836
+Mínimo 3,NVDA,Escore × retorno,207,-0.01214268706
+Mínimo 3,NVDA,Intensidade × |retorno|,207,-0.1223982855
+Mínimo 3,NVDA,Quantidade × |retorno|,207,0.1231360195

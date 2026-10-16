@@ -6,7 +6,7 @@
 - [Adequação ao enunciado](adequacao_artigo.md): exigências do professor, localização no artigo e pendências reais.
 - [Resultados registrados](resultados_registrados.json): transcrição de duas tabelas já calculadas, com commit, células e hashes de origem. O artigo lê esse registro fixo; uma nova execução dos notebooks de apoio não o atualiza automaticamente.
 
-Os notebooks 01–03 são material de apoio à reprodução do processamento. A revisão editorial de 15/10/2026 preservou suas células computacionais e resultados, centralizando a narrativa no artigo. Ela não avançou as análises de sentimento, retornos ou robustez.
+Os notebooks 01–04 são material de apoio à reprodução do processamento. A revisão editorial de 15/10/2026 preservou as células computacionais e os resultados dos notebooks 01–03, centralizando a narrativa no artigo. Ela não avançou as análises de sentimento, retornos ou robustez.
 
 ## Documentos acadêmicos fornecidos ao grupo
 
@@ -30,8 +30,6 @@ Os arquivos `resumo_limpeza_noticias.csv`, `cobertura_noticias_anual.csv`, `cobe
 
 A documentação do notebook e do README descreve quais verificações foram realizadas e como reproduzi-las.
 
-
-
 ## FinBERT e revisão inicial — 15/10/2026
 
 - [Guia e relatório da revisão](finbert.md): método, resultados, limitações e próximos passos.
@@ -40,7 +38,6 @@ A documentação do notebook e do README descreve quais verificações foram rea
 - [Registro da execução](execucoes/finbert_2026-10-15.json): revisão do modelo, hashes, contagens e estado da revisão.
 
 Os CSVs completos `noticias_com_sentimento.csv` e `sentimento_diario_noticias.csv` são gerados localmente em `data/processed/`. O cache permanece em `data/cache/`. O manifesto corrente, o dicionário e o resumo por empresa também são gerados localmente e ignorados pelo Git. O registro datado acima é uma cópia da execução validada, com a revisão preenchida. A amostra humana versionada não é sobrescrita ao executar novamente o notebook.
-
 
 ## Integração e retornos — 15/10/2026
 
@@ -53,3 +50,11 @@ Os CSVs completos `noticias_com_sentimento.csv` e `sentimento_diario_noticias.cs
 O painel completo contém 3.770 pares empresa/pregão de 2017–2019. As seis notícias com retorno em janeiro de 2020 são preservadas como margem; as janelas incompletas são sinalizadas. As bases e os relatórios correntes são gerados localmente conforme o guia.
 
 Os registros de execução são históricos: `integracao_retornos: pendente` no registro do FinBERT descreve o momento de encerramento daquela etapa. O registro da integração posterior documenta sua conclusão. Esses registros não foram reescritos para simular uma nova execução.
+
+## Análise visual — 16/10/2026
+
+- [Etapa de 20–23/10: resultados, reprodução e melhorias](analise_visual.md).
+- [Notebook 04](../notebooks/04_analise_visual.ipynb): nove figuras, onze tabelas e 12 células executadas.
+- [Configuração](config_analise_visual.json) e [manifesto](analise_visual/manifesto.json).
+
+As perguntas 1–6 têm primeiras respostas. A pergunta 7 tem comparação inicial com mínimo de três notícias; exclusão de retrospectivas e combinação de filtros continuam pendentes. A revisão de 15/10 acima é histórica; o notebook 04 registra os novos cálculos de 16/10.

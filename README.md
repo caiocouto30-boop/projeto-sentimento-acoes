@@ -10,9 +10,9 @@ O [**notebook principal — artigo em desenvolvimento**](notebooks/00_artigo.ipy
 
 Investigamos associações descritivas entre o tom de manchetes financeiras e os retornos e oscilações de NVIDIA (NVDA), Netflix (NFLX), Bank of America (BAC), Johnson & Johnson (JNJ) e Coca-Cola (KO), em **2017–2019**, sem atribuir causalidade. A contribuição central é a visualização e a interpretação dos dados.
 
-O artigo está **incompleto quanto às análises**, conforme o estágio atual do projeto. A revisão de 15/10/2026 reorganizou o material existente e corrigiu referências desatualizadas; não realizou novas classificações, coletas, comparações com retornos ou análises de robustez. Consulte a [correspondência com as exigências do professor](docs/adequacao_artigo.md).
+A etapa planejada para **20–23/10 foi executada antecipadamente em 16/10/2026**: gráficos e primeiras respostas às perguntas 1–6, além da sensibilidade inicial da pergunta 7. O artigo continua em desenvolvimento, com a exclusão de manchetes retrospectivas e os filtros combinados ainda pendentes.
 
-## Estado registrado em 15/10/2026
+## Estado registrado em 16/10/2026
 
 | Componente | Resultado disponível |
 | --- | --- |
@@ -23,9 +23,9 @@ O artigo está **incompleto quanto às análises**, conforme o estágio atual do
 | Revisão qualitativa | 50 casos preenchidos por `caio`; **39 concordâncias e 11 divergências**, em amostra dirigida |
 | Integração | **3.770 pares empresa/pregão**; 2.390 com notícias; **2.387 com notícias e janela completa** |
 | Pergunta 1 | Mapa de cobertura, tabela anual e resposta descritiva disponíveis |
-| Perguntas 2–3 | Classes e agregados disponíveis; gráficos e interpretação comparativa pendentes |
-| Perguntas 4–6 | Base integrada disponível; comparações, gráficos e interpretação pendentes |
-| Pergunta 7 | Indicador de pelo menos três notícias disponível; critério de retrospectivas e análise de robustez pendentes |
+| Perguntas 2–3 | Proporções, séries diárias e leitura dos dez extremos disponíveis |
+| Perguntas 4–6 | Boxplots, dispersões e correlações por empresa/ano com primeiras interpretações |
+| Pergunta 7 | Comparação principal × mínimo de três: 2.387 → 783 pares; retrospectivas e combinação de filtros pendentes |
 
 As 39 concordâncias em 50 casos não estimam a acurácia geral do modelo. Os rótulos humanos permanecem separados das previsões automáticas. Os registros datados preservam o estado ao término de cada etapa; a integração foi executada depois da etapa FinBERT.
 
@@ -37,6 +37,7 @@ As 39 concordâncias em 50 casos não estimam a acurácia geral do modelo. Os r�
 | [01_preparacao_inicial.ipynb](notebooks/01_preparacao_inicial.ipynb) | Apoio: limpeza, auditoria e cobertura, com explicações junto ao código |
 | [02_sentimento_finbert.ipynb](notebooks/02_sentimento_finbert.ipynb) | Apoio: classificação, agregado por data civil e revisão humana |
 | [03_integracao_retornos.ipynb](notebooks/03_integracao_retornos.ipynb) | Apoio: calendário, alinhamento, retornos e painel |
+| [04_analise_visual.ipynb](notebooks/04_analise_visual.ipynb) | Apoio: nove gráficos, onze tabelas e sensibilidade inicial, com 12 células explicadas |
 | [docs/README.md](docs/README.md) | Índice documental, relatórios e registros de execução |
 | [resultados_registrados.json](docs/resultados_registrados.json) | Tabelas já calculadas, transcritas das saídas salvas, com origem verificável |
 
@@ -65,9 +66,10 @@ Isso verifica a leitura dos resultados registrados; **não equivale a reproduzir
 4. Execute **01_preparacao_inicial.ipynb** em ordem. Sem snapshot, a coleta de cotações exige internet. Para reproduzir exatamente a execução datada, obtenha o snapshot do grupo e confira os hashes.
 5. Execute **02_sentimento_finbert.ipynb** em ordem. O primeiro carregamento permite baixar a revisão fixada do modelo; o cache local permite reutilizar probabilidades compatíveis. A [amostra humana preenchida](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada; o leitor aceita vírgula ou ponto e vírgula.
 6. Execute **03_integracao_retornos.ipynb** em ordem. Ele verifica as entradas fixadas e o calendário XNYS, e gera `base_integrada_pregoes.csv`. Outra coleta deve ser assumida explicitamente conforme as instruções do notebook; não desative uma conferência para contornar uma diferença não investigada.
-7. Confira os CSVs e manifestos locais. O artigo e `docs/resultados_registrados.json` descrevem a execução de referência: se as entradas ou resultados mudarem, reconcilie as contagens e atualize a narrativa e sua origem antes de publicar outra versão.
+7. Execute **04_analise_visual.ipynb** em ordem. Ele confere os hashes em `docs/config_analise_visual.json` e gera os resumos e imagens sem rede, coleta ou inferência. As entradas exatas estão no pacote local do grupo.
+8. Confira os CSVs e manifestos locais. O artigo e `docs/resultados_registrados.json` descrevem a execução de referência: se as entradas ou resultados mudarem, reconcilie as contagens e atualize a narrativa e sua origem antes de publicar outra versão.
 
-Os dados completos, o CSV original, os snapshots e os pesos **não estão versionados**. Os notebooks e registros existentes documentam execuções anteriores; esta revisão editorial executou apenas as células de leitura do artigo. A reprodução integral por outro integrante continua pendente. `requirements.txt` reúne dependências diretas com versões observadas; não é um lock completo ou multiplataforma.
+Os dados completos, o CSV original, os snapshots e os pesos **não estão versionados**. Os notebooks e registros existentes documentam execuções anteriores; a revisão editorial anterior executou as células de leitura do artigo. A etapa visual de 16/10 executou as 12 células do notebook 04; as etapas 01–03 não foram recalculadas. A reprodução integral por outro integrante continua pendente. `requirements.txt` reúne dependências diretas com versões observadas; não é um lock completo ou multiplataforma.
 
 ## Fontes e decisões metodológicas
 
@@ -82,4 +84,4 @@ Manchetes compartilhadas são preservadas. Dias sem notícias não são neutros.
 - **29/10/2026:** notebook em forma de artigo, ainda que incompleto, e apresentação de cinco minutos.
 - **Semana A2:** notebook final, repositório, apresentação de dez minutos e declaração de contribuições. A janela 23–30/11 foi informada pelo grupo; o dia exato precisa ser confirmado. A meta de 22/11 é interna.
 
-A estrutura do artigo já está organizada. Permanecem as análises explicitamente indicadas em suas seções, a apresentação, o retorno do professor e a documentação das contribuições. A existência dos arquivos não demonstra envio ou aprovação de uma entrega.
+A estrutura do artigo já está organizada. Permanecem as melhorias listadas no [relatório visual](docs/analise_visual.md), a apresentação, o retorno do professor e a documentação das contribuições. A existência dos arquivos não demonstra envio ou aprovação de uma entrega.

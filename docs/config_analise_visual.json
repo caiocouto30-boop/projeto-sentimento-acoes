@@ -1,0 +1,19 @@
+{
+  "versao": "2026-10-16",
+  "etapa_planejada": "20-23/10/2026",
+  "commit_base": "b81e0b01c4ad18184ac3feb499d6744e2cfbce30",
+  "sha256_entradas": {
+    "base_integrada_pregoes.csv": "ba16c1c435b1e3fd8dc2d270c030ab05af2f5bb548dfeaba2cefc7f6efe261e5",
+    "noticias_com_sentimento.csv": "985b594935b2a07631b37e50acc53b7e9ee54ab9aef353c7e66015f662f79e71",
+    "noticias_pregao_retornos.csv": "712142e8ed202c41ce0ec6beca7fcff8b99b3392a970551be47569f68cbc331f"
+  },
+  "amostra_principal": "tem_noticias & elegivel_analise_principal",
+  "sensibilidade": "n_noticias >= 3 na amostra principal",
+  "retrospectivas": "Nao excluidas nesta comparacao inicial. Revisao e reagregacao pendentes.",
+  "hipoteses": {
+    "H1": "Cobertura varia entre empresas e periodos.",
+    "H2": "Maior intensidade pode acompanhar maior retorno absoluto.",
+    "H3": "Associacoes entre escore e retorno podem variar entre empresas e anos."
+  },
+  "regras": "Sem winsorizacao, sem exclusao por retorno, Spearman descritivo, sem testes de significancia. Extremos diarios minimo/maximo por empresa, desempate pela data mais antiga; todos os textos dessas datas exportados."
+}

@@ -73,6 +73,6 @@ Instale as dependências de `requirements.txt`, abra o Jupyter na pasta do proje
 
 O [dicionário de integração](dicionario_integracao.csv) explica os novos campos. No GitHub ficam o notebook, a configuração, o dicionário, este guia e o registro datado. Bases completas e relatórios correntes são gerados localmente e não são versionados.
 
-## Próxima etapa — 20–23/10
+## Continuação — 20–23/10
 
-Produzir gráficos e interpretações das perguntas 1 a 6 e a primeira comparação da pergunta 7. A integração está concluída; as associações ainda não foram interpretadas. Registrem as hipóteses exploratórias antes de comparar resultados e definam o critério de manchetes retrospectivas. Esse filtro ainda está pendente.
+A etapa visual foi executada antecipadamente em 16/10/2026. Consulte o [notebook 04](../notebooks/04_analise_visual.ipynb) e o [relatório](analise_visual.md): primeiras respostas às perguntas 1–6 e comparação inicial da 7 com mínimo de três notícias. A integração e suas entradas foram preservadas; exclusão de retrospectivas e filtros combinados permanecem pendentes.
