@@ -40,10 +40,20 @@ def construir_cenarios(mapeadas, principal, marcacao):
     conservadoras = elegiveis.loc[elegiveis['marcacao'].eq('sem_indicio_explicito')]
     sem_retro = agregar_por_pregao(mantidas, principal)
     sem_ambiguas = agregar_por_pregao(conservadoras, principal)
-    cenarios = dict(zip(CENARIOS, [principal.copy(), principal.loc[principal['n_noticias'].ge(3)].copy(),
-        sem_retro, sem_retro.loc[sem_retro['n_noticias'].ge(3)].copy()]))
-    cenarios.update(dict(zip(EXTRAS, [sem_ambiguas,
-        sem_ambiguas.loc[sem_ambiguas['n_noticias'].ge(3)].copy()])))
+    cenarios = {
+        'Principal': principal.copy(),
+        'Mínimo 3': principal.loc[principal['n_noticias'].ge(3)].copy(),
+        'Sem retrospectivas': sem_retro,
+        'Sem retrospectivas + mínimo 3': (
+            sem_retro.loc[sem_retro['n_noticias'].ge(3)].copy()
+        ),
+    }
+    cenarios.update({
+        'Sem retrospectivas/ambíguas': sem_ambiguas,
+        'Sem retrospectivas/ambíguas + mínimo 3': (
+            sem_ambiguas.loc[sem_ambiguas['n_noticias'].ge(3)].copy()
+        ),
+    })
     return cenarios, elegiveis
 
 def resumir_retencao(cenarios):

@@ -5,7 +5,7 @@ O [artigo](../notebooks/00_artigo.ipynb) apresenta a análise; o [README](../REA
 | Documento | Conteúdo |
 | --- | --- |
 | [Proveniência](proveniencia.json) | Fontes, recorte original, snapshot, cache FinBERT e hashes |
-| [Verificação da simplificação](verificacao_simplificacao.json) | Conferências da execução atual e preservação dos resultados |
+| [Verificação da simplificação](verificacao_simplificacao.json) | Registro da simplificação da preparação, anterior à revisão didática de 30/10/2026 |
 | [FinBERT](finbert.md) | Modelo, cache, revisão humana e limitações |
 | [Integração](integracao.md) | Calendário, alinhamento, retornos e bordas do recorte |
 | [Retrospectivas](retrospectivas/README.md) | Regra automática, marcação, exemplos e alcance da pergunta 7 |

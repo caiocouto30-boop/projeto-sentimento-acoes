@@ -7,7 +7,7 @@ Investigamos associações entre o tom de manchetes e os retornos de **NVDA, NFL
 
 ## Leitura e organização
 
-O [**notebook-artigo**](notebooks/00_artigo.ipynb) reúne dados, método, sete perguntas, gráficos e conclusões. Para explorar os controles sem Python, baixe o [**artigo HTML**](artigo_interativo.html) e abra no navegador; ele funciona offline. O GitHub exibe as imagens salvas do notebook.
+O [**notebook-artigo**](notebooks/00_artigo.ipynb) reúne dados, método, sete perguntas, gráficos e conclusões. Para explorar os controles sem Python, baixe o [**artigo HTML**](artigo_interativo.html) e abra no navegador. Os gráficos têm suas bibliotecas embutidas para uso offline; a formatação das fórmulas pode exigir internet. O GitHub exibe as imagens salvas do notebook.
 
 | Notebook | Função |
 | --- | --- |
@@ -32,8 +32,8 @@ A preparação usa o recorte bruto de 6.556 associações, o snapshot de cotaç�
 
 ## Resultados e situação acadêmica
 
-A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. A pergunta 7 compara a amostra principal (2.387 pares), o mínimo de três notícias (783), a exclusão de retrospectivas explícitas (2.271) e o filtro combinado (697), com reagregação. Os filtros alteram a composição e alguns sinais, sem um padrão uniforme entre empresas. As conclusões são exploratórias, sem interpretação causal.
+A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. A pergunta 7 compara a amostra principal (2.387 pares), o mínimo de três notícias (783), a amostra sem retrospectivas identificadas pela regra (2.271) e o filtro combinado (697), com reagregação. Os filtros alteram a composição e alguns sinais, sem um padrão uniforme entre empresas. As conclusões são exploratórias, sem interpretação causal.
 
-O artigo tem a estrutura solicitada para a intermediária de **29/10**, com respostas exploratórias às sete perguntas. A etapa também exige uma apresentação de **cinco minutos** por grupo, cuja realização não é comprovada pelo repositório. A [regra de retrospectivas](docs/retrospectivas/README.md) é automática e conservadora; sua validação humana independente é uma melhoria metodológica recomendada, distinta da revisão humana de sentimento já realizada.
+O artigo tem a estrutura solicitada para a intermediária de **29/10**, com respostas exploratórias às sete perguntas. A etapa também exige uma apresentação de **cinco minutos** por grupo, cuja realização não é comprovada pelo repositório. A [regra de retrospectivas](docs/retrospectivas/README.md) é automática e conservadora e pode deixar passar relatos explícitos de preço já observado. Sua validação humana independente é uma melhoria metodológica recomendada, distinta da revisão humana de sentimento já realizada.
 
 Para a entrega final na **Semana A2**, devem ser incorporados os comentários recebidos, preparada a apresentação de **dez minutos** e declaradas as contribuições efetivas dos integrantes. A presença dos arquivos não comprova envio formal ou aprovação pelo professor.

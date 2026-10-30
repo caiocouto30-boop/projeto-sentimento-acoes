@@ -26,7 +26,7 @@ for celula in notebook.cells:
         dados['image/png'] = base64.b64encode(png).decode('ascii')
         n += 1
 if n != 7:
-    raise ValueError('Execute e salve as nove células do artigo antes de exportar.')
+    raise ValueError('Execute e salve todas as células do artigo antes de exportar.')
 (RAIZ / 'notebooks/00_artigo.ipynb').write_text(
     nbformat.writes(notebook), encoding='utf-8', newline='\n')
 

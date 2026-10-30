@@ -10,7 +10,7 @@ As regras reconhecem negociação descrita como observada (`shares are trading l
 
 | Marcação | Significado | Cenários principais |
 | --- | --- | --- |
-| `retrospectiva_explicita` | Ao menos uma regra identifica movimento observado | Excluída nos cenários sem retrospectivas |
+| `retrospectiva_explicita` | Ao menos uma regra identifica movimento observado | Excluída nos cenários sem retrospectivas identificadas pela regra |
 | `ambigua` | Há sinal lexical não conclusivo: pode ser previsão, operação da empresa, análise ou movimento não reconhecido pela regra | Mantida |
 | `sem_indicio_explicito` | Nenhuma regra reconhece relato explícito | Mantida; não significa ausência comprovada de retrospectiva |
 
@@ -20,7 +20,7 @@ São 6.019 textos: 586 explícitos, 297 com sinais não conclusivos e 5.136 sem 
 
 Os critérios e exemplos de fronteira foram revistos pelo assistente de IA. Foram inspecionados relatos explícitos, sinais não conclusivos e falsos positivos de agendas de resultados durante a definição. Isso não é revisão humana do trio nem validação independente do classificador. Não se presume que todos os textos tenham sido lidos individualmente. Os [casos de controle](casos_controle.csv) verificam situações determinísticas; não estimam precisão ou revocação.
 
-A regra é conservadora e pode deixar retrospectivas implícitas na base. Notícias mistas, erros de redação e vínculos indiretos de ticker também podem produzir marcações incorretas. O filtro considera o texto inteiro; uma retrospectiva sobre outra empresa pode levar à exclusão de todas as associações daquele texto.
+A regra é conservadora e pode deixar retrospectivas implícitas e relatos explícitos não reconhecidos pelos padrões na base. Por isso, os cenários são descritos como “sem retrospectivas identificadas pela regra”; não se presume a eliminação de todas as retrospectivas. Notícias mistas, erros de redação e vínculos indiretos de ticker também podem produzir marcações incorretas. O filtro considera o texto inteiro; uma retrospectiva sobre outra empresa pode levar à exclusão de todas as associações daquele texto.
 
 ## Aplicação
 
