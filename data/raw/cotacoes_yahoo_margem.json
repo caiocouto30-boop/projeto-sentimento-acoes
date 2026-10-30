@@ -1,0 +1,28 @@
+{
+  "fonte": "Yahoo Finance via yfinance",
+  "tickers": [
+    "NVDA",
+    "NFLX",
+    "BAC",
+    "JNJ",
+    "KO"
+  ],
+  "parametros": {
+    "start": "2016-12-15",
+    "end": "2020-01-11",
+    "interval": "1d",
+    "auto_adjust": false,
+    "back_adjust": false,
+    "repair": false,
+    "keepna": true,
+    "actions": true,
+    "ignore_tz": true,
+    "threads": false,
+    "progress": false,
+    "multi_level_index": false,
+    "timeout": 30
+  },
+  "yfinance": "1.7.0",
+  "coletado_em_utc": "2026-10-09T21:42:24.945771+00:00",
+  "sha256": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3"
+}

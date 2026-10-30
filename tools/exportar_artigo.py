@@ -7,9 +7,6 @@ from nbconvert import HTMLExporter
 from bs4 import BeautifulSoup
 import vl_convert as vlc
 import base64
-import hashlib
-import json
-from datetime import datetime, timezone
 
 RAIZ = Path(__file__).resolve().parents[1]
 DESTINO = RAIZ / 'artigo_interativo.html'
@@ -61,15 +58,4 @@ for link in pagina.find_all('a', href=True):
     if arquivo.is_file():
         link['href'] = arquivo.relative_to(DESTINO.parent).as_posix()
 DESTINO.write_text(str(pagina), encoding='utf-8', newline='\n')
-manifesto = {
-    'gerado_em_utc': datetime.now(timezone.utc).isoformat(),
-    'notebook': 'notebooks/00_artigo.ipynb',
-    'sha256_notebook': hashlib.sha256((RAIZ / 'notebooks/00_artigo.ipynb').read_bytes()).hexdigest(),
-    'sha256_entradas': {nome: hashlib.sha256((RAIZ / 'data/processed' / nome).read_bytes()).hexdigest()
-        for nome in ['noticias_com_sentimento.csv', 'base_integrada_pregoes.csv', 'noticias_pregao_retornos.csv']},
-    'sha256_tabelas': {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in sorted((RAIZ / 'docs/analise_visual').glob('*.csv'))},
-    'figuras': [f'figures/analise_visual/q{i}.png' for i in range(1, 8)]}
-(RAIZ / 'docs/analise_visual/manifesto.json').write_text(
-    json.dumps(manifesto, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 print(f'Artigo exportado com {n} gráficos e imagens: {DESTINO}')
