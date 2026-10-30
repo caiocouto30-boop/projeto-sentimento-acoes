@@ -1,0 +1,25 @@
+{
+  "referencia_git": "79161d2d887fa1769049b4674bf6b1f11100fe33",
+  "notebooks_antes_depois": [
+    4,
+    2
+  ],
+  "linhas_preparacao_nao_vazias_incluindo_comentarios": {
+    "antes": 967,
+    "depois": 311
+  },
+  "celulas_executadas_sem_erros": {
+    "preparacao": 15,
+    "artigo": 9
+  },
+  "codigo_do_artigo_identico": true,
+  "especificacoes_e_dados_dos_sete_graficos_identicos": true,
+  "sete_imagens_png_identicas_byte_a_byte": true,
+  "oito_bases_geradas_identicas_byte_a_byte": true,
+  "tabelas_analiticas_identicas_byte_a_byte": 16,
+  "revisao_humana_e_regra_retrospectivas_preservadas": true,
+  "fontes_e_bases_distribuidas_conferidas_por_sha256": 8,
+  "links_locais_sem_destino": [],
+  "inferencia": "6019 textos reaproveitados; ramo para textos novos verificado separadamente com tres exemplos; cache incompativel rejeitado.",
+  "escopo_academico": "Estrutura do Marco 2 preservada; apresentacoes e declaracao de contribuicoes nao sao comprovadas por esta verificacao."
+}

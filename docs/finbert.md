@@ -1,48 +1,19 @@
-# FinBERT: classificação e revisão inicial
+# FinBERT: classificação e revisão humana
 
-Relatório de apoio à seção 3.2 do [artigo principal](../notebooks/00_artigo.ipynb). A narrativa acadêmica e o estado das sete perguntas estão centralizados no artigo.
+O [notebook de preparação](../notebooks/01_preparacao_dados.ipynb) classifica **6.552 associações**, correspondentes a **6.019 textos distintos**, com `ProsusAI/finbert`, sem treinamento adicional. Modelo e tokenizador usam a revisão fixa `4556d13015211d73dccd3fdd39d39232506f3e43`. O limite é 512 tokens, com truncamento registrado; a execução usa CPU e probabilidades em `float32`.
 
-A etapa computacional está concluída: foram classificadas **6.552 associações entre manchetes e empresas**, correspondentes a **6.019 textos distintos**, e gerado o sentimento de **2.569 pares empresa/data da notícia**. A revisão inicial de 50 manchetes também está preenchida e registrada. Esta etapa usa o modelo pronto `ProsusAI/finbert`, sem treinamento adicional.
+## Cache e medidas
 
-## Reproduzir em um clone novo
+O projeto inclui [probabilidades por texto](../data/raw/finbert_probabilidades.csv) e sua [configuração](../data/raw/finbert_configuracao.json). O notebook confere configuração, identificação dos textos e validade das probabilidades antes de reutilizá-las; classifica apenas textos faltantes. A primeira execução pode baixar o tokenizador, caso não esteja disponível localmente. Os pesos do modelo só são carregados se houver textos pendentes. Não é necessário refazer a inferência para ler ou executar o [artigo](../notebooks/00_artigo.ipynb).
 
-1. Instale as dependências de `requirements.txt` no ambiente Python escolhido e selecione esse ambiente como kernel do Jupyter. Disponibilize os dados de origem conforme as instruções do projeto.
-2. Execute `notebooks/01_preparacao_inicial.ipynb` em ordem para gerar `data/processed/noticias_limpas.csv`.
-3. Execute `notebooks/02_sentimento_finbert.ipynb` em ordem. O download do modelo é permitido por padrão; a primeira execução precisa de internet para obter os pesos e o tokenizador. Ambos usam a revisão fixa `4556d13015211d73dccd3fdd39d39232506f3e43`. Depois do download, é possível usar somente o cache local. O notebook pode executar em CPU.
-4. O notebook salva as probabilidades em `data/cache/`, com identificação do texto e da configuração utilizada, e reutiliza resultados compatíveis. Esse cache é local. Os CSVs grandes de entrada e resultados não são versionados; são gerados pelas etapas anteriores e pelo próprio notebook.
+O escore é `P(positivo) − P(negativo)`; a classe corresponde à maior probabilidade, com empates explícitos. Na agregação, usamos médias das probabilidades com peso igual por manchete; a classe agregada é a de maior média. Uma data sem notícias não recebe classe neutra. A [integração](integracao.md) faz a agregação definitiva por empresa/pregão, em vez de tomar uma média simples de médias de dias com quantidades diferentes de manchetes.
 
-As saídas principais são `noticias_com_sentimento.csv`, com probabilidades, classe e escore por associação original, e `sentimento_diario_noticias.csv`, com as médias por empresa e data civil da notícia. O escore é `P(positivo) − P(negativo)`; a classe diária usa a maior probabilidade média, com empates explícitos. Dias sem notícias não recebem classe neutra.
+## Revisão humana preservada
 
-## Revisão humana registrada
+A [amostra preenchida](revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) contém **50 rótulos válidos**, observações e identificação do revisor `caio`: **39 concordâncias e 11 divergências**, ou 78% nesta amostra. A seleção foi dirigida: 30 casos de cobertura empresa/classe, 10 de baixa margem, 5 de manchetes compartilhadas e 5 de complementação aleatória.
 
-A [amostra preenchida](revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) contém **50 rótulos válidos, 50 observações e identificação do revisor `caio` em todos os casos**. Os IDs, manchetes e campos automáticos foram conferidos contra a amostra original e permaneceram intactos. Não há casos marcados como `ambiguo`.
+Essa proporção **não estima a acurácia geral**. Houve um revisor, e o arquivo apresenta as previsões automáticas. Além disso, o tom da manchete inteira pode diferir do tom relativo à empresa associada: um título pode favorecer Nvidia e expressar cautela sobre AMD ou Intel. As divergências são um diagnóstico qualitativo, não erros comprovados automaticamente.
 
-Foram observadas **39 concordâncias e 11 divergências**, ou **78% de concordância nesta amostra**. A seleção foi dirigida: 30 casos para cobertura de empresa/classe, 10 de baixa margem, 5 de manchetes compartilhadas e 5 de complementação aleatória. Essa proporção não estima a acurácia geral do FinBERT na base. Trata-se de um diagnóstico com um revisor, em arquivo que também apresenta as previsões do modelo.
+Os rótulos humanos não substituem as classes automáticas. O notebook lê e verifica o arquivo existente sem sobrescrevê-lo. Para ampliar a revisão, preserve IDs, textos e campos automáticos; edite apenas `rotulo_humano`, `observacao` e `revisor`. Os rótulos aceitos são `positivo`, `negativo`, `neutro` e `ambiguo`.
 
-Na matriz abaixo, as **linhas representam o rótulo humano** e as **colunas representam a classe do modelo**:
-
-| Humano / Modelo | Positivo | Negativo | Neutro |
-|---|---:|---:|---:|
-| Positivo | 11 | 0 | 3 |
-| Negativo | 0 | 8 | 0 |
-| Neutro | 2 | 6 | 20 |
-
-Exemplos reais de divergências:
-
-| `source_id` | Manchete | Modelo | Humano |
-|---|---|---|---|
-| 134474 | Benzinga's Top Upgrades, Downgrades For August 29, 2019 | Negativo | Neutro |
-| 930882 | Seeing Notable Block Trade In Nvidia; 1M Shares At $100.40 | Negativo | Neutro |
-| 929628 | Oppenheimer Bullish On Nvidia, Cautious On AMD, Intel | Neutro | Positivo |
-
-Os dois primeiros exemplos foram considerados informativos pelo revisor. O terceiro combina uma avaliação favorável à Nvidia com cautela sobre outras empresas; a observação humana destaca a Nvidia. Esse caso ilustra a diferença entre interpretar o tom da manchete inteira e interpretar o tom relativo a uma empresa específica. A mesma atenção vale para boletins que combinam notícias de várias empresas. As divergências devem ser discutidas com esse critério em vista, sem tratá-las automaticamente como erros comprovados do modelo.
-
-As **classes automáticas foram preservadas**. Os rótulos humanos documentam o diagnóstico e não substituem automaticamente as previsões da base inteira. Não foi estabelecido um limiar de aprovação do modelo.
-
-## Preservar as anotações
-
-O CSV humano é versionado em `docs/revisao_manual/`. O leitor do notebook aceita arquivos UTF-8 separados por vírgula ou ponto e vírgula, inclusive após salvar no Excel. Para continuar a revisão, edite apenas `rotulo_humano`, `observacao` e `revisor`; preserve IDs, textos e demais campos. Uma nova execução mantém o arquivo existente e lê as anotações salvas. Rótulos aceitos: `positivo`, `negativo`, `neutro` e `ambiguo`.
-
-## Próximos passos
-
-A [integração com pregões e retornos](integracao.md) foi concluída pelo notebook 03, preservando as previsões e a revisão desta etapa. As visualizações e interpretações estão no [artigo](../notebooks/00_artigo.ipynb). A pergunta 7 já compara a exclusão de retrospectivas explícitas e os filtros combinados, segundo o [protocolo textual](retrospectivas/README.md). Essa marcação é separada da revisão humana de sentimento.
+A [marcação de retrospectivas](retrospectivas/README.md) é outra tarefa: usa uma regra textual automática para a pergunta 7 e não foi validada pela revisão de sentimento dessas 50 manchetes.

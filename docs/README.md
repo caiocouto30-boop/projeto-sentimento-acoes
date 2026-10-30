@@ -1,21 +1,20 @@
 # Documentação
 
-O [artigo](../notebooks/00_artigo.ipynb) apresenta a análise; o [README](../README.md) explica sua execução.
+O [artigo](../notebooks/00_artigo.ipynb) apresenta a análise; o [README](../README.md) orienta a execução dos dois notebooks. O [guia dos dados](../data/README.md) explica as entradas e bases incluídas.
 
 | Documento | Conteúdo |
 | --- | --- |
-| [Adequação AED2026](revisao_aed2026.md) | Requisitos da intermediária e limites para a etapa final |
-| [Retrospectivas](retrospectivas/README.md) | Regra, marcação, exemplos e alcance da pergunta 7 |
-| [Verificação da intermediária](verificacao_intermediaria.json) | Execução, preservação e conferências independentes |
-| [FinBERT](finbert.md) | Modelo, revisão humana e limitações |
-| [Integração](integracao.md) | Calendário, retornos, margens e reprodução |
-| [Análise visual](analise_visual.md) | Unidades, filtros, tabelas e exportação |
-| [Dicionário](dicionario_integracao.csv) e [configuração](config_integracao.json) | Campos e entradas da integração |
-| [Dicionário inicial](dicionario_dados.csv) e [campos de sentimento](dicionario_sentimento.csv) | Variáveis das etapas 01 e 02 |
-| [Registros datados](execucoes/) | Evidências das execuções; não representam o estado atual do projeto |
+| [Proveniência](proveniencia.json) | Fontes, recorte original, snapshot, cache FinBERT e hashes |
+| [Verificação da simplificação](verificacao_simplificacao.json) | Conferências da execução atual e preservação dos resultados |
+| [FinBERT](finbert.md) | Modelo, cache, revisão humana e limitações |
+| [Integração](integracao.md) | Calendário, alinhamento, retornos e bordas do recorte |
+| [Retrospectivas](retrospectivas/README.md) | Regra automática, marcação, exemplos e alcance da pergunta 7 |
+| [Análise visual](analise_visual.md) | Unidades, filtros e tabelas das sete perguntas |
+| [Dicionário inicial](dicionario_dados.csv), [sentimento](dicionario_sentimento.csv) e [integração](dicionario_integracao.csv) | Significado dos campos |
+| [Revisão humana](revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) | Anotações originais das 50 manchetes |
 | [Tabelas da análise](analise_visual/) | Resumos recalculados pelo artigo |
-| [Revisão humana](revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) | Anotações originais preservadas |
+| [Registros históricos](execucoes/) | Evidências datadas das versões anteriores |
 
-Referências acadêmicas do grupo: `AED20262_projeto.pdf` (enunciado), `proposta_etapa1.pdf` (recorte e sete perguntas) e `cronograma_planejamento_atualizado.pdf` (planejamento interno). Os PDFs originais são conservados pelo grupo. O cronograma não acrescenta exigências ao enunciado.
+Os registros de `execucoes/` foram preservados como histórico. Nomes de notebooks, caminhos e instruções de execução nesses registros podem se referir à estrutura antiga; a orientação atual está no README e nos dois notebooks.
 
-Os notebooks geram ainda auditorias e manifestos correntes locais. Esses relatórios são excluídos do Git para separar saídas de execução dos registros datados versionados. Os dicionários e resumos da análise permanecem versionados.
+O enunciado `AED20262_projeto.pdf` define os requisitos da disciplina. A proposta do grupo e o planejamento interno não acrescentam exigências ao enunciado. Os PDFs originais são conservados pelo grupo. A revisão humana das retrospectivas é uma melhoria recomendada do método, não uma exigência literal adicional do documento.

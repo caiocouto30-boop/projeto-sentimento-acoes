@@ -1,0 +1,3 @@
+# Preservar os bytes das entradas fixadas e das bases distribuídas.
+data/raw/* -text -whitespace
+data/processed/*.csv -text -whitespace

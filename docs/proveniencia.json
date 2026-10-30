@@ -1,0 +1,63 @@
+{
+  "versao_de_referencia": "79161d2d887fa1769049b4674bf6b1f11100fe33",
+  "noticias": {
+    "fonte": "https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests",
+    "arquivo_original": "raw_analyst_ratings.csv",
+    "linhas_originais": 1407328,
+    "sha256_original": "609289a49dc8af2bd28a8466dffd9663521237026f1040c0f238010b29135fb6",
+    "recorte_bruto": "data/raw/noticias_recorte_original.csv",
+    "linhas_recorte": 6556,
+    "criterio": "NVDA, NFLX, BAC, JNJ, KO; data civil registrada de 2017-01-01 a 2019-12-31",
+    "source_row": "Posicao original, iniciando em 1; valores originais e quatro duplicatas preservados."
+  },
+  "cotacoes": {
+    "fonte": "Yahoo Finance via yfinance",
+    "tickers": [
+      "NVDA",
+      "NFLX",
+      "BAC",
+      "JNJ",
+      "KO"
+    ],
+    "parametros": {
+      "start": "2016-12-15",
+      "end": "2020-01-11",
+      "interval": "1d",
+      "auto_adjust": false,
+      "back_adjust": false,
+      "repair": false,
+      "keepna": true,
+      "actions": true,
+      "ignore_tz": true,
+      "threads": false,
+      "progress": false,
+      "multi_level_index": false,
+      "timeout": 30
+    },
+    "yfinance": "1.7.0",
+    "coletado_em_utc": "2026-10-09T21:42:24.945771+00:00",
+    "sha256": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3"
+  },
+  "finbert": {
+    "modelo": "ProsusAI/finbert",
+    "revisao_modelo": "4556d13015211d73dccd3fdd39d39232506f3e43",
+    "revisao_tokenizador": "4556d13015211d73dccd3fdd39d39232506f3e43",
+    "max_tokens": 512,
+    "truncation": true,
+    "dtype": "float32",
+    "transformers": "5.19.0",
+    "torch": "2.14.1+cpu",
+    "tokenizers": "0.23.3"
+  },
+  "sha256_arquivos": {
+    "data/raw/cotacoes_yahoo_margem.csv": "3d38ab0b5e5dd1f1f794c81eb52d06626bfdd178377e807dc01fc04ce5bd3fa3",
+    "data/raw/finbert_probabilidades.csv": "18cc8c3a2981a9d20526c35e1a0ad955a13798995f71507c7d6f60b77d1feca0",
+    "data/raw/noticias_recorte_original.csv": "62a4002186f42890d8ca1f1f867de26d3d5afde0dfa44ca7f5ad10be07d6d951",
+    "data/raw/cotacoes_yahoo_margem.json": "6c21fa4c57b8206170df68c9f04c33826d852995e6002985b08fcff46c6e75cd",
+    "data/raw/finbert_configuracao.json": "452c297882110e2affe81a10a10d58ce44aec492fb78537ae58cdb44376a9f5f",
+    "data/processed/base_integrada_pregoes.csv": "ba16c1c435b1e3fd8dc2d270c030ab05af2f5bb548dfeaba2cefc7f6efe261e5",
+    "data/processed/noticias_com_sentimento.csv": "985b594935b2a07631b37e50acc53b7e9ee54ab9aef353c7e66015f662f79e71",
+    "data/processed/noticias_pregao_retornos.csv": "712142e8ed202c41ce0ec6beca7fcff8b99b3392a970551be47569f68cbc331f"
+  },
+  "revisao_humana": "docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv; anotações preservadas, separadas do modelo."
+}

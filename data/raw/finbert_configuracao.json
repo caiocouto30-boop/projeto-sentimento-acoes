@@ -1,0 +1,11 @@
+{
+  "modelo": "ProsusAI/finbert",
+  "revisao_modelo": "4556d13015211d73dccd3fdd39d39232506f3e43",
+  "revisao_tokenizador": "4556d13015211d73dccd3fdd39d39232506f3e43",
+  "max_tokens": 512,
+  "truncation": true,
+  "dtype": "float32",
+  "transformers": "5.19.0",
+  "torch": "2.14.1+cpu",
+  "tokenizers": "0.23.3"
+}

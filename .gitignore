@@ -7,28 +7,20 @@ __pycache__/
 venv/
 tmp/
 
-# Bases e cache locais
+# Entradas fixadas; CSV completo e outros arquivos locais permanecem ignorados
 data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-data/cache/
+!data/raw/noticias_recorte_original.csv
+!data/raw/cotacoes_yahoo_margem.csv
+!data/raw/cotacoes_yahoo_margem.json
+!data/raw/finbert_probabilidades.csv
+!data/raw/finbert_configuracao.json
 
-# Relatórios correntes gerados pelos notebooks
-docs/resumo_limpeza_noticias.csv
-docs/cobertura_noticias_anual.csv
-docs/cobertura_precos.csv
-docs/manifesto_limpeza.json
-docs/registro_limpeza.md
-docs/manifesto_finbert.json
-docs/resumo_sentimento_por_empresa.csv
-docs/manifesto_integracao.json
-docs/auditoria_calendario.csv
-docs/casos_calendario.csv
-docs/mapa_datas_pregoes.csv
-docs/resumo_integracao_por_empresa.csv
-docs/noticias_retorno_fora_recorte.csv
-docs/grupos_varias_datas.csv
+# Bases utilizadas pelo artigo; intermediários são reconstruídos pela preparação
+data/processed/*
+!data/processed/noticias_com_sentimento.csv
+!data/processed/base_integrada_pregoes.csv
+!data/processed/noticias_pregao_retornos.csv
+data/cache/
 
 # Material pessoal de estudo
 guia_estudo_*
