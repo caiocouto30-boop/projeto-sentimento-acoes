@@ -24,4 +24,9 @@ O snapshot conserva a coleta original para evitar mudanças nos ajustes históri
 | [base_integrada_pregoes.csv](processed/base_integrada_pregoes.csv) | Painel de 3.770 pares empresa/pregão; 2.387 pares com notícias elegíveis para a análise principal |
 | [noticias_pregao_retornos.csv](processed/noticias_pregao_retornos.csv) | Associações por notícia com pregão e retorno, incluindo a margem fora do painel |
 
-A preparação também gera intermediários, como notícias limpas, cotações tratadas e agregados de sentimento. Eles ficam em `processed/`, são ignorados pelo Git e podem ser reconstruídos. As tabelas das perguntas ficam em `docs/analise_visual/` e são atualizadas pelo artigo. A revisão humana original fica em [docs/revisao_manual/](../docs/revisao_manual/), separada das previsões automáticas.
+A preparação também gera intermediários, como notícias limpas, cotações tratadas e agregados de sentimento. Eles ficam em `processed/`, são ignorados pelo Git e podem ser reconstruídos. As tabelas das perguntas ficam em `docs/analise_final/` e são atualizadas pelo artigo. A revisão humana original fica em [docs/revisao_manual/](../docs/revisao_manual/), separada das previsões automáticas.
+
+
+## Medidas finais
+
+O arquivo `processed/medidas_intensidade_final.csv` acrescenta polarização líquida e intensidade média aos pares elegíveis. Consulte [o dicionário da versão final](../docs/dicionario_final.md). A base original não foi alterada.

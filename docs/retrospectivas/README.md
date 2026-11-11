@@ -28,4 +28,4 @@ Primeiro restringimos às mesmas janelas elegíveis de 2017–2019. Depois retir
 
 O gráfico apresenta quatro cenários. Duas variantes adicionais retiram também `ambigua`, para avaliar a sensibilidade ao alcance do filtro. Essa exclusão ampliada pode retirar notícias não retrospectivas e não constitui uma identificação mais correta por definição. Tamanhos e perdas por empresa/ano constam de `docs/analise_visual/q7_retencao_empresa_ano.csv`.
 
-O código, a regra e a marcação são reproduzíveis. Uma validação humana independente e o aperfeiçoamento semântico ficam como aprofundamentos para a etapa final, com eventual nova versão das regras identificada separadamente.
+O código, a regra e a marcação são reproduzíveis. A validação humana independente permanece como limitação da versão final. Qualquer revisão futura deve identificar uma nova versão das regras separadamente.
