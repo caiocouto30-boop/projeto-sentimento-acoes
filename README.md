@@ -1,39 +1,55 @@
-# Sentimento de notícias e retornos de ações dos EUA
+# Sentimento das notícias e retornos de ações dos EUA
 
-Projeto de **Análise Exploratória de Dados e Visualização — FGV EMAp, 2026.2**, professor João Rulff.  
+Projeto final de **Análise Exploratória de Dados e Visualização, FGV EMAp, 2026.2**, professor João Rulff.
+
 **Integrantes:** Caio Ladislau do Couto, Alice Barros Lourencini Palaoro e Mateus Henrique da Costa Resende.
 
-Investigamos associações entre o tom de manchetes e os retornos de **NVDA, NFLX, BAC, JNJ e KO em 2017–2019**, com medidas descritivas e gráficos interativos. O FinBERT é utilizado pronto, sem treinamento adicional.
+Análise exploratória de NVDA, NFLX, BAC, JNJ e KO em 2017–2019. O estudo usa 6.552 associações manchete–empresa, probabilidades FinBERT já calculadas e cotações ajustadas do Yahoo Finance. Não envolve novo treinamento, recomendação financeira ou identificação causal.
 
-## Leitura e organização
+## Arquivos de entrega
 
-O [**notebook-artigo**](notebooks/00_artigo.ipynb) reúne dados, método, sete perguntas, gráficos e conclusões. Para explorar os controles sem Python, baixe o [**artigo HTML**](artigo_interativo.html) e abra no navegador. Os gráficos têm suas bibliotecas embutidas para uso offline; a formatação das fórmulas pode exigir internet. O GitHub exibe as imagens salvas do notebook.
-
-| Notebook | Função |
+| Arquivo | Uso |
 | --- | --- |
-| [00_artigo](notebooks/00_artigo.ipynb) | Análise, visualizações e tabelas das sete perguntas |
-| [01_preparacao_dados](notebooks/01_preparacao_dados.ipynb) | Limpeza, FinBERT e integração com pregões e retornos, em uma execução |
+| [notebooks/00_artigo.ipynb](notebooks/00_artigo.ipynb) | Notebook final em formato de artigo, com as sete perguntas e saídas salvas |
+| [artigo_interativo.html](artigo_interativo.html) | Leitura e exploração offline, sem Python |
+| [apresentacao/apresentacao_final_entrega.pptx](apresentacao/apresentacao_final_entrega.pptx) | Dez slides editáveis, gráficos nativos e notas de fala |
+| [apresentacao/roteiro_10_minutos.md](apresentacao/roteiro_10_minutos.md) | Distribuição de 600 segundos, incluindo demonstração das notícias |
+| [DECLARACAO_CONTRIBUICOES.md](DECLARACAO_CONTRIBUICOES.md) | Declaração editável para registrar a divisão efetiva do trio |
 
-Os [dados incluídos](data/README.md) permitem começar diretamente pelo artigo. A [documentação](docs/README.md) explica as decisões e limitações; a [proveniência](docs/proveniencia.json) registra origens, configurações e hashes.
+Baixe e descompacte o projeto. Abra o HTML em navegador recente. No hover de um ponto aparecem títulos e assuntos. Clique para consultar todas as notícias do agregado, com datas, fonte e link. O assunto é uma sugestão lexical sobre a manchete, não um resumo do artigo completo. A busca permite consultar as notícias sem depender do mouse. Os links externos precisam de internet, mas os gráficos e títulos preservados funcionam offline.
 
-## Reprodução
+No Jupyter, confie no notebook para executar as saídas HTML interativas. O GitHub pode preferir as imagens PNG salvas como alternativa estática. Cada seção também tem tabelas e análise escrita.
 
-Use **Python 3.11**. Na pasta do projeto:
+## Reprodução da análise final
+
+Ambiente da execução verificada: Python 3.12.14, pandas 3.0.1 e NumPy 2.3.5. Na raiz do projeto:
 
 ```text
-python -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
-python -m ipykernel install --user --name aed-sentimento --display-name "Python (AED Sentimento)"
-python -m notebook
+python -m pip install -r requirements-analise.txt
+python tools/exportar_artigo.py
+python tools/verificar_final.py
 ```
 
-Selecione **Python (AED Sentimento)**. Para refazer gráficos e tabelas, execute **00_artigo** em ordem. Para refazer também os dados, execute **01_preparacao_dados** inteiro em um único kernel e depois **00_artigo**. Salve o artigo executado e rode `python tools/exportar_artigo.py` para atualizar o HTML e as imagens.
+O primeiro comando de exportação refaz tabelas e HTML e executa todas as células Python do artigo, em ordem, com um único namespace. Não inicia um servidor Jupyter. As saídas são reais e podem ser abertas no Jupyter. As imagens incluídas representam a renderização verificada dos mesmos gráficos; mudanças nos dados ou nas codificações também exigem atualizá-las, usando o procedimento em [docs/reproducao.md](docs/reproducao.md).
 
-A preparação usa o recorte bruto de 6.556 associações, o snapshot de cotações e as probabilidades FinBERT incluídos. A primeira execução pode precisar de internet para obter o tokenizador fixado. Os pesos do modelo são necessários apenas se houver textos sem probabilidades no cache. A [revisão humana](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) é preservada. Outra coleta ou outra configuração de modelo exige conferir resultados e narrativa; as versões registradas não constituem um lock multiplataforma.
+Para abrir e executar manualmente, use seu ambiente Jupyter ou instale `notebook` e execute `python -m notebook`. O artigo não precisa de acesso ao modelo, tokenizador ou Yahoo Finance para reutilizar as entradas incluídas.
 
-## Resultados e situação acadêmica
+## Preparação original e fontes
 
-A cobertura é desigual, os retornos por classe se sobrepõem e as correlações são pequenas. A pergunta 7 compara a amostra principal (2.387 pares), o mínimo de três notícias (783), a amostra sem retrospectivas identificadas pela regra (2.271) e o filtro combinado (697), com reagregação. Os filtros alteram a composição e alguns sinais, sem um padrão uniforme entre empresas. As conclusões são exploratórias, sem interpretação causal.
+O [notebook de preparação](notebooks/01_preparacao_dados.ipynb) preserva limpeza, FinBERT e integração da versão anterior. Sua execução completa usa [requirements.txt](requirements.txt) e pode precisar de internet para obter o tokenizador fixado. Só há inferência nova se faltarem probabilidades no cache. Essa etapa não foi reexecutada com novos pesos na finalização.
 
-O artigo tem a estrutura solicitada para a intermediária de **29/10**, com respostas exploratórias às sete perguntas. A etapa também exige uma apresentação de **cinco minutos** por grupo, cuja realização não é comprovada pelo repositório. A [regra de retrospectivas](docs/retrospectivas/README.md) é automática e conservadora e pode deixar passar relatos explícitos de preço já observado. Sua validação humana independente é uma melhoria metodológica recomendada, distinta da revisão humana de sentimento já realizada.
+A verificação final refaz a limpeza do recorte, confere cache e escores, verifica primeiro pregão posterior, recalcula retornos do snapshot e confere agregações e cenários. A [revisão humana de 50 manchetes](docs/revisao_manual/amostra_50_cf0a9799_e1f584a3.csv) foi preservada, sem acrescentar rótulos inventados.
 
-Para a entrega final na **Semana A2**, devem ser incorporados os comentários recebidos, preparada a apresentação de **dez minutos** e declaradas as contribuições efetivas dos integrantes. A presença dos arquivos não comprova envio formal ou aprovação pelo professor.
+Dados: [Kaggle](https://www.kaggle.com/datasets/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests), Yahoo Finance via yfinance e [ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert/tree/4556d13015211d73dccd3fdd39d39232506f3e43). A [proveniência original](docs/proveniencia.json) registra a preparação anterior. A finalização tem seu [registro próprio](docs/proveniencia_final.json), com hashes e referência à versão de origem.
+
+## Achados e mudanças finais
+
+H1, sobre cobertura desigual, recebe apoio descritivo. H2, sobre intensidade do sentimento e oscilação posterior, não apresenta apoio uniforme. H3 encontra variação descritiva entre empresas e anos, sem teste confirmatório de diferenças. Retornos por classe se sobrepõem e a associação entre quantidade e oscilação é fraca.
+
+Preservamos o módulo do escore médio, agora chamado **polarização líquida**, e acrescentamos **média dos módulos individuais** para avaliar intensidade sem cancelamento. Essa comparação adicional não é um novo teste confirmatório. As medidas e os cenários de robustez são reagregados após excluir manchetes.
+
+O [registro de alterações](docs/mudancas_final.md) relaciona o retorno do professor e os critérios do enunciado às mudanças. Os gráficos usam Plotly.js, com uma biblioteca compartilhada no HTML offline e consulta centralizada das notícias. O código das transformações está em [tools/analise_final.py](tools/analise_final.py), e a narrativa e o exportador em [tools/montar_entrega.py](tools/montar_entrega.py).
+
+## Pendências do grupo antes do envio
+
+Preencher as contribuições efetivas, revisar o conteúdo em conjunto e ensaiar a fala. Confirmar o dia exato e o procedimento de entrega da Semana A2. Os arquivos não comprovam envio formal, aprovação ou reprodução por outro integrante.

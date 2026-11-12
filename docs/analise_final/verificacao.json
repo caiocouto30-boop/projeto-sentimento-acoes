@@ -1,0 +1,17 @@
+{
+  "status": "aprovado",
+  "noticias": 6552,
+  "pares_painel": 3770,
+  "pares_principais": 2387,
+  "pares_cenarios": [
+    2387,
+    783,
+    2271,
+    697,
+    2243,
+    670
+  ],
+  "escopo": "limpeza, cache, integração, retornos, agregação e análise; sem nova inferência FinBERT",
+  "coeficientes_historicos_reproduzidos": 120,
+  "coeficientes_conferidos_por_postos_independentes": 120
+}

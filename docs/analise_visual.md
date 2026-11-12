@@ -1,4 +1,6 @@
-# Análise visual
+# Registro da análise visual intermediária
+
+Este documento preserva a descrição da versão anterior. Na entrega final, consulte [as alterações](mudancas_final.md), [as instruções de reprodução](reproducao.md) e as tabelas de `analise_final/`. O cálculo originalmente chamado intensidade é identificado como polarização líquida, com intensidade média acrescentada como sensibilidade. O exportador final usa Plotly.js.
 
 O [artigo](../notebooks/00_artigo.ipynb) concentra os cálculos finais, os sete gráficos interativos e suas interpretações.
 
