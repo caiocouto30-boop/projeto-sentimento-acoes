@@ -1,0 +1,121 @@
+cenario,stock,metrica,n,rho,n_principal,rho_principal,retencao_pct,delta_rho,sinal
+Principal,BAC,Escore × retorno,438,0.01504875744,438,0.01504875744,100,0,Mesmo sinal
+Principal,BAC,Intensidade líquida × |retorno|,438,0.01116300046,438,0.01116300046,100,0,Mesmo sinal
+Principal,BAC,Quantidade × |retorno|,438,0.03265085153,438,0.03265085153,100,0,Mesmo sinal
+Principal,BAC,Intensidade média × |retorno|,438,0.02111281759,438,0.02111281759,100,0,Mesmo sinal
+Principal,JNJ,Escore × retorno,446,0.03068277901,446,0.03068277901,100,0,Mesmo sinal
+Principal,JNJ,Intensidade líquida × |retorno|,446,-0.009739947494,446,-0.009739947494,100,0,Mesmo sinal
+Principal,JNJ,Quantidade × |retorno|,446,0.02973045802,446,0.02973045802,100,0,Mesmo sinal
+Principal,JNJ,Intensidade média × |retorno|,446,-0.03368629301,446,-0.03368629301,100,0,Mesmo sinal
+Principal,KO,Escore × retorno,334,0.00233433955,334,0.00233433955,100,0,Mesmo sinal
+Principal,KO,Intensidade líquida × |retorno|,334,0.05479369332,334,0.05479369332,100,0,Mesmo sinal
+Principal,KO,Quantidade × |retorno|,334,0.1607731391,334,0.1607731391,100,0,Mesmo sinal
+Principal,KO,Intensidade média × |retorno|,334,0.08006803981,334,0.08006803981,100,0,Mesmo sinal
+Principal,NFLX,Escore × retorno,627,0.05752093697,627,0.05752093697,100,0,Mesmo sinal
+Principal,NFLX,Intensidade líquida × |retorno|,627,0.03007379702,627,0.03007379702,100,0,Mesmo sinal
+Principal,NFLX,Quantidade × |retorno|,627,0.0570360441,627,0.0570360441,100,0,Mesmo sinal
+Principal,NFLX,Intensidade média × |retorno|,627,0.07283820242,627,0.07283820242,100,0,Mesmo sinal
+Principal,NVDA,Escore × retorno,542,-0.04064014854,542,-0.04064014854,100,0,Mesmo sinal
+Principal,NVDA,Intensidade líquida × |retorno|,542,0.01598701958,542,0.01598701958,100,0,Mesmo sinal
+Principal,NVDA,Quantidade × |retorno|,542,0.1252336563,542,0.1252336563,100,0,Mesmo sinal
+Principal,NVDA,Intensidade média × |retorno|,542,0.06937654501,542,0.06937654501,100,0,Mesmo sinal
+Mínimo 3,BAC,Escore × retorno,88,0.09302243669,438,0.01504875744,20.0913242,0.07797367925,Mesmo sinal
+Mínimo 3,BAC,Intensidade líquida × |retorno|,88,0.1429502307,438,0.01116300046,20.0913242,0.1317872302,Mesmo sinal
+Mínimo 3,BAC,Quantidade × |retorno|,88,-0.1586297601,438,0.03265085153,20.0913242,-0.1912806116,Sinal invertido
+Mínimo 3,BAC,Intensidade média × |retorno|,88,0.06745095277,438,0.02111281759,20.0913242,0.04633813518,Mesmo sinal
+Mínimo 3,JNJ,Escore × retorno,123,-0.09535540622,446,0.03068277901,27.57847534,-0.1260381852,Sinal invertido
+Mínimo 3,JNJ,Intensidade líquida × |retorno|,123,-0.001296255691,446,-0.009739947494,27.57847534,0.008443691802,Mesmo sinal
+Mínimo 3,JNJ,Quantidade × |retorno|,123,0.01067419588,446,0.02973045802,27.57847534,-0.01905626214,Mesmo sinal
+Mínimo 3,JNJ,Intensidade média × |retorno|,123,-0.1474120029,446,-0.03368629301,27.57847534,-0.1137257099,Mesmo sinal
+Mínimo 3,KO,Escore × retorno,58,-0.1956688917,334,0.00233433955,17.36526946,-0.1980032312,Sinal invertido
+Mínimo 3,KO,Intensidade líquida × |retorno|,58,0.1311944385,334,0.05479369332,17.36526946,0.07640074514,Mesmo sinal
+Mínimo 3,KO,Quantidade × |retorno|,58,0.2869296362,334,0.1607731391,17.36526946,0.1261564971,Mesmo sinal
+Mínimo 3,KO,Intensidade média × |retorno|,58,0.06924236365,334,0.08006803981,17.36526946,-0.01082567616,Mesmo sinal
+Mínimo 3,NFLX,Escore × retorno,307,0.05114761332,627,0.05752093697,48.96331738,-0.006373323646,Mesmo sinal
+Mínimo 3,NFLX,Intensidade líquida × |retorno|,307,-0.0880362213,627,0.03007379702,48.96331738,-0.1181100183,Sinal invertido
+Mínimo 3,NFLX,Quantidade × |retorno|,307,0.1030772836,627,0.0570360441,48.96331738,0.04604123947,Mesmo sinal
+Mínimo 3,NFLX,Intensidade média × |retorno|,307,-0.02191335521,627,0.07283820242,48.96331738,-0.09475155764,Sinal invertido
+Mínimo 3,NVDA,Escore × retorno,207,-0.01214268706,542,-0.04064014854,38.19188192,0.02849746148,Mesmo sinal
+Mínimo 3,NVDA,Intensidade líquida × |retorno|,207,-0.1223982855,542,0.01598701958,38.19188192,-0.1383853051,Sinal invertido
+Mínimo 3,NVDA,Quantidade × |retorno|,207,0.1231360195,542,0.1252336563,38.19188192,-0.002097636853,Mesmo sinal
+Mínimo 3,NVDA,Intensidade média × |retorno|,207,-0.05325735191,542,0.06937654501,38.19188192,-0.1226338969,Sinal invertido
+Sem retrospectivas,BAC,Escore × retorno,409,0.003534458581,438,0.01504875744,93.37899543,-0.01151429886,Mesmo sinal
+Sem retrospectivas,BAC,Intensidade líquida × |retorno|,409,0.04276087142,438,0.01116300046,93.37899543,0.03159787096,Mesmo sinal
+Sem retrospectivas,BAC,Quantidade × |retorno|,409,-0.009816188444,438,0.03265085153,93.37899543,-0.04246703997,Sinal invertido
+Sem retrospectivas,BAC,Intensidade média × |retorno|,409,0.03934673334,438,0.02111281759,93.37899543,0.01823391575,Mesmo sinal
+Sem retrospectivas,JNJ,Escore × retorno,438,0.05500966901,446,0.03068277901,98.20627803,0.02432689,Mesmo sinal
+Sem retrospectivas,JNJ,Intensidade líquida × |retorno|,438,-0.0247898931,446,-0.009739947494,98.20627803,-0.01504994561,Mesmo sinal
+Sem retrospectivas,JNJ,Quantidade × |retorno|,438,0.03657737443,446,0.02973045802,98.20627803,0.006846916411,Mesmo sinal
+Sem retrospectivas,JNJ,Intensidade média × |retorno|,438,-0.031765989,446,-0.03368629301,98.20627803,0.00192030401,Mesmo sinal
+Sem retrospectivas,KO,Escore × retorno,327,0.007647607079,334,0.00233433955,97.90419162,0.005313267529,Mesmo sinal
+Sem retrospectivas,KO,Intensidade líquida × |retorno|,327,0.0417508176,334,0.05479369332,97.90419162,-0.01304287572,Mesmo sinal
+Sem retrospectivas,KO,Quantidade × |retorno|,327,0.151481561,334,0.1607731391,97.90419162,-0.009291578103,Mesmo sinal
+Sem retrospectivas,KO,Intensidade média × |retorno|,327,0.0633136479,334,0.08006803981,97.90419162,-0.01675439191,Mesmo sinal
+Sem retrospectivas,NFLX,Escore × retorno,607,0.04226311361,627,0.05752093697,96.81020734,-0.01525782336,Mesmo sinal
+Sem retrospectivas,NFLX,Intensidade líquida × |retorno|,607,0.02975549969,627,0.03007379702,96.81020734,-0.0003182973341,Mesmo sinal
+Sem retrospectivas,NFLX,Quantidade × |retorno|,607,0.05696919436,627,0.0570360441,96.81020734,-6.684973229e-05,Mesmo sinal
+Sem retrospectivas,NFLX,Intensidade média × |retorno|,607,0.07249644467,627,0.07283820242,96.81020734,-0.0003417577542,Mesmo sinal
+Sem retrospectivas,NVDA,Escore × retorno,490,-0.008892505311,542,-0.04064014854,90.40590406,0.03174764323,Mesmo sinal
+Sem retrospectivas,NVDA,Intensidade líquida × |retorno|,490,0.03516401525,542,0.01598701958,90.40590406,0.01917699567,Mesmo sinal
+Sem retrospectivas,NVDA,Quantidade × |retorno|,490,0.1462759729,542,0.1252336563,90.40590406,0.02104231653,Mesmo sinal
+Sem retrospectivas,NVDA,Intensidade média × |retorno|,490,0.0813697513,542,0.06937654501,90.40590406,0.01199320629,Mesmo sinal
+Sem retrospectivas + mínimo 3,BAC,Escore × retorno,74,-0.05821547575,438,0.01504875744,16.89497717,-0.07326423319,Sinal invertido
+Sem retrospectivas + mínimo 3,BAC,Intensidade líquida × |retorno|,74,0.1849833395,438,0.01116300046,16.89497717,0.173820339,Mesmo sinal
+Sem retrospectivas + mínimo 3,BAC,Quantidade × |retorno|,74,-0.09412559934,438,0.03265085153,16.89497717,-0.1267764509,Sinal invertido
+Sem retrospectivas + mínimo 3,BAC,Intensidade média × |retorno|,74,0.1137504628,438,0.02111281759,16.89497717,0.0926376452,Mesmo sinal
+Sem retrospectivas + mínimo 3,JNJ,Escore × retorno,116,-0.110037289,446,0.03068277901,26.00896861,-0.1407200681,Sinal invertido
+Sem retrospectivas + mínimo 3,JNJ,Intensidade líquida × |retorno|,116,-0.05372698266,446,-0.009739947494,26.00896861,-0.04398703517,Mesmo sinal
+Sem retrospectivas + mínimo 3,JNJ,Quantidade × |retorno|,116,0.07756160712,446,0.02973045802,26.00896861,0.0478311491,Mesmo sinal
+Sem retrospectivas + mínimo 3,JNJ,Intensidade média × |retorno|,116,-0.1049629032,446,-0.03368629301,26.00896861,-0.07127661016,Mesmo sinal
+Sem retrospectivas + mínimo 3,KO,Escore × retorno,55,-0.2347041847,334,0.00233433955,16.46706587,-0.2370385243,Sinal invertido
+Sem retrospectivas + mínimo 3,KO,Intensidade líquida × |retorno|,55,0.1518759019,334,0.05479369332,16.46706587,0.09708220855,Mesmo sinal
+Sem retrospectivas + mínimo 3,KO,Quantidade × |retorno|,55,0.3553496669,334,0.1607731391,16.46706587,0.1945765278,Mesmo sinal
+Sem retrospectivas + mínimo 3,KO,Intensidade média × |retorno|,55,0.03975468975,334,0.08006803981,16.46706587,-0.04031335006,Mesmo sinal
+Sem retrospectivas + mínimo 3,NFLX,Escore × retorno,286,0.03485423434,627,0.05752093697,45.61403509,-0.02266670263,Mesmo sinal
+Sem retrospectivas + mínimo 3,NFLX,Intensidade líquida × |retorno|,286,-0.09346673865,627,0.03007379702,45.61403509,-0.1235405357,Sinal invertido
+Sem retrospectivas + mínimo 3,NFLX,Quantidade × |retorno|,286,0.1358596684,627,0.0570360441,45.61403509,0.07882362435,Mesmo sinal
+Sem retrospectivas + mínimo 3,NFLX,Intensidade média × |retorno|,286,-0.03289265292,627,0.07283820242,45.61403509,-0.1057308553,Sinal invertido
+Sem retrospectivas + mínimo 3,NVDA,Escore × retorno,166,0.01234988949,542,-0.04064014854,30.62730627,0.05299003803,Sinal invertido
+Sem retrospectivas + mínimo 3,NVDA,Intensidade líquida × |retorno|,166,-0.0882908881,542,0.01598701958,30.62730627,-0.1042779077,Sinal invertido
+Sem retrospectivas + mínimo 3,NVDA,Quantidade × |retorno|,166,0.1305842575,542,0.1252336563,30.62730627,0.005350601134,Mesmo sinal
+Sem retrospectivas + mínimo 3,NVDA,Intensidade média × |retorno|,166,-0.1159735294,542,0.06937654501,30.62730627,-0.1853500744,Sinal invertido
+Sem retrospectivas/ambíguas,BAC,Escore × retorno,402,-0.02402515701,438,0.01504875744,91.78082192,-0.03907391445,Sinal invertido
+Sem retrospectivas/ambíguas,BAC,Intensidade líquida × |retorno|,402,0.05628048354,438,0.01116300046,91.78082192,0.04511748308,Mesmo sinal
+Sem retrospectivas/ambíguas,BAC,Quantidade × |retorno|,402,-0.005406447851,438,0.03265085153,91.78082192,-0.03805729938,Sinal invertido
+Sem retrospectivas/ambíguas,BAC,Intensidade média × |retorno|,402,0.04747741347,438,0.02111281759,91.78082192,0.02636459588,Mesmo sinal
+Sem retrospectivas/ambíguas,JNJ,Escore × retorno,435,0.05478659518,446,0.03068277901,97.53363229,0.02410381617,Mesmo sinal
+Sem retrospectivas/ambíguas,JNJ,Intensidade líquida × |retorno|,435,-0.01660291081,446,-0.009739947494,97.53363229,-0.006862963313,Mesmo sinal
+Sem retrospectivas/ambíguas,JNJ,Quantidade × |retorno|,435,0.04301434523,446,0.02973045802,97.53363229,0.01328388721,Mesmo sinal
+Sem retrospectivas/ambíguas,JNJ,Intensidade média × |retorno|,435,-0.01717140329,446,-0.03368629301,97.53363229,0.01651488972,Mesmo sinal
+Sem retrospectivas/ambíguas,KO,Escore × retorno,323,-0.002777262168,334,0.00233433955,96.70658683,-0.005111601718,Sinal invertido
+Sem retrospectivas/ambíguas,KO,Intensidade líquida × |retorno|,323,0.02468732876,334,0.05479369332,96.70658683,-0.03010636456,Mesmo sinal
+Sem retrospectivas/ambíguas,KO,Quantidade × |retorno|,323,0.1651075635,334,0.1607731391,96.70658683,0.004334424405,Mesmo sinal
+Sem retrospectivas/ambíguas,KO,Intensidade média × |retorno|,323,0.04035256166,334,0.08006803981,96.70658683,-0.03971547815,Mesmo sinal
+Sem retrospectivas/ambíguas,NFLX,Escore × retorno,599,0.01546283962,627,0.05752093697,95.53429027,-0.04205809735,Mesmo sinal
+Sem retrospectivas/ambíguas,NFLX,Intensidade líquida × |retorno|,599,0.02087891777,627,0.03007379702,95.53429027,-0.009194879246,Mesmo sinal
+Sem retrospectivas/ambíguas,NFLX,Quantidade × |retorno|,599,0.04800589676,627,0.0570360441,95.53429027,-0.009030147342,Mesmo sinal
+Sem retrospectivas/ambíguas,NFLX,Intensidade média × |retorno|,599,0.05817513663,627,0.07283820242,95.53429027,-0.01466306579,Mesmo sinal
+Sem retrospectivas/ambíguas,NVDA,Escore × retorno,484,0.004572046673,542,-0.04064014854,89.29889299,0.04521219521,Sinal invertido
+Sem retrospectivas/ambíguas,NVDA,Intensidade líquida × |retorno|,484,0.01563257247,542,0.01598701958,89.29889299,-0.0003544471115,Mesmo sinal
+Sem retrospectivas/ambíguas,NVDA,Quantidade × |retorno|,484,0.1375093233,542,0.1252336563,89.29889299,0.01227566694,Mesmo sinal
+Sem retrospectivas/ambíguas,NVDA,Intensidade média × |retorno|,484,0.05265823374,542,0.06937654501,89.29889299,-0.01671831127,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,BAC,Escore × retorno,72,-0.1012926876,438,0.01504875744,16.43835616,-0.1163414451,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,BAC,Intensidade líquida × |retorno|,72,0.204611229,438,0.01116300046,16.43835616,0.1934482286,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,BAC,Quantidade × |retorno|,72,-0.09826225341,438,0.03265085153,16.43835616,-0.1309131049,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,BAC,Intensidade média × |retorno|,72,0.1164383562,438,0.02111281759,16.43835616,0.09532553858,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,Escore × retorno,112,-0.08542898145,446,0.03068277901,25.11210762,-0.1161117605,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,Intensidade líquida × |retorno|,112,-0.08334472273,446,-0.009739947494,25.11210762,-0.07360477523,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,Quantidade × |retorno|,112,0.107163833,446,0.02973045802,25.11210762,0.07743337499,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,Intensidade média × |retorno|,112,-0.1230225168,446,-0.03368629301,25.11210762,-0.08933622382,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,KO,Escore × retorno,55,-0.2076479076,334,0.00233433955,16.46706587,-0.2099822472,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,KO,Intensidade líquida × |retorno|,55,0.1408369408,334,0.05479369332,16.46706587,0.08604324752,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,KO,Quantidade × |retorno|,55,0.3662519009,334,0.1607731391,16.46706587,0.2054787618,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,KO,Intensidade média × |retorno|,55,0.02914862915,334,0.08006803981,16.46706587,-0.05091941067,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,Escore × retorno,277,-0.003200202356,627,0.05752093697,44.17862839,-0.06072113933,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,Intensidade líquida × |retorno|,277,-0.1136433186,627,0.03007379702,44.17862839,-0.1437171156,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,Quantidade × |retorno|,277,0.1537344711,627,0.0570360441,44.17862839,0.09669842701,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,Intensidade média × |retorno|,277,-0.0586363118,627,0.07283820242,44.17862839,-0.1314745142,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,Escore × retorno,154,0.02603481275,542,-0.04064014854,28.41328413,0.06667496129,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,Intensidade líquida × |retorno|,154,-0.1020577146,542,0.01598701958,28.41328413,-0.1180447342,Sinal invertido
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,Quantidade × |retorno|,154,0.09683179103,542,0.1252336563,28.41328413,-0.02840186531,Mesmo sinal
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,Intensidade média × |retorno|,154,-0.1343798516,542,0.06937654501,28.41328413,-0.2037563967,Sinal invertido

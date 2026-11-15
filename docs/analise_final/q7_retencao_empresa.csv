@@ -1,0 +1,21 @@
+stock,cenario,n_principal,n,retencao_pct
+BAC,Mínimo 3,438,88,20.0913242
+BAC,Principal,438,438,100
+BAC,Sem retrospectivas,438,409,93.37899543
+BAC,Sem retrospectivas + mínimo 3,438,74,16.89497717
+JNJ,Mínimo 3,446,123,27.57847534
+JNJ,Principal,446,446,100
+JNJ,Sem retrospectivas,446,438,98.20627803
+JNJ,Sem retrospectivas + mínimo 3,446,116,26.00896861
+KO,Mínimo 3,334,58,17.36526946
+KO,Principal,334,334,100
+KO,Sem retrospectivas,334,327,97.90419162
+KO,Sem retrospectivas + mínimo 3,334,55,16.46706587
+NFLX,Mínimo 3,627,307,48.96331738
+NFLX,Principal,627,627,100
+NFLX,Sem retrospectivas,627,607,96.81020734
+NFLX,Sem retrospectivas + mínimo 3,627,286,45.61403509
+NVDA,Mínimo 3,542,207,38.19188192
+NVDA,Principal,542,542,100
+NVDA,Sem retrospectivas,542,490,90.40590406
+NVDA,Sem retrospectivas + mínimo 3,542,166,30.62730627
