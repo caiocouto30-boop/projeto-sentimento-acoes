@@ -1,0 +1,91 @@
+cenario,stock,ano,n_principal,n_retidos,retencao_pct,noticias_principal,noticias_retidas
+Principal,BAC,2017,163,163,100,348,348
+Principal,BAC,2018,123,123,100,220,220
+Principal,BAC,2019,152,152,100,303,303
+Principal,JNJ,2017,144,144,100,300,300
+Principal,JNJ,2018,143,143,100,314,314
+Principal,JNJ,2019,159,159,100,432,432
+Principal,KO,2017,133,133,100,236,236
+Principal,KO,2018,102,102,100,196,196
+Principal,KO,2019,99,99,100,211,211
+Principal,NFLX,2017,215,215,100,755,755
+Principal,NFLX,2018,205,205,100,785,785
+Principal,NFLX,2019,207,207,100,800,800
+Principal,NVDA,2017,185,185,100,611,611
+Principal,NVDA,2018,174,174,100,525,525
+Principal,NVDA,2019,183,183,100,506,506
+Mínimo 3,BAC,2017,163,39,23.92638037,348,174
+Mínimo 3,BAC,2018,123,20,16.2601626,220,96
+Mínimo 3,BAC,2019,152,29,19.07894737,303,135
+Mínimo 3,JNJ,2017,144,36,25,300,158
+Mínimo 3,JNJ,2018,143,34,23.77622378,314,180
+Mínimo 3,JNJ,2019,159,53,33.33333333,432,283
+Mínimo 3,KO,2017,133,23,17.29323308,236,104
+Mínimo 3,KO,2018,102,18,17.64705882,196,89
+Mínimo 3,KO,2019,99,17,17.17171717,211,112
+Mínimo 3,NFLX,2017,215,104,48.37209302,755,598
+Mínimo 3,NFLX,2018,205,98,47.80487805,785,624
+Mínimo 3,NFLX,2019,207,105,50.72463768,800,653
+Mínimo 3,NVDA,2017,185,87,47.02702703,611,471
+Mínimo 3,NVDA,2018,174,62,35.63218391,525,372
+Mínimo 3,NVDA,2019,183,58,31.69398907,506,335
+Sem retrospectivas,BAC,2017,163,162,99.38650307,348,332
+Sem retrospectivas,BAC,2018,123,118,95.93495935,220,197
+Sem retrospectivas,BAC,2019,152,129,84.86842105,303,225
+Sem retrospectivas,JNJ,2017,144,142,98.61111111,300,296
+Sem retrospectivas,JNJ,2018,143,138,96.5034965,314,298
+Sem retrospectivas,JNJ,2019,159,158,99.37106918,432,394
+Sem retrospectivas,KO,2017,133,131,98.4962406,236,229
+Sem retrospectivas,KO,2018,102,100,98.03921569,196,180
+Sem retrospectivas,KO,2019,99,96,96.96969697,211,192
+Sem retrospectivas,NFLX,2017,215,213,99.06976744,755,725
+Sem retrospectivas,NFLX,2018,205,198,96.58536585,785,725
+Sem retrospectivas,NFLX,2019,207,196,94.68599034,800,719
+Sem retrospectivas,NVDA,2017,185,180,97.2972973,611,571
+Sem retrospectivas,NVDA,2018,174,163,93.67816092,525,459
+Sem retrospectivas,NVDA,2019,183,147,80.32786885,506,379
+Sem retrospectivas + mínimo 3,BAC,2017,163,37,22.6993865,348,158
+Sem retrospectivas + mínimo 3,BAC,2018,123,18,14.63414634,220,78
+Sem retrospectivas + mínimo 3,BAC,2019,152,19,12.5,303,86
+Sem retrospectivas + mínimo 3,JNJ,2017,144,35,24.30555556,300,154
+Sem retrospectivas + mínimo 3,JNJ,2018,143,33,23.07692308,314,168
+Sem retrospectivas + mínimo 3,JNJ,2019,159,48,30.18867925,432,240
+Sem retrospectivas + mínimo 3,KO,2017,133,23,17.29323308,236,100
+Sem retrospectivas + mínimo 3,KO,2018,102,16,15.68627451,196,73
+Sem retrospectivas + mínimo 3,KO,2019,99,16,16.16161616,211,95
+Sem retrospectivas + mínimo 3,NFLX,2017,215,101,46.97674419,755,566
+Sem retrospectivas + mínimo 3,NFLX,2018,205,91,44.3902439,785,563
+Sem retrospectivas + mínimo 3,NFLX,2019,207,94,45.41062802,800,570
+Sem retrospectivas + mínimo 3,NVDA,2017,185,77,41.62162162,611,416
+Sem retrospectivas + mínimo 3,NVDA,2018,174,49,28.16091954,525,301
+Sem retrospectivas + mínimo 3,NVDA,2019,183,40,21.8579235,506,239
+Sem retrospectivas/ambíguas,BAC,2017,163,160,98.1595092,348,321
+Sem retrospectivas/ambíguas,BAC,2018,123,116,94.30894309,220,188
+Sem retrospectivas/ambíguas,BAC,2019,152,126,82.89473684,303,214
+Sem retrospectivas/ambíguas,JNJ,2017,144,139,96.52777778,300,283
+Sem retrospectivas/ambíguas,JNJ,2018,143,138,96.5034965,314,283
+Sem retrospectivas/ambíguas,JNJ,2019,159,158,99.37106918,432,376
+Sem retrospectivas/ambíguas,KO,2017,133,130,97.7443609,236,223
+Sem retrospectivas/ambíguas,KO,2018,102,99,97.05882353,196,172
+Sem retrospectivas/ambíguas,KO,2019,99,94,94.94949495,211,180
+Sem retrospectivas/ambíguas,NFLX,2017,215,209,97.20930233,755,684
+Sem retrospectivas/ambíguas,NFLX,2018,205,196,95.6097561,785,682
+Sem retrospectivas/ambíguas,NFLX,2019,207,194,93.71980676,800,677
+Sem retrospectivas/ambíguas,NVDA,2017,185,179,96.75675676,611,527
+Sem retrospectivas/ambíguas,NVDA,2018,174,160,91.95402299,525,432
+Sem retrospectivas/ambíguas,NVDA,2019,183,145,79.23497268,506,362
+Sem retrospectivas/ambíguas + mínimo 3,BAC,2017,163,36,22.08588957,348,148
+Sem retrospectivas/ambíguas + mínimo 3,BAC,2018,123,17,13.82113821,220,70
+Sem retrospectivas/ambíguas + mínimo 3,BAC,2019,152,19,12.5,303,78
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,2017,144,34,23.61111111,300,146
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,2018,143,31,21.67832168,314,150
+Sem retrospectivas/ambíguas + mínimo 3,JNJ,2019,159,47,29.55974843,432,223
+Sem retrospectivas/ambíguas + mínimo 3,KO,2017,133,23,17.29323308,236,95
+Sem retrospectivas/ambíguas + mínimo 3,KO,2018,102,16,15.68627451,196,69
+Sem retrospectivas/ambíguas + mínimo 3,KO,2019,99,16,16.16161616,211,86
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,2017,215,98,45.58139535,755,526
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,2018,205,87,42.43902439,785,517
+Sem retrospectivas/ambíguas + mínimo 3,NFLX,2019,207,92,44.44444444,800,530
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,2017,185,70,37.83783784,611,363
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,2018,174,45,25.86206897,525,274
+Sem retrospectivas/ambíguas + mínimo 3,NVDA,2019,183,39,21.31147541,506,226

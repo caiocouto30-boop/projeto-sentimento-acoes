@@ -1,0 +1,34 @@
+{
+  "status": "aprovado",
+  "celulas_totais": 46,
+  "celulas_codigo": 15,
+  "graficos_altair_com_especificacao_valida": 7,
+  "coeficientes_robustez_conferidos": 120,
+  "calculos_consistentes_com_verificacao_independente": true,
+  "execucao": {
+    "celulas_executadas": 15,
+    "diretorio_execucao": "raiz",
+    "duracao_segundos": 4.19,
+    "metodo": "IPython InteractiveShell no mesmo processo; sem processo de kernel separado"
+  },
+  "renderizacao_visual": "pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML",
+  "verificacao_independente": {
+    "status": "aprovado",
+    "noticias": 6552,
+    "pares_painel": 3770,
+    "pares_principais": 2387,
+    "pares_cenarios": [
+      2387,
+      783,
+      2271,
+      697,
+      2243,
+      670
+    ],
+    "escopo": "limpeza, cache, integração, retornos, agregação e análise; sem nova inferência FinBERT",
+    "coeficientes_historicos_reproduzidos": 120,
+    "coeficientes_conferidos_por_postos_independentes": 120,
+    "linhas_comparacao_robustez": 120,
+    "intensidade_recalculada_em_todos_os_cenarios": true
+  }
+}
