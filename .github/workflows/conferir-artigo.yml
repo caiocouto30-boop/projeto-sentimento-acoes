@@ -80,4 +80,33 @@ jobs:
               page.locator("#grafico-q5 select").last.select_option(label="Intensidade média = média(|s|)")
               conferir(5, painel=1)
               conferir(6)
+              # Verifica se arrastar a faixa inferior restringe as datas do painel principal.
+              pontos_q3 = page.locator("#grafico-q3 .mark-symbol.role-mark").first.locator("path")
+              total = pontos_q3.count()
+              faixa = page.locator("#grafico-q3 .mark-symbol.role-mark").nth(1)
+              faixa.scroll_into_view_if_needed()
+              limites = faixa.bounding_box()
+              y = limites["y"] + limites["height"] / 2
+              x = limites["x"]
+              largura = limites["width"]
+              page.mouse.move(x + 0.25 * largura, y)
+              page.mouse.down()
+              page.mouse.move(x + 0.55 * largura, y, steps=10)
+              page.mouse.up()
+              page.wait_for_function("""total => {const n=document.querySelector('#grafico-q3 .mark-symbol.role-mark').querySelectorAll('path').length;return n>0 && n<total}""", arg=total)
+              print(f"Q3: seleção temporal reduziu {total} pontos para {pontos_q3.count()}.", flush=True)
+          
+              # A célula do mapa corresponde a uma empresa e um período.
+              mapa = page.locator("#grafico-q6 .mark-rect.role-mark path")
+              indice = mapa.evaluate_all("""ps => ps.findIndex(p=>p.__data__.datum.stock==='NFLX' && p.__data__.datum.periodo==='2019')""")
+              assert indice >= 0
+              mapa.nth(indice).click(position={"x": 5, "y": 5})
+              page.wait_for_function("""() => {
+                  const ps=[...document.querySelectorAll('#grafico-q6 .mark-symbol.role-mark path')];
+                  return ps.length>0 && ps.every(p=>p.__data__.datum.stock==='NFLX' && p.__data__.datum.periodo==='2019')
+              }""")
+              conferir(6)
+              cenarios = page.locator("#grafico-q7 .mark-symbol.role-mark path").evaluate_all("""ps => [...new Set(ps.map(p=>p.__data__.datum.cenario))]""")
+              assert set(cenarios) == {"Principal","Mínimo 3","Sem retrospectivas","Sem retrospectivas + mínimo 3"}
+              print("Q7: quatro cenários presentes nas marcas renderizadas.", flush=True)
               browser.close()
