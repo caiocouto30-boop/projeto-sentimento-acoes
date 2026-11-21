@@ -2,7 +2,7 @@
 
 O notebook é o documento principal do artigo. A revisão parte da estrutura da versão registrada no commit `620f468968c957cdb3336b14d7dd4a08770f1764`, recuperada da exportação HTML original fornecida pelo grupo.
 
-Foram mantidas as sete perguntas, as etapas da Q3 e Q7 e a construção dos gráficos em Altair. As transformações pandas e medidas ficam visíveis nas próprias células. Os gráficos Q1, Q2, Q4 e Q6 conservam o código de construção original. O arquivo final tem 46 células, sendo 15 de código.
+Foram mantidas as sete perguntas, as etapas da Q3 e Q7 e a construção dos gráficos em Altair. As transformações pandas e medidas ficam visíveis nas próprias células. Os gráficos Q1 e Q2 conservam o código de construção original. O arquivo final tem 46 células, sendo 15 de código.
 
 ## Alterações
 
@@ -18,3 +18,7 @@ As 15 células foram executadas no IPython InteractiveShell com Altair instalado
 A execução em processo separado de kernel Jupyter não terminou no ambiente restrito da revisão. A inspeção visual de hover, zoom e seletores continua como conferência do grupo no Jupyter ou no HTML. Mudanças de sinal e de coeficiente são descritivas; não foram realizados testes confirmatórios de diferenças.
 
 Não houve novo treinamento do FinBERT, nova coleta de preços ou nova anotação humana. A validação humana independente das retrospectivas e dos vínculos de ticker permanece uma limitação.
+
+## Revisão das manchetes em 21/11
+
+Na Q3, o agrupamento usa a empresa e a data civil. Na Q4, Q5 e Q6, usa a empresa e o pregão ao qual a notícia foi associada. Os círculos da Q4 representam os retornos fora dos bigodes de 1,5 IQR. O verificador confere as manchetes de cada grupo com as bases originais. Na Q7, cada símbolo resume uma correlação.

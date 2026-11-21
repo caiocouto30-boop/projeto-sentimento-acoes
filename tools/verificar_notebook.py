@@ -11,6 +11,32 @@ from verificar_final import verificar
 
 RAIZ=Path(__file__).resolve().parents[1]
 
+
+def verificar_manchetes(specs):
+    # Uma data civil pode ser diferente do pregão ao qual a notícia foi associada.
+    for numero, data, arquivo in [
+        (3, 'news_date', 'noticias_com_sentimento.csv'),
+        (4, 'trade_date', 'noticias_pregao_retornos.csv'),
+        (5, 'trade_date', 'noticias_pregao_retornos.csv'),
+        (6, 'trade_date', 'noticias_pregao_retornos.csv'),
+    ]:
+        noticias = pd.read_csv(RAIZ / 'data/processed' / arquivo)
+        noticias['modulo'] = noticias.escore_sentimento.abs()
+        grupos = (noticias.sort_values(['modulo', 'source_row'], ascending=[False, True])
+                  .groupby(['stock', data]).headline.agg(list))
+        registros = [linha for linhas in specs[numero - 1]['datasets'].values()
+                     for linha in linhas if data in linha]
+        assert registros, f'Q{numero} sem pontos'
+        for linha in registros:
+            titulos = grupos.loc[(linha['stock'], linha[data][:10])]
+            assert linha['n_noticias'] == len(titulos)
+            if numero == 3:
+                exibidos = [linha[f'manchete_{i + 1}'] for i in range(min(3, len(titulos)))]
+                assert exibidos == titulos[:3] and linha['outras_manchetes'] == max(0, len(titulos) - 3)
+            else:
+                assert linha['manchete_exemplo'] == titulos[0]
+
+
 def verificar_notebook():
     verificacao=verificar()
     esperado=tabelas(preparar());pasta=RAIZ/'docs/analise_final'
@@ -40,12 +66,14 @@ def verificar_notebook():
             if out.get('data',{}).get('application/vnd.vegalite.v6+json'):
                 specs.append(out.data['application/vnd.vegalite.v6+json'])
     assert len(specs)==7,len(specs)
+    verificar_manchetes(specs)
     q3=json.dumps(specs[2],ensure_ascii=False);q5=json.dumps(specs[4],ensure_ascii=False)
     assert all(f'manchete_{i}' in q3 for i in [1,2,3])
     assert 'medida_intensidade' in q5 and 'intensidade_media' in q5 and 'intensidade_liquida' in q5
     assert specs[6]['columns']==2
     resultado={'status':'aprovado','celulas_totais':len(nb.cells),'celulas_codigo':len(codigos),
         'graficos_altair_com_especificacao_valida':len(specs),'coeficientes_robustez_conferidos':len(comp),
+        'manchetes_conferidas_com_a_base':['Q3','Q4','Q5','Q6'],
         'calculos_consistentes_com_verificacao_independente':True,'execucao':dict(nb.metadata.execucao_final),
         'renderizacao_visual':'pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML',
         'verificacao_independente':verificacao}

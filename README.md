@@ -17,7 +17,15 @@ Abra o **[notebook-artigo](notebooks/00_artigo.ipynb)**. As transformações pan
 | [docs/README.md](docs/README.md) | Método, dados, origem e reprodução |
 | [docs/analise_final/](docs/analise_final/) | Tabelas e verificações da análise final |
 
-Na Q3, o hover mostra empresa, data, escore médio, quantidade e até três manchetes completas. O tamanho dos pontos representa a quantidade de notícias; o seletor e a seleção de datas conservam a exploração da série temporal. Os títulos são exemplos ordenados pelo módulo do escore individual; não representam isoladamente a média do grupo.
+Para ler as manchetes, baixe o [artigo interativo](artigo_interativo.html) e abra o arquivo no navegador. Passe o mouse nos seguintes pontos.
+
+| Figura | O que o marcador representa | O que aparece no ponto |
+| --- | --- | --- |
+| Q3, série temporal | Empresa e data civil | Até três manchetes reais do dia e a contagem das demais |
+| Q4, círculos fora dos bigodes | Pregão com retorno extremo dentro da empresa e classe | Manchete de exemplo, data, empresa, quantidade e retorno |
+| Q5 e Q6, dispersões | Empresa e pregão | Manchete de exemplo da janela e dados do pregão |
+
+Nos pregões com uma notícia, o título é o dessa notícia. Com várias, o exemplo é o título de maior módulo do escore individual, com desempate pela ordem no arquivo de origem. As caixas da Q4 resumem distribuições, e os símbolos da Q7 representam coeficientes calculados sobre vários pregões.
 
 Na Q5, o seletor alterna **intensidade líquida = |média(sᵢ)|** e **intensidade média = média(|sᵢ|)**, mantendo os mesmos 2.387 pares. A Q7 recalcula as medidas com os textos retidos em cada cenário e apresenta retenção e coeficientes por empresa.
 
@@ -44,7 +52,7 @@ O executor padrão usa um kernel Jupyter. Na verificação desta revisão, as 15
 
 O exportador lê o notebook salvo e gera o HTML, sem reconstruir suas células. O verificador compara as tabelas do notebook com cálculos independentes, incluindo os 120 coeficientes dos seis cenários de robustez. Veja [o registro de verificação](docs/analise_final/verificacao_notebook.json).
 
-Confie no notebook no Jupyter para ativar suas saídas HTML. A renderização Altair pode carregar bibliotecas JavaScript de uma CDN. O GitHub pode não executar os gráficos: use Jupyter ou baixe o HTML e abra no navegador com conexão.
+O HTML incorpora a biblioteca das sete figuras e pode ser explorado offline. No Jupyter, marque o notebook como confiável para ativar as saídas interativas do Altair. Essas saídas podem precisar de internet.
 
 ## Resultados e alcance
 

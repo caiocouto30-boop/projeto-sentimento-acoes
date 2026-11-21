@@ -4,11 +4,17 @@
   "celulas_codigo": 15,
   "graficos_altair_com_especificacao_valida": 7,
   "coeficientes_robustez_conferidos": 120,
+  "manchetes_conferidas_com_a_base": [
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6"
+  ],
   "calculos_consistentes_com_verificacao_independente": true,
   "execucao": {
     "celulas_executadas": 15,
-    "diretorio_execucao": "raiz",
-    "duracao_segundos": 4.19,
+    "diretorio_execucao": "notebooks",
+    "duracao_segundos": 5.26,
     "metodo": "IPython InteractiveShell no mesmo processo; sem processo de kernel separado"
   },
   "renderizacao_visual": "pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML",
