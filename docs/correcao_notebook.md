@@ -13,9 +13,11 @@ Foram mantidas as sete perguntas, as etapas da Q3 e Q7 e a construção dos grá
 
 ## Verificações e limites
 
-As 15 células foram executadas no IPython InteractiveShell com Altair instalado. Foram produzidas sete especificações Vega-Lite válidas. As tabelas Q5 e Q6 e os 120 coeficientes de robustez foram comparados com cálculos independentes. O notebook foi validado com nbformat.
+As saídas salvas no repositório foram produzidas em IPython. Em uma segunda execução, um kernel Jupyter novo executou as 15 células na pasta `notebooks/`. O verificador conferiu as tabelas Q5 e Q6 e os 120 coeficientes de robustez. O exportador gerou o HTML com as sete figuras. [Execução em Jupyter](https://github.com/caiocouto30-boop/projeto-sentimento-acoes/actions/runs/44964338148).
 
-A execução em processo separado de kernel Jupyter não terminou no ambiente restrito da revisão. A inspeção visual de hover, zoom e seletores continua como conferência do grupo no Jupyter ou no HTML. Mudanças de sinal e de coeficiente são descritivas; não foram realizados testes confirmatórios de diferenças.
+No HTML distribuído, o teste em Chrome com a rede desligada moveu o ponteiro sobre os marcadores de Q3 a Q6 e comparou o texto visível do balão com o título do ponto. Na Q3, selecionar a Netflix e arrastar a faixa de datas reduziu o painel de 720 para 224 pontos. Na Q5, o teste alternou a medida de intensidade. Na Q6, clicar em NFLX em 2019 atualizou a dispersão para esse recorte. Na Q7, os quatro cenários apareceram nas marcas renderizadas. [Teste no navegador](https://github.com/caiocouto30-boop/projeto-sentimento-acoes/actions/runs/44964401509/job/137030055149).
+
+As diferenças de sinal e de coeficiente são descritivas. A análise não testa diferenças estruturais entre empresas ou anos.
 
 Não houve novo treinamento do FinBERT, nova coleta de preços ou nova anotação humana. A validação humana independente das retrospectivas e dos vínculos de ticker permanece uma limitação.
 

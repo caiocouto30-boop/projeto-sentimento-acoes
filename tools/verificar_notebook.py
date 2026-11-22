@@ -75,7 +75,7 @@ def verificar_notebook():
         'graficos_altair_com_especificacao_valida':len(specs),'coeficientes_robustez_conferidos':len(comp),
         'manchetes_conferidas_com_a_base':['Q3','Q4','Q5','Q6'],
         'calculos_consistentes_com_verificacao_independente':True,'execucao':dict(nb.metadata.execucao_final),
-        'renderizacao_visual':'pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML',
+        'renderizacao_visual':'A verificação numérica confere os dados dos gráficos. O teste de interação no navegador está documentado em docs/correcao_notebook.md.',
         'verificacao_independente':verificacao}
     (pasta/'verificacao_notebook.json').write_text(json.dumps(resultado,ensure_ascii=False,indent=2),encoding='utf-8')
     return resultado

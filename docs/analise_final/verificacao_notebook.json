@@ -17,7 +17,7 @@
     "duracao_segundos": 5.26,
     "metodo": "IPython InteractiveShell no mesmo processo; sem processo de kernel separado"
   },
-  "renderizacao_visual": "pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML",
+  "renderizacao_visual": "A verificação numérica confere os dados dos gráficos. O teste de interação no navegador está documentado em docs/correcao_notebook.md.",
   "verificacao_independente": {
     "status": "aprovado",
     "noticias": 6552,

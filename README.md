@@ -48,11 +48,11 @@ python tools/verificar_notebook.py
 python tools/exportar_artigo.py
 ```
 
-O executor padrão usa um kernel Jupyter. Na verificação desta revisão, as 15 células foram executadas no IPython InteractiveShell, com saídas reais e sete especificações Altair válidas; a tentativa de iniciar um processo separado de kernel não terminou no ambiente restrito. O modo usado está disponível com `python tools/executar_artigo.py --modo ipython`. Use `--pasta notebooks` para repetir a execução com esse diretório de trabalho.
+O executor abre um kernel Jupyter novo por padrão. Para reproduzir a execução a partir da pasta do notebook, use `python tools/executar_artigo.py --pasta notebooks`. As saídas salvas no repositório foram produzidas em IPython. A execução independente em Jupyter reproduziu as 15 células e passou no verificador. [Registro da execução](https://github.com/caiocouto30-boop/projeto-sentimento-acoes/actions/runs/44964338148).
 
 O exportador lê o notebook salvo e gera o HTML, sem reconstruir suas células. O verificador compara as tabelas do notebook com cálculos independentes, incluindo os 120 coeficientes dos seis cenários de robustez. Veja [o registro de verificação](docs/analise_final/verificacao_notebook.json).
 
-O HTML incorpora a biblioteca das sete figuras e pode ser explorado offline. No Jupyter, marque o notebook como confiável para ativar as saídas interativas do Altair. Essas saídas podem precisar de internet.
+O HTML incorpora a biblioteca das sete figuras. Em um teste com o Chrome offline, os marcadores de Q3 a Q6 mostraram as manchetes correspondentes. [Teste no navegador](https://github.com/caiocouto30-boop/projeto-sentimento-acoes/actions/runs/44964401509/job/137030055149). No Jupyter, marque o notebook como confiável para ativar as saídas interativas do Altair. Essas saídas podem precisar de internet.
 
 ## Resultados e alcance
 
@@ -62,4 +62,4 @@ Os snapshots e a revisão humana anterior foram preservados. A regra de retrospe
 
 ## Antes do envio
 
-Conferir visualmente tooltips, zoom e seletores no Jupyter; reproduzir por outro integrante; preparar e ensaiar a apresentação de dez minutos; registrar as contribuições efetivas; confirmar a data e o procedimento da Semana A2. A presença dos arquivos não comprova envio à disciplina.
+O grupo ainda deve conferir o artigo no computador que usará, ensaiar a apresentação, registrar as contribuições de cada integrante e confirmar o procedimento de envio da Semana A2.
