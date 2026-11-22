@@ -1,61 +1,59 @@
-"""Exporta as saídas Altair salvas no artigo para um HTML com gráficos offline."""
+"""Exporta as sete figuras salvas no notebook para leitura e hover offline."""
+import json
 from pathlib import Path
-from html import escape
-from urllib.parse import urlsplit, unquote
+
+from bs4 import BeautifulSoup
 import nbformat
 from nbconvert import HTMLExporter
-from bs4 import BeautifulSoup
-import vl_convert as vlc
-import base64
 
 RAIZ = Path(__file__).resolve().parents[1]
-DESTINO = RAIZ / 'artigo_interativo.html'
-notebook = nbformat.read(RAIZ / 'notebooks/00_artigo.ipynb', as_version=4)
-alturas = [415, 350, 615, 675, 500, 690, 600]
-figuras = RAIZ / 'figures/analise_visual'
-figuras.mkdir(parents=True, exist_ok=True)
-n = 0
-for celula in notebook.cells:
-    for saida in celula.get('outputs', []):
-        dados = saida.get('data', {})
-        especificacao = dados.get('application/vnd.vegalite.v6+json')
-        if especificacao is None:
-            continue
-        png = vlc.vegalite_to_png(especificacao, scale=1.5)
-        (figuras / f'q{n+1}.png').write_bytes(png)
-        dados['image/png'] = base64.b64encode(png).decode('ascii')
-        n += 1
-if n != 7:
-    raise ValueError('Execute e salve todas as células do artigo antes de exportar.')
-(RAIZ / 'notebooks/00_artigo.ipynb').write_text(
-    nbformat.writes(notebook), encoding='utf-8', newline='\n')
 
-n = 0
-for celula in notebook.cells:
-    for saida in celula.get('outputs', []):
-        dados = saida.get('data', {})
-        especificacao = dados.get('application/vnd.vegalite.v6+json')
-        if especificacao is None:
-            continue
-        html = vlc.vegalite_to_html(especificacao, bundle=True, renderer='svg')
-        dados['text/html'] = (
-            f'<iframe title="Gráfico interativo Q{n+1}" '
-            f'style="border:0;width:100%;height:{alturas[n]}px" '
-            f'srcdoc="{escape(html, quote=True)}"></iframe>'
-        )
-        n += 1
-exportador = HTMLExporter()
-exportador.exclude_input_prompt = True
-exportador.exclude_output_prompt = True
-conteudo, _ = exportador.from_notebook_node(notebook)
-pagina = BeautifulSoup(conteudo, 'html.parser')
-pagina.title.string = 'Sentimento das notícias — artigo interativo'
-for link in pagina.find_all('a', href=True):
-    href = link['href']
-    if urlsplit(href).scheme or href.startswith('#'):
-        continue
-    arquivo = (RAIZ / 'notebooks' / unquote(href)).resolve()
-    if arquivo.is_file():
-        link['href'] = arquivo.relative_to(DESTINO.parent).as_posix()
-DESTINO.write_text(str(pagina), encoding='utf-8', newline='\n')
-print(f'Artigo exportado com {n} gráficos e imagens: {DESTINO}')
+
+def exportar():
+    caminho = RAIZ / 'notebooks/00_artigo.ipynb'
+    notebook = nbformat.read(caminho, as_version=4)
+    nbformat.validate(notebook)
+    if any(c.cell_type == 'code' and c.execution_count is None for c in notebook.cells):
+        raise RuntimeError('Execute e salve o notebook antes de exportar.')
+
+    graficos = []
+    for celula in notebook.cells:
+        for saida in celula.get('outputs', []):
+            dados = saida.get('data', {})
+            spec = dados.get('application/vnd.vegalite.v6+json')
+            if spec is None:
+                continue
+            graficos.append(spec)
+            dados['text/html'] = f'<div id="grafico-q{len(graficos)}"></div>'
+    if len(graficos) != 7:
+        raise ValueError('O artigo executado deve conter as sete figuras.')
+
+    html, _ = HTMLExporter(template_name='classic').from_notebook_node(notebook)
+    pagina = BeautifulSoup(html, 'html.parser')
+    for link in pagina.find_all('a', href=True):
+        href = link['href']
+        if href.startswith('../docs/'):
+            link['href'] = href[3:]
+        elif href == '01_preparacao_dados.ipynb':
+            link['href'] = 'notebooks/' + href
+
+    estilo = pagina.new_tag('style')
+    estilo.string = '#vg-tooltip-element td.value { white-space: pre-wrap; overflow-wrap: anywhere; max-width: min(600px, 70vw); text-align: left; }'
+    pagina.head.append(estilo)
+    runtime = pagina.new_tag('script')
+    runtime.string = '(function(){' + (RAIZ / 'vendor/vega-bundle.js').read_text(encoding='utf-8') + '})();'
+    pagina.body.append(runtime)
+    for numero, spec in enumerate(graficos, start=1):
+        script = pagina.new_tag('script')
+        payload = json.dumps(spec, ensure_ascii=False, separators=(',', ':')).replace('<', r'\u003c')
+        script.string = f'vegaEmbed("#grafico-q{numero}", {payload}, {{renderer:"svg", actions:false}});'
+        pagina.body.append(script)
+
+    destino = RAIZ / 'artigo_interativo.html'
+    destino.write_text(str(pagina), encoding='utf-8', newline='\n')
+    return destino
+
+
+if __name__ == '__main__':
+    print(exportar())
+

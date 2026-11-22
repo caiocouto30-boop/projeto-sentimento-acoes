@@ -1,0 +1,62 @@
+{
+  "data": "2026-11-15",
+  "notebook_fonte_principal": true,
+  "graficos": "Altair",
+  "origem": {
+    "repositorio": "https://github.com/caiocouto30-boop/projeto-sentimento-acoes",
+    "commit_base": "620f468968c957cdb3336b14d7dd4a08770f1764",
+    "notebook_original": "https://github.com/caiocouto30-boop/projeto-sentimento-acoes/blob/620f468968c957cdb3336b14d7dd4a08770f1764/notebooks/00_artigo.ipynb",
+    "blob_notebook_original": "562add248f59862e7b41edf4387355e6f52b9c0d",
+    "fonte_celulas": "Células recuperadas da exportação HTML original fornecida pelo grupo.",
+    "estrutura_preservada": "Sete perguntas, etapas da Q3 e Q7, transformações pandas e gráficos Altair."
+  },
+  "celulas": 46,
+  "codigo": 15,
+  "celulas_codigo_preservadas": [
+    "original-code-1",
+    "original-code-2",
+    "original-code-5",
+    "original-code-6",
+    "original-code-8"
+  ],
+  "execucao": {
+    "celulas_executadas": 15,
+    "diretorio_execucao": "raiz",
+    "duracao_segundos": 4.19,
+    "metodo": "IPython InteractiveShell no mesmo processo; sem processo de kernel separado"
+  },
+  "validacao": {
+    "status": "aprovado",
+    "celulas_totais": 46,
+    "celulas_codigo": 15,
+    "graficos_altair_com_especificacao_valida": 7,
+    "coeficientes_robustez_conferidos": 120,
+    "calculos_consistentes_com_verificacao_independente": true,
+    "execucao": {
+      "celulas_executadas": 15,
+      "diretorio_execucao": "raiz",
+      "duracao_segundos": 4.19,
+      "metodo": "IPython InteractiveShell no mesmo processo; sem processo de kernel separado"
+    },
+    "renderizacao_visual": "pendente; os gráficos e seletores devem ser conferidos no Jupyter ou HTML",
+    "verificacao_independente": {
+      "status": "aprovado",
+      "noticias": 6552,
+      "pares_painel": 3770,
+      "pares_principais": 2387,
+      "pares_cenarios": [
+        2387,
+        783,
+        2271,
+        697,
+        2243,
+        670
+      ],
+      "escopo": "limpeza, cache, integração, retornos, agregação e análise; sem nova inferência FinBERT",
+      "coeficientes_historicos_reproduzidos": 120,
+      "coeficientes_conferidos_por_postos_independentes": 120,
+      "linhas_comparacao_robustez": 120,
+      "intensidade_recalculada_em_todos_os_cenarios": true
+    }
+  }
+}

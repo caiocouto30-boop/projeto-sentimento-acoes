@@ -1,0 +1,8 @@
+{
+  "repositorio": "https://github.com/caiocouto30-boop/projeto-sentimento-acoes",
+  "commit_base": "620f468968c957cdb3336b14d7dd4a08770f1764",
+  "notebook_original": "https://github.com/caiocouto30-boop/projeto-sentimento-acoes/blob/620f468968c957cdb3336b14d7dd4a08770f1764/notebooks/00_artigo.ipynb",
+  "blob_notebook_original": "562add248f59862e7b41edf4387355e6f52b9c0d",
+  "fonte_celulas": "Células recuperadas da exportação HTML original fornecida pelo grupo.",
+  "estrutura_preservada": "Sete perguntas, etapas da Q3 e Q7, transformações pandas e gráficos Altair."
+}
