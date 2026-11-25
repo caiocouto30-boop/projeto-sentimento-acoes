@@ -13,8 +13,6 @@ Abra o **[notebook-artigo](notebooks/00_artigo.ipynb)**. As transformações pan
 | Arquivo | Uso |
 | --- | --- |
 | [notebooks/00_artigo.ipynb](notebooks/00_artigo.ipynb) | Artigo final: 46 células, sendo 15 de código |
-| [Apresentação de dez minutos](apresentacao/apresentacao.pdf) | Oito slides em PDF para projeção |
-| [Roteiro de apresentação](apresentacao/roteiro.md) | Tempos, divisão de fala e demonstração da Q3 |
 | [Declaração de contribuições](DECLARACAO_CONTRIBUICOES.md) | Atividades de cada integrante e revisão conjunta |
 | [notebooks/01_preparacao_dados.ipynb](notebooks/01_preparacao_dados.ipynb) | Preparação original, FinBERT e integração |
 | [docs/README.md](docs/README.md) | Método, dados, origem e reprodução |
