@@ -6,18 +6,21 @@ Projeto final de **Análise Exploratória de Dados e Visualização — FGV EMAp
 
 Investigamos associações entre manchetes financeiras e retornos de NVDA, NFLX, BAC, JNJ e KO em 2017–2019. O estudo combina notícias do Kaggle, probabilidades de um FinBERT pronto e cotações ajustadas do Yahoo Finance, com análise descritiva e visual.
 
-## Documento principal
+## Materiais da entrega final
 
 Abra o **[notebook-artigo](notebooks/00_artigo.ipynb)**. As transformações pandas, medidas, gráficos Altair, tabelas e interpretações estão nas próprias células. O [HTML](artigo_interativo.html) é uma exportação do notebook salvo.
 
 | Arquivo | Uso |
 | --- | --- |
 | [notebooks/00_artigo.ipynb](notebooks/00_artigo.ipynb) | Artigo final: 46 células, sendo 15 de código |
+| [Apresentação de dez minutos](apresentacao/apresentacao.pdf) | Oito slides em PDF para projeção |
+| [Roteiro de apresentação](apresentacao/roteiro.md) | Tempos, divisão de fala e demonstração da Q3 |
+| [Declaração de contribuições](DECLARACAO_CONTRIBUICOES.md) | Atividades de cada integrante e revisão conjunta |
 | [notebooks/01_preparacao_dados.ipynb](notebooks/01_preparacao_dados.ipynb) | Preparação original, FinBERT e integração |
 | [docs/README.md](docs/README.md) | Método, dados, origem e reprodução |
 | [docs/analise_final/](docs/analise_final/) | Tabelas e verificações da análise final |
 
-Para ler as manchetes, baixe o [artigo interativo](artigo_interativo.html) e abra o arquivo no navegador. Passe o mouse nos seguintes pontos.
+Para ler as manchetes, [baixe o artigo interativo](https://github.com/caiocouto30-boop/projeto-sentimento-acoes/raw/refs/heads/main/artigo_interativo.html) e abra o HTML no navegador. Passe o mouse nos seguintes pontos.
 
 | Figura | O que o marcador representa | O que aparece no ponto |
 | --- | --- | --- |
@@ -59,7 +62,3 @@ O HTML incorpora a biblioteca das sete figuras. Em um teste com o Chrome offline
 H1 recebe apoio descritivo: a cobertura é desigual. H2 não recebe apoio uniforme nas duas definições de intensidade. H3 encontra variação descritiva entre empresas e anos, sem demonstrar diferenças estruturais. Os retornos por classe se sobrepõem e as correlações são pequenas. Os filtros alteram a composição e alguns sinais, sem estabelecer causalidade ou capacidade preditiva.
 
 Os snapshots e a revisão humana anterior foram preservados. A regra de retrospectivas permanece automática, conservadora e sem validação humana independente. Consulte [os dados](data/README.md), [a origem da revisão](docs/origem_notebook.json) e [as alterações metodológicas](docs/correcao_notebook.md).
-
-## Antes do envio
-
-O grupo ainda deve conferir o artigo no computador que usará, ensaiar a apresentação, registrar as contribuições de cada integrante e confirmar o procedimento de envio da Semana A2.

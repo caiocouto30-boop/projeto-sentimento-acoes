@@ -9,7 +9,7 @@ O [artigo](../notebooks/00_artigo.ipynb) concentra os cálculos finais, os sete 
 | 4–6 | 2.387 pares empresa/pregão com notícias e janela completa |
 | 7 | Principal: 2.387; mínimo de três: 783; sem retrospectivas identificadas pela regra: 2.271; combinado: 697 |
 
-Spearman é a correlação dos postos médios; grupos constantes ou insuficientes ficam sem coeficiente. O ano é o do pregão de resposta. As escalas são comuns e os retornos extremos são preservados. Ausência no corpus permanece sem sentimento. Intensidade é o módulo do escore médio, que permite compensação de tons opostos.
+Spearman é a correlação dos postos médios; grupos constantes ou insuficientes ficam sem coeficiente. O ano é o do pregão de resposta. As escalas são comuns e os retornos extremos são preservados. Ausência no corpus permanece sem sentimento. A Q5 compara o módulo do escore médio com a média dos módulos individuais nos mesmos pregões. A segunda medida preserva a intensidade de títulos com sinais opostos.
 
 ## Robustez
 
@@ -19,8 +19,8 @@ A amostra sem retrospectivas identificadas pela regra não apresenta uma relaç�
 
 ## Saídas
 
-A última célula do artigo exporta as tabelas em `docs/analise_visual/`, incluindo os seis cenários, retenção por empresa/ano, distribuições por classe e os textos dos extremos com suporte. A marcação dos 6.019 textos está em `docs/retrospectivas/marcacao_textos.csv`. A base dos cenários fica localmente em `data/processed/base_robustez_cenarios.csv`.
+A última célula do artigo exporta as tabelas em [analise_final/](analise_final/), incluindo os seis cenários, retenção por empresa/ano, distribuições por classe e os textos dos extremos com suporte. A marcação dos 6.019 textos está em `docs/retrospectivas/marcacao_textos.csv`. As tabelas históricas em [analise_visual/](analise_visual/) servem de referência ao verificador.
 
-O exportador `tools/exportar_artigo.py` gera o HTML com bibliotecas dos gráficos embutidas para uso offline e as sete imagens. A formatação das fórmulas no HTML pode exigir internet. O notebook conserva imagem e especificação para cada gráfico. A narrativa deve ser conferida se as entradas mudarem.
+O exportador `tools/exportar_artigo.py` gera o HTML com as sete figuras interativas e suas bibliotecas embutidas para uso offline. A formatação das fórmulas no HTML pode exigir internet. O notebook conserva a especificação de cada gráfico. A narrativa deve ser conferida se as entradas mudarem.
 
 Referências técnicas: [agregações pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html), [postos](https://pandas.pydata.org/docs/reference/api/pandas.Series.rank.html) e [interações Altair](https://altair-viz.github.io/user_guide/interactions/parameters.html).
